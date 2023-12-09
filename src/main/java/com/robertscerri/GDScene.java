@@ -14,6 +14,22 @@ public class GDScene {
         this.format = format;
     }
 
+    public int getLoadSteps() {
+        return loadSteps;
+    }
+
+    public void setLoadSteps(int loadSteps) {
+        this.loadSteps = loadSteps;
+    }
+
+    public int getFormat() {
+        return format;
+    }
+
+    public void setFormat(int format) {
+        this.format = format;
+    }
+
     public String getFileDescriptor() {
         return String.format("[gd_scene load_steps=%s format=%s]", this.loadSteps, this.format);
     }
