@@ -52,12 +52,10 @@ public class Node {
 
     private void setParent(Node parent) {
         if (this.parent != null) {
-            this.parent.children.remove(this);
+            this.parent.removeChild(this);
         }
-        this.parent = parent;
-        if (this.parent != null) {
-            this.parent.children.add(this);
-        }
+
+        parent.addChild(this);
     }
 
     public Node getParent() {
@@ -130,7 +128,7 @@ public class Node {
         //Skip a line
         scenePrintWriter.println();
 
-        //Print all child nodes
+        //Print all child nodes recursively
         for(Node n : this.children) {
             n.printNode(scenePrintWriter);
         }
