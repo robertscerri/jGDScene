@@ -4,21 +4,15 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 
-public class GDScene {
-    protected int loadSteps;
-    protected int format;
-
+public class GDScene extends SceneEntry {
     protected Node rootNode;
 
     public GDScene() {
-        this.loadSteps = 4;
-        this.format = 3;
-        this.rootNode = new Node("RootNode", "Node2D");
-    }
+        super("gd_scene");
 
-    public GDScene(int loadSteps, int format) {
-        this.loadSteps = loadSteps;
-        this.format = format;
+        this.setHeadingAttribute("loadSteps", 4);
+        this.setHeadingAttribute("format", 3);
+
         this.rootNode = new Node("RootNode", "Node2D");
     }
 
@@ -27,29 +21,34 @@ public class GDScene {
         this.rootNode = rootNode;
     }
 
+    public GDScene(int loadSteps, int format) {
+        super("gd_scene");
+
+        this.setHeadingAttribute("loadSteps", loadSteps);
+        this.setHeadingAttribute("format", format);
+
+        this.rootNode = new Node("RootNode", "Node2D");
+    }
+
     public GDScene(int loadSteps, int format, Node rootNode) {
         this(loadSteps, format);
         this.rootNode = rootNode;
     }
 
     public int getLoadSteps() {
-        return loadSteps;
+        return (int) this.getHeadingAttribute("loadSteps");
     }
 
     public void setLoadSteps(int loadSteps) {
-        this.loadSteps = loadSteps;
+        this.setHeadingAttribute("loadSteps", loadSteps);
     }
 
     public int getFormat() {
-        return format;
+        return (int) this.getHeadingAttribute("format");
     }
 
     public void setFormat(int format) {
-        this.format = format;
-    }
-
-    private String getFileDescriptor() {
-        return String.format("[gd_scene load_steps=%s format=%s]", this.loadSteps, this.format);
+        this.setHeadingAttribute("format", format);
     }
 
     public void writeToFile(String path) {
@@ -61,7 +60,7 @@ public class GDScene {
             PrintWriter scenePrintWriter = new PrintWriter(sceneFileWriter);
 
             //Print scene file descriptor
-            scenePrintWriter.println(this.getFileDescriptor());
+            scenePrintWriter.println(this.getHeading());
 
             scenePrintWriter.println();
 

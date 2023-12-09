@@ -3,32 +3,31 @@ package com.robertscerri;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Map;
-import java.util.HashMap;
 import java.util.List;
 
-public class Node {
+public class Node extends SceneEntryWithProps {
     private List<Node> children = new ArrayList<Node>();
     private Node parent = null;
 
-    protected String name;
-    protected String type;
-    protected Map<String, String> properties;
-
     public Node() {
-        this.name = "";
-        this.type = "";
-        this.properties = new HashMap<String, String>();
+        super("node");
+
+        this.setHeadingAttribute("name", "");
+        this.setHeadingAttribute("type", "");
     }
 
     public Node(String name, String type) {
-        this.name = name;
-        this.type = type;
-        this.properties = new HashMap<String, String>();
+        super("node");
+
+        this.setHeadingAttribute("name", name);
+        this.setHeadingAttribute("type", type);
     }
 
     public Node(String name, String type, Node parent) {
         this(name, type);
+
         this.parent = parent;
+        this.setHeadingAttribute("parent", getNodePath());
     }
 
     public List<Node> getChildren() {
@@ -37,6 +36,8 @@ public class Node {
 
     public void addChild(Node child) {
         child.parent = this;
+        child.setHeadingAttribute("parent", child.getNodePath());
+
         this.children.add(child);
     }
 
@@ -46,15 +47,15 @@ public class Node {
         }
     }
 
-    public boolean removeChild(Node child) {
-        return this.children.remove(child);
+    public void removeChild(Node child) {
+        this.children.remove(child);
     }
 
     public Node getParent() {
         return parent;
     }
 
-    private void setParent(Node parent) {
+    public void setParent(Node parent) {
         if (this.parent != null) {
             this.parent.removeChild(this);
         }
@@ -63,39 +64,27 @@ public class Node {
     }
 
     public String getName() {
-        return name;
+        return (String) this.getHeadingAttribute("name");
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.setHeadingAttribute("name", name);
     }
 
     public String getType() {
-        return type;
+        return (String) this.getHeadingAttribute("type");
     }
 
     public void setType(String type) {
-        this.type = type;
+        this.setHeadingAttribute("type", type);
     }
 
-    public String getProperty(String key) {
-        return properties.get(key);
-    }
-
-    public void setProperty(String key, String value) {
-        this.properties.put(key, value);
-    }
-
-    public Map<String, String> getProperties() {
-        return properties;
-    }
-
-    public String getPath() {
+    public String getNodePath() {
         if (this.parent == null) {
             return "";
         }
 
-        String parentPath = this.parent.getPath();
+        String parentPath = this.parent.getNodePath();
 
         if (!parentPath.isEmpty()) {
             parentPath += "/";
@@ -104,21 +93,9 @@ public class Node {
         return parentPath + this.parent.getName();
     }
 
-    private String getHeader() {
-        String header = String.format("[node name=\"%s\" type=\"%s\"", this.name, this.type);
-
-        if (this.parent != null) {
-            header += String.format(" parent=\"%s\"", this.getPath());
-        }
-
-        header += "]";
-
-        return header;
-    }
-
     public void printNode(PrintWriter scenePrintWriter) {
         //First print the header
-        scenePrintWriter.println(this.getHeader());
+        scenePrintWriter.println(this.getHeading());
 
         //Print each property
         for (Map.Entry<String, String> entry : this.properties.entrySet()) {
