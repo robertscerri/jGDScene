@@ -1,8 +1,9 @@
 package com.robertscerri;
 
+import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Dictionary;
-import java.util.Hashtable;
+import java.util.Map;
+import java.util.HashMap;
 import java.util.List;
 
 public class Node {
@@ -11,18 +12,18 @@ public class Node {
 
     protected String name;
     protected String type;
-    protected Dictionary<String, String> properties;
+    protected Map<String, String> properties;
 
     public Node() {
         this.name = "";
         this.type = "";
-        this.properties = new Hashtable<String, String>();
+        this.properties = new HashMap<String, String>();
     }
 
     public Node(String name, String type) {
         this.name = name;
         this.type = type;
-        this.properties = new Hashtable<String, String>();
+        this.properties = new HashMap<String, String>();
     }
 
     public Node(String name, String type, Node parent) {
@@ -35,7 +36,7 @@ public class Node {
     }
 
     public void addChild(Node child) {
-        child.setParent(this);
+        child.parent = this;
         this.children.add(child);
     }
 
@@ -50,9 +51,13 @@ public class Node {
     }
 
     private void setParent(Node parent) {
-        this.parent.children.remove(this);
+        if (this.parent != null) {
+            this.parent.children.remove(this);
+        }
         this.parent = parent;
-        this.parent.children.add(this);
+        if (this.parent != null) {
+            this.parent.children.add(this);
+        }
     }
 
     public Node getParent() {
@@ -83,19 +88,47 @@ public class Node {
         this.properties.put(key, value);
     }
 
-    public Dictionary<String, String> getProperties() {
+    public Map<String, String> getProperties() {
         return properties;
+    }
+
+    public String getPath() {
+        if (this.parent == null) {
+            return "";
+        }
+
+        String parentPath = this.parent.getPath();
+
+        if (!parentPath.isEmpty()) {
+            parentPath += "/";
+        }
+
+        return parentPath + this.parent.getName();
     }
 
     public String getHeader() {
         String header = String.format("[node name=\"%s\" type=\"%s\"", this.name, this.type);
 
         if (this.parent != null) {
-            header += String.format(" parent=\"%s\"", this.parent);
+            header += String.format(" parent=\"%s\"", this.getPath());
         }
 
         header += "]";
 
         return header;
+    }
+
+    public void printNode(PrintWriter scenePrintWriter) {
+        scenePrintWriter.println(this.getHeader());
+
+        for (Map.Entry<String, String> entry : this.properties.entrySet()) {
+            scenePrintWriter.println(String.format("%s = %s", entry.getKey(), entry.getValue()));
+        }
+
+        scenePrintWriter.println();
+
+        for(Node n : this.children) {
+            n.printNode(scenePrintWriter);
+        }
     }
 }
