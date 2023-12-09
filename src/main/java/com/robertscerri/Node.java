@@ -1,23 +1,28 @@
 package com.robertscerri;
 
 import java.util.ArrayList;
+import java.util.Dictionary;
+import java.util.Hashtable;
 import java.util.List;
 
 public class Node {
-    private List<Node> children;
+    private List<Node> children = new ArrayList<Node>();
     private Node parent = null;
 
     protected String name;
     protected String type;
+    protected Dictionary<String, String> properties;
 
     public Node() {
         this.name = "";
         this.type = "";
+        this.properties = new Hashtable<String, String>();
     }
 
     public Node(String name, String type) {
         this.name = name;
         this.type = type;
+        this.properties = new Hashtable<String, String>();
     }
 
     public Node(String name, String type, Node parent) {
@@ -70,11 +75,23 @@ public class Node {
         this.type = type;
     }
 
-    public String getHeader(String parent) {
+    public String getProperty(String key) {
+        return properties.get(key);
+    }
+
+    public void setProperty(String key, String value) {
+        this.properties.put(key, value);
+    }
+
+    public Dictionary<String, String> getProperties() {
+        return properties;
+    }
+
+    public String getHeader() {
         String header = String.format("[node name=\"%s\" type=\"%s\"", this.name, this.type);
 
-        if (parent != null) {
-            header += String.format(" parent=\"%s\"", parent);
+        if (this.parent != null) {
+            header += String.format(" parent=\"%s\"", this.parent);
         }
 
         header += "]";
