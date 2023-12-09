@@ -48,7 +48,7 @@ public class GDScene {
         this.format = format;
     }
 
-    public String getFileDescriptor() {
+    private String getFileDescriptor() {
         return String.format("[gd_scene load_steps=%s format=%s]", this.loadSteps, this.format);
     }
 

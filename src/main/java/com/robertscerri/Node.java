@@ -106,7 +106,7 @@ public class Node {
         return parentPath + this.parent.getName();
     }
 
-    public String getHeader() {
+    private String getHeader() {
         String header = String.format("[node name=\"%s\" type=\"%s\"", this.name, this.type);
 
         if (this.parent != null) {
@@ -119,14 +119,18 @@ public class Node {
     }
 
     public void printNode(PrintWriter scenePrintWriter) {
+        //First print the header
         scenePrintWriter.println(this.getHeader());
 
+        //Print each property
         for (Map.Entry<String, String> entry : this.properties.entrySet()) {
             scenePrintWriter.println(String.format("%s = %s", entry.getKey(), entry.getValue()));
         }
 
+        //Skip a line
         scenePrintWriter.println();
 
+        //Print all child nodes
         for(Node n : this.children) {
             n.printNode(scenePrintWriter);
         }
