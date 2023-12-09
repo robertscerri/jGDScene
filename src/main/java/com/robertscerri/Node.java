@@ -50,16 +50,16 @@ public class Node {
         return this.children.remove(child);
     }
 
+    public Node getParent() {
+        return parent;
+    }
+
     private void setParent(Node parent) {
         if (this.parent != null) {
             this.parent.removeChild(this);
         }
 
         parent.addChild(this);
-    }
-
-    public Node getParent() {
-        return parent;
     }
 
     public String getName() {
