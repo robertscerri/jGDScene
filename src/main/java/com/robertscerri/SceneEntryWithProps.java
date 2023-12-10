@@ -35,11 +35,7 @@ public class SceneEntryWithProps extends SceneEntry {
 
         //Print each property
         for (Map.Entry<String, String> entry : this.properties.entrySet()) {
-            StringBuilder propertyString = new StringBuilder();
-
-            propertyString.append(entry.getKey()).append(" = ").append(entry.getValue());
-
-            scenePrintWriter.println(propertyString);
+            scenePrintWriter.println(entry.getKey() + " = " + entry.getValue());
         }
 
         //Skip a line
