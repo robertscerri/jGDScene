@@ -1,4 +1,4 @@
-package com.robertscerri;
+package com.robertscerri.java_gdscene;
 
 import java.io.File;
 import java.io.FileWriter;

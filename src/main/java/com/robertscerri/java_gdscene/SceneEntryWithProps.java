@@ -1,4 +1,4 @@
-package com.robertscerri;
+package com.robertscerri.java_gdscene;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
