@@ -6,8 +6,15 @@ public class Main {
 
         GDScene gdScene = new GDScene(rootNode);
 
+        ExtResource birdScript = new ExtResource("Script", "res://Bird.gd");
+        gdScene.addExtResource(birdScript);
+
+        ExtResource birdTexture = new ExtResource("Texture2D", "res://Flappy Bird Assets/Player/StyleBird1/Bird1-2.png");
+        gdScene.addExtResource(birdTexture);
+
         Node bird = new Node("Bird", "RigidBody2D");
         bird.setProperty("position", "Vector2(106, 192)");
+        bird.setProperty("script", birdScript);
         rootNode.addChild(bird);
 
         SubResource circleShape2D1 = new SubResource("CircleShape2D");
@@ -17,6 +24,11 @@ public class Main {
         SubResource circleShape2D2 = new SubResource("CircleShape2D");
         circleShape2D2.setProperty("radius", 8.0);
         gdScene.addSubResource(circleShape2D2);
+
+        SubResource atlasTexture = new SubResource("AtlasTexture");
+        atlasTexture.setProperty("atlas", birdTexture);
+        atlasTexture.setProperty("region", "Rect2(0, 0, 16, 16)");
+        gdScene.addSubResource(atlasTexture);
 
         Node collisionShape2D = new Node("CollisionShape2D", "CollisionShape2D");
         collisionShape2D.setProperty("shape", circleShape2D1);

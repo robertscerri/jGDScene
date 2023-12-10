@@ -9,6 +9,7 @@ import java.util.List;
 public class GDScene extends SceneEntry {
     protected Node rootNode;
 
+    protected List<ExtResource> extResources = new ArrayList<ExtResource>();
     protected List<SubResource> subResources = new ArrayList<SubResource>();
 
     public GDScene() {
@@ -55,6 +56,18 @@ public class GDScene extends SceneEntry {
         this.setHeadingAttribute("format", format);
     }
 
+    public List<ExtResource> getExtResources() {
+        return this.extResources;
+    }
+
+    public void addExtResource(ExtResource extResource) {
+        this.extResources.add(extResource);
+    }
+
+    public void removeExtResource(ExtResource extResource) {
+        this.extResources.remove(extResource);
+    }
+
     public List<SubResource> getSubResources() {
         return this.subResources;
     }
@@ -77,6 +90,10 @@ public class GDScene extends SceneEntry {
 
             //Print scene file descriptor
             scenePrintWriter.println(this);
+
+            for (ExtResource extResource : this.extResources) {
+                scenePrintWriter.println(extResource);
+            }
 
             for (SubResource subResource : this.subResources) {
                 scenePrintWriter.println(subResource);

@@ -18,6 +18,6 @@ public class ExtResource extends Resource {
     }
 
     public String getReference() {
-        return "ExtResource(\n" + this.getId() + "\")";
+        return "ExtResource(\"" + this.getId() + "\")";
     }
 }
