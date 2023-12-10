@@ -53,7 +53,7 @@ public class SubResource extends SceneEntryWithProps {
         return type + "_" + suffix;
     }
 
-    public String getResourceLocator() {
+    public String toString() {
         return "SubResource(" + this.getId() + ")";
     }
 }
