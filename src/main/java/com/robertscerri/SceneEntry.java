@@ -45,7 +45,7 @@ public class SceneEntry {
                 heading.append(attribute.getKey())
                         .append("=")
                         .append(valueIsString ? "\"" : "")
-                        .append(value.toString())
+                        .append(value)
                         .append(valueIsString ? "\"" : "");
             }
         }
