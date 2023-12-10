@@ -85,10 +85,10 @@ public class Node extends SceneEntryWithProps {
 
         String parentPath = this.parent.getNodePath();
         if (!parentPath.isEmpty()) {
-            parentPath += "/";
+            return parentPath + "/" + this.parent.getName();
+        } else {
+            return "."; //If the path of the parent is empty, then we have reached the root node.
         }
-
-        return parentPath + this.parent.getName();
     }
 
     public String toString() {
