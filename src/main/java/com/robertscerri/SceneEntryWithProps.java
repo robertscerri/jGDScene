@@ -5,27 +5,27 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class SceneEntryWithProps extends SceneEntry {
-    protected Map<String, String> properties;
+    protected Map<String, Object> properties;
 
     public SceneEntryWithProps() {
         super();
-        this.properties = new LinkedHashMap<String, String>();
+        this.properties = new LinkedHashMap<String, Object>();
     }
 
     public SceneEntryWithProps(String resourceType) {
         super(resourceType);
-        this.properties = new LinkedHashMap<String, String>();
+        this.properties = new LinkedHashMap<String, Object>();
     }
 
-    public String getProperty(String key) {
+    public Object getProperty(String key) {
         return properties.get(key);
     }
 
-    public void setProperty(String key, String value) {
+    public void setProperty(String key, Object value) {
         this.properties.put(key, value);
     }
 
-    public Map<String, String> getProperties() {
+    public Map<String, Object> getProperties() {
         return properties;
     }
 
@@ -34,7 +34,7 @@ public class SceneEntryWithProps extends SceneEntry {
         scenePrintWriter.println(this.getHeading());
 
         //Print each property
-        for (Map.Entry<String, String> entry : this.properties.entrySet()) {
+        for (Map.Entry<String, Object> entry : this.properties.entrySet()) {
             StringBuilder propertyString = new StringBuilder();
 
             propertyString.append(entry.getKey()).append(" = ").append(entry.getValue());
