@@ -43,7 +43,7 @@ public class SubResource extends SceneEntryWithProps {
     //ID generated is not guaranteed to be unique
     private String generateID(String type) {
         StringBuilder suffix = new StringBuilder();
-        final String CHAR_SET = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        final String CHAR_SET = "abcdefghijklmnopqrstuvwxyz0123456789";
 
         for (int i = 0; i < 5; i++) {
             char c = CHAR_SET.charAt(new Random().nextInt(CHAR_SET.length()));
