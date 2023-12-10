@@ -24,6 +24,22 @@ public class SubResource extends SceneEntryWithProps {
         this.setHeadingAttribute("id", id);
     }
 
+    public String getType() {
+        return (String) this.getHeadingAttribute("type");
+    }
+
+    public void setType(String type) {
+        this.setHeadingAttribute("type", type);
+    }
+
+    public String getId() {
+        return (String) this.getHeadingAttribute("id");
+    }
+
+    public void setId(String id) {
+        this.setHeadingAttribute("id", id);
+    }
+
     //ID generated is not guaranteed to be unique
     private String generateID(String type) {
         StringBuilder suffix = new StringBuilder();
