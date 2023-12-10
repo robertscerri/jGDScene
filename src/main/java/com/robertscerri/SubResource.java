@@ -2,7 +2,7 @@ package com.robertscerri;
 
 import java.util.Random;
 
-public class SubResource extends SceneEntryWithProps {
+public class SubResource extends SceneEntryWithProps implements Referable {
     public SubResource() {
         super("sub_resource");
 
@@ -53,7 +53,7 @@ public class SubResource extends SceneEntryWithProps {
         return type + "_" + suffix;
     }
 
-    public String toString() {
+    public String getReference() {
         return "SubResource(\"" + this.getId() + "\")";
     }
 }

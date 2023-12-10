@@ -91,12 +91,16 @@ public class Node extends SceneEntryWithProps {
         return parentPath + this.parent.getName();
     }
 
-    public void printNode(PrintWriter scenePrintWriter) {
-        super.printEntry(scenePrintWriter);
+    public String toString() {
+        StringBuilder str = new StringBuilder();
+
+        str.append(super.toString());
 
         //Print all child nodes recursively
         for(Node n : this.children) {
-            n.printNode(scenePrintWriter);
+            str.append(n.toString());
         }
+
+        return str.toString();
     }
 }

@@ -54,11 +54,7 @@ public class SceneEntry {
         return heading.toString();
     }
 
-    public void printEntry(PrintWriter scenePrintWriter) {
-        //Print the header
-        scenePrintWriter.println(this.getHeading());
-
-        //Skip a line
-        scenePrintWriter.println();
+    public String toString() {
+        return this.getHeading() + "\n";
     }
 }
