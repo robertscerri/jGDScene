@@ -46,8 +46,6 @@ public class SceneEntryWithProps extends SceneEntry {
                     .append("\n");
         }
 
-        str.append("\n");
-
         return str.toString();
     }
 }

@@ -3,9 +3,13 @@ package com.robertscerri;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GDScene extends SceneEntry {
     protected Node rootNode;
+
+    protected List<SubResource> subResources = new ArrayList<SubResource>();
 
     public GDScene() {
         super("gd_scene");
@@ -51,6 +55,18 @@ public class GDScene extends SceneEntry {
         this.setHeadingAttribute("format", format);
     }
 
+    public List<SubResource> getSubResources() {
+        return this.subResources;
+    }
+
+    public void addSubResource(SubResource subResource) {
+        this.subResources.add(subResource);
+    }
+
+    public void removeSubResource(SubResource subResource) {
+        this.subResources.remove(subResource);
+    }
+
     public void writeToFile(String path) {
         try {
             File sceneFile = new File(path);
@@ -62,11 +78,12 @@ public class GDScene extends SceneEntry {
             //Print scene file descriptor
             scenePrintWriter.println(this);
 
-            //scenePrintWriter.println();
+            for (SubResource subResource : this.subResources) {
+                scenePrintWriter.println(subResource);
+            }
 
             //Print nodes
-            scenePrintWriter.println(rootNode);
-            //rootNode.printNode(scenePrintWriter);
+            scenePrintWriter.println(this.rootNode);
 
             scenePrintWriter.close();
         } catch (Exception e) {

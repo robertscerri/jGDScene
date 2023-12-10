@@ -12,9 +12,11 @@ public class Main {
 
         SubResource circleShape2D1 = new SubResource("CircleShape2D");
         circleShape2D1.setProperty("radius", 7.0);
+        gdScene.addSubResource(circleShape2D1);
 
         SubResource circleShape2D2 = new SubResource("CircleShape2D");
         circleShape2D2.setProperty("radius", 8.0);
+        gdScene.addSubResource(circleShape2D2);
 
         Node collisionShape2D = new Node("CollisionShape2D", "CollisionShape2D");
         collisionShape2D.setProperty("shape", circleShape2D1);

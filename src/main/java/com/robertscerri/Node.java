@@ -98,6 +98,7 @@ public class Node extends SceneEntryWithProps {
 
         //Print all child nodes recursively
         for(Node n : this.children) {
+            str.append("\n");
             str.append(n.toString());
         }
 
