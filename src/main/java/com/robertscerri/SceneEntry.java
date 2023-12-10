@@ -1,5 +1,6 @@
 package com.robertscerri;
 
+import java.io.PrintWriter;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -51,5 +52,13 @@ public class SceneEntry {
 
         heading.append("]");
         return heading.toString();
+    }
+
+    public void printEntry(PrintWriter scenePrintWriter) {
+        //Print the header
+        scenePrintWriter.println(this.getHeading());
+
+        //Skip a line
+        scenePrintWriter.println();
     }
 }

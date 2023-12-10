@@ -60,9 +60,7 @@ public class GDScene extends SceneEntry {
             PrintWriter scenePrintWriter = new PrintWriter(sceneFileWriter);
 
             //Print scene file descriptor
-            scenePrintWriter.println(this.getHeading());
-
-            scenePrintWriter.println();
+            this.printEntry(scenePrintWriter);
 
             //Print nodes
             rootNode.printNode(scenePrintWriter);

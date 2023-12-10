@@ -1,5 +1,6 @@
 package com.robertscerri;
 
+import java.io.PrintWriter;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -26,5 +27,18 @@ public class SceneEntryWithProps extends SceneEntry {
 
     public Map<String, String> getProperties() {
         return properties;
+    }
+
+    public void printEntry(PrintWriter scenePrintWriter) {
+        //Print the header
+        scenePrintWriter.println(this.getHeading());
+
+        //Print each property
+        for (Map.Entry<String, String> entry : this.properties.entrySet()) {
+            scenePrintWriter.println(String.format("%s = %s", entry.getKey(), entry.getValue()));
+        }
+
+        //Skip a line
+        scenePrintWriter.println();
     }
 }

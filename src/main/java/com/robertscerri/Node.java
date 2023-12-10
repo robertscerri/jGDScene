@@ -2,7 +2,6 @@ package com.robertscerri;
 
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Map;
 import java.util.List;
 
 public class Node extends SceneEntryWithProps {
@@ -52,7 +51,7 @@ public class Node extends SceneEntryWithProps {
     }
 
     public Node getParent() {
-        return parent;
+        return this.parent;
     }
 
     public void setParent(Node parent) {
@@ -85,7 +84,6 @@ public class Node extends SceneEntryWithProps {
         }
 
         String parentPath = this.parent.getNodePath();
-
         if (!parentPath.isEmpty()) {
             parentPath += "/";
         }
@@ -94,16 +92,7 @@ public class Node extends SceneEntryWithProps {
     }
 
     public void printNode(PrintWriter scenePrintWriter) {
-        //First print the header
-        scenePrintWriter.println(this.getHeading());
-
-        //Print each property
-        for (Map.Entry<String, String> entry : this.properties.entrySet()) {
-            scenePrintWriter.println(String.format("%s = %s", entry.getKey(), entry.getValue()));
-        }
-
-        //Skip a line
-        scenePrintWriter.println();
+        super.printEntry(scenePrintWriter);
 
         //Print all child nodes recursively
         for(Node n : this.children) {
