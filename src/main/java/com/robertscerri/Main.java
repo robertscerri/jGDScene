@@ -42,6 +42,9 @@ public class Main {
         collisionShape2D2.setProperty("shape", circleShape2D2);
         area2D.addChild(collisionShape2D2);
 
+        Connection connection1 = new Connection("body_entered", area2D, bird, "_on_area_2d_body_entered");
+        gdScene.addConnection(connection1);
+
         gdScene.writeToFile("C:\\Users\\Robert\\Desktop\\scene.tscn");
     }
 }

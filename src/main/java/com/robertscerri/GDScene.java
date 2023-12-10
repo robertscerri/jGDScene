@@ -7,10 +7,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GDScene extends SceneEntry {
-    protected Node rootNode;
-
     protected List<ExtResource> extResources = new ArrayList<ExtResource>();
     protected List<SubResource> subResources = new ArrayList<SubResource>();
+
+    protected Node rootNode;
+
+    protected List<Connection> connections = new ArrayList<Connection>();
 
     public GDScene() {
         super("gd_scene");
@@ -80,6 +82,18 @@ public class GDScene extends SceneEntry {
         this.subResources.remove(subResource);
     }
 
+    public List<Connection> getConnections() {
+        return this.connections;
+    }
+
+    public void addConnection(Connection connection) {
+        this.connections.add(connection);
+    }
+
+    public void removeConnection(Connection connection) {
+        this.connections.remove(connection);
+    }
+
     public void writeToFile(String path) {
         try {
             File sceneFile = new File(path);
@@ -91,16 +105,23 @@ public class GDScene extends SceneEntry {
             //Print scene file descriptor
             scenePrintWriter.println(this);
 
+            //Print ExtResources
             for (ExtResource extResource : this.extResources) {
                 scenePrintWriter.println(extResource);
             }
 
+            //Print SubResources
             for (SubResource subResource : this.subResources) {
                 scenePrintWriter.println(subResource);
             }
 
             //Print nodes
             scenePrintWriter.println(this.rootNode);
+
+            //Print connections
+            for (Connection connection : this.connections) {
+                scenePrintWriter.println(connection);
+            }
 
             scenePrintWriter.close();
         } catch (Exception e) {
