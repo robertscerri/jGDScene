@@ -1,4 +1,4 @@
-package com.robertscerri.java_gdscene;
+package com.robertscerri.jgdscene;
 
 public class SubResource extends Resource {
     public SubResource() {

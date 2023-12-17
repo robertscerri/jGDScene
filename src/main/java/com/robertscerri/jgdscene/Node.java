@@ -1,4 +1,4 @@
-package com.robertscerri.java_gdscene;
+package com.robertscerri.jgdscene;
 
 import java.util.ArrayList;
 import java.util.List;

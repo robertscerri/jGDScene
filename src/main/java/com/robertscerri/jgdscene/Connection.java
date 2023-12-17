@@ -1,4 +1,4 @@
-package com.robertscerri.java_gdscene;
+package com.robertscerri.jgdscene;
 
 public class Connection extends SceneEntry {
     private Node from;

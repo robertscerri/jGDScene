@@ -1,6 +1,5 @@
-package com.robertscerri.java_gdscene;
+package com.robertscerri.jgdscene;
 
-import java.io.PrintWriter;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
