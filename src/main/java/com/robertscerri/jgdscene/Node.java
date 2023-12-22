@@ -80,8 +80,6 @@ public class Node extends SceneEntryWithProps {
     private void updateParentPath() {
         this.setHeadingAttribute("parent", this.getNodePath());
 
-        System.out.println("new parent path: " + this.getNodePath());
-
         for (Node child : this.getChildren()) {
             child.updateParentPath();
         }
