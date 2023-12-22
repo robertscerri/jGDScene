@@ -25,7 +25,7 @@ public class Node extends SceneEntryWithProps {
         this(name, type);
 
         this.parent = parent;
-        this.setHeadingAttribute("parent", getNodePath());
+        this.setHeadingAttribute("parent", this.getNodePath());
     }
 
     public List<Node> getChildren() {
@@ -34,7 +34,7 @@ public class Node extends SceneEntryWithProps {
 
     public void addChild(Node child) {
         child.parent = this;
-        child.setHeadingAttribute("parent", child.getNodePath());
+        child.updateParentPath();
 
         this.children.add(child);
     }
@@ -75,6 +75,16 @@ public class Node extends SceneEntryWithProps {
 
     public void setType(String type) {
         this.setHeadingAttribute("type", type);
+    }
+
+    private void updateParentPath() {
+        this.setHeadingAttribute("parent", this.getNodePath());
+
+        System.out.println("new parent path: " + this.getNodePath());
+
+        for (Node child : this.getChildren()) {
+            child.updateParentPath();
+        }
     }
 
     public String getNodePath() {

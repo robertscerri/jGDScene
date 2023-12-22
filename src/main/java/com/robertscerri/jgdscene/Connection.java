@@ -21,8 +21,6 @@ public class Connection extends SceneEntry {
         this.to = to;
 
         this.setHeadingAttribute("signal", signal);
-        this.setHeadingAttribute("from", from.getNodePath() + "/" + from.getName());
-        this.setHeadingAttribute("to", to.getNodePath() + "/" + to.getName());
         this.setHeadingAttribute("method", method);
     }
 
@@ -56,5 +54,13 @@ public class Connection extends SceneEntry {
 
     public void setMethod(String method) {
         this.setHeadingAttribute("method", method);
+    }
+
+    public String toString() {
+        //Set heading attributes just before printing to prevent outdated node paths
+        this.setHeadingAttribute("from", from.getNodePath() + "/" + from.getName());
+        this.setHeadingAttribute("to", to.getNodePath() + "/" + to.getName());
+
+        return super.toString();
     }
 }
