@@ -82,6 +82,14 @@ public class GDScene extends SceneEntry {
         this.subResources.remove(subResource);
     }
 
+    public Node getRootNode() {
+        return this.rootNode;
+    }
+
+    public void setRootNode(Node rootNode) {
+        this.rootNode = rootNode;
+    }
+
     public List<Connection> getConnections() {
         return this.connections;
     }
