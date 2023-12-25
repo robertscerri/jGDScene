@@ -1,6 +1,13 @@
 package com.robertscerri.jgdscene.variants;
 
 public class Vector2 {
+    public static final Vector2 ZERO = new Vector2(0, 0);
+    public static final Vector2 ONE = new Vector2(1, 1);
+    public static final Vector2 LEFT = new Vector2(-1, 0);
+    public static final Vector2 RIGHT = new Vector2(1, 0);
+    public static final Vector2 UP = new Vector2(0, -1);
+    public static final Vector2 DOWN = new Vector2(0, 1);
+
     public double x;
     public double y;
 
@@ -31,6 +38,22 @@ public class Vector2 {
 
     public double length() {
         return Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.y, 2));
+    }
+
+    public static Vector2 add(Vector2 a, Vector2 b) {
+        return new Vector2(a.x + b.x, a.y + b.y);
+    }
+
+    public static Vector2 subtract(Vector2 a, Vector2 b) {
+        return new Vector2(a.x - b.x, a.y - b.y);
+    }
+
+    public static Vector2 multiply(Vector2 a, Vector2 b) {
+        return new Vector2(a.x * b.x, a.y * b.y);
+    }
+
+    public static Vector2 divide(Vector2 a, Vector2 b) {
+        return new Vector2(a.x / b.x, a.y / b.y);
     }
 
     public String toString() {
