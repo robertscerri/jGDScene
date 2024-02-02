@@ -42,7 +42,7 @@ public class SceneEntryWithProps extends SceneEntry {
 
             str.append(entry.getKey())
                     .append(" = ")
-                    .append(value instanceof Referable ? ((Referable) value).getReference() : entry.getValue())
+                    .append(value instanceof Referable ? ((Referable) value).getReference() : value)
                     .append("\n");
         }
 
