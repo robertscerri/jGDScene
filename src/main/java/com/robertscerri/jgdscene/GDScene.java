@@ -78,6 +78,10 @@ public class GDScene extends SceneEntry {
         this.subResources.add(subResource);
     }
 
+    public void addSubResource(int index, SubResource subResource) {
+        this.subResources.add(index, subResource);
+    }
+
     public void removeSubResource(SubResource subResource) {
         this.subResources.remove(subResource);
     }
