@@ -12,14 +12,14 @@ public class AnimationTrack<T> {
     private boolean loopWrap;
     private AnimationKeys<T> keys;
 
-    public AnimationTrack(TrackType trackType, boolean imported, boolean enabled, String path, InterpolationType interpolationType, boolean loopWrap, AnimationKeys<T> animationKeys) {
+    public AnimationTrack(TrackType trackType, boolean imported, boolean enabled, String path, InterpolationType interpolationType, boolean loopWrap) {
         this.trackType = trackType;
         this.imported = imported;
         this.enabled = enabled;
         this.path = path;
         this.interpolationType = interpolationType;
         this.loopWrap = loopWrap;
-        this.keys = animationKeys;
+        this.keys = new AnimationKeys<>();
     }
 
     public TrackType getTrackType() {
