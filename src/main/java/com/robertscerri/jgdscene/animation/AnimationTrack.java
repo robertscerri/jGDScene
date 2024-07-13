@@ -84,7 +84,7 @@ public class AnimationTrack<T> {
         stringBuilder.append("tracks/%d/type = \"%s\"\n".formatted(index, this.trackType));
         stringBuilder.append("tracks/%d/imported = %s\n".formatted(index, this.imported));
         stringBuilder.append("tracks/%d/enabled = %s\n".formatted(index, this.enabled));
-        stringBuilder.append("tracks/%d/path = NodePath(%s)\n".formatted(index, this.path));
+        stringBuilder.append("tracks/%d/path = NodePath(\"%s\")\n".formatted(index, this.path));
         stringBuilder.append("tracks/%d/interp = %d\n".formatted(index, this.interpolationType.ordinal()));
         stringBuilder.append("tracks/%d/loop_wrap = %s\n".formatted(index, this.loopWrap));
         stringBuilder.append("tracks/%d/keys = %s\n".formatted(index, this.keys));
