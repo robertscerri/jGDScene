@@ -10,7 +10,7 @@ public class Animation extends SubResource {
     public Animation() {
         super("Animation");
 
-        this.setProperty("resource_name", "");
+        this.setProperty("resource_name", "\"\"");
         this.setProperty("length", 0);
 
         this.tracks = new ArrayList<AnimationTrack>();
@@ -25,7 +25,7 @@ public class Animation extends SubResource {
     public Animation(String resourceName, float length) {
         super("Animation");
 
-        this.setProperty("resource_name", resourceName);
+        this.setProperty("resource_name", "\"" + resourceName + "\"");
         this.setProperty("length", length);
 
         this.tracks = new ArrayList<AnimationTrack>();
@@ -34,7 +34,7 @@ public class Animation extends SubResource {
     public Animation(String resourceName, float length, String id) {
         super("Animation", id);
 
-        this.setProperty("resource_name", resourceName);
+        this.setProperty("resource_name", "\"" + resourceName + "\"");
         this.setProperty("length", length);
 
         this.tracks = new ArrayList<AnimationTrack>();
@@ -49,7 +49,7 @@ public class Animation extends SubResource {
     }
 
     public void setResourceName(String resourceName) {
-        this.setProperty("resource_name", resourceName);
+        this.setProperty("resource_name", "\"" + resourceName + "\"");
     }
 
     public void setLength(float length) {
