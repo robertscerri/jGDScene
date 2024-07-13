@@ -2,25 +2,24 @@ package com.robertscerri.jgdscene.animation;
 
 import com.robertscerri.jgdscene.animation.enums.InterpolationType;
 import com.robertscerri.jgdscene.animation.enums.TrackType;
-import com.robertscerri.jgdscene.variants.Vector2;
 
-public class AnimationTrack {
+public class AnimationTrack<T> {
     private TrackType trackType;
     private boolean imported;
     private boolean enabled;
     private String path;
     private InterpolationType interpolationType;
     private boolean loopWrap;
-    private AnimationKeys<Vector2> keys;
+    private AnimationKeys<T> keys;
 
-    public AnimationTrack(TrackType trackType, boolean imported, boolean enabled, String path, InterpolationType interpolationType, boolean loopWrap) {
+    public AnimationTrack(TrackType trackType, boolean imported, boolean enabled, String path, InterpolationType interpolationType, boolean loopWrap, AnimationKeys<T> animationKeys) {
         this.trackType = trackType;
         this.imported = imported;
         this.enabled = enabled;
         this.path = path;
         this.interpolationType = interpolationType;
         this.loopWrap = loopWrap;
-        this.keys = new AnimationKeys<Vector2>();
+        this.keys = animationKeys;
     }
 
     public TrackType getTrackType() {
@@ -71,11 +70,11 @@ public class AnimationTrack {
         this.loopWrap = loopWrap;
     }
 
-    public AnimationKeys<Vector2> getKeys() {
+    public AnimationKeys<T> getKeys() {
         return keys;
     }
 
-    public void setKeys(AnimationKeys<Vector2> keys) {
+    public void setKeys(AnimationKeys<T> keys) {
         this.keys = keys;
     }
 
