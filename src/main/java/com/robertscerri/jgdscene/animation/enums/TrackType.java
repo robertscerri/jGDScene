@@ -1,7 +1,7 @@
 package com.robertscerri.jgdscene.animation.enums;
 
 public enum TrackType {
-    TYPE_VALUE ("value");
+    VALUE ("value");
     
     private final String type;
 
