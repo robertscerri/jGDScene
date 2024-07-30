@@ -1,21 +1,19 @@
 package com.robertscerri.jgdscene.variants;
 
-import java.awt.color.ColorSpace;
-
 public class Color {
-    public int r;
-    public int g;
-    public int b;
-    public int a;
+    public float r;
+    public float g;
+    public float b;
+    public float a;
 
-    public Color(int r, int g, int b) {
+    public Color(float r, float g, float b) {
         this.r = r;
         this.g = g;
         this.b = b;
         this.a = 255;
     }
 
-    public Color(int r, int g, int b, int a) {
+    public Color(float r, float g, float b, float a) {
         this.r = r;
         this.g = g;
         this.b = b;
@@ -24,10 +22,10 @@ public class Color {
 
     @Override
     public String toString() {
-        double r = this.r / 255.0;
-        double g = this.g / 255.0;
-        double b = this.b / 255.0;
-        double a = this.a / 255.0;
+        float r = this.r / 255.0f;
+        float g = this.g / 255.0f;
+        float b = this.b / 255.0f;
+        float a = this.a / 255.0f;
 
         return "Color(%f, %f, %f, %f)".formatted(r, g, b, a);
     }
