@@ -3,7 +3,7 @@ package com.robertscerri.jgdscene;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Node extends SceneEntryWithProps implements Cloneable {
+public class Node extends SceneEntryWithProps {
     private List<Node> children = new ArrayList<Node>();
     private Node parent = null;
 
@@ -26,6 +26,22 @@ public class Node extends SceneEntryWithProps implements Cloneable {
 
         this.parent = parent;
         this.setHeadingAttribute("parent", this.getNodePath());
+    }
+
+    public Node(Node node) {
+        this();
+
+        for (String headingAttributeKey : node.headingAttributes.keySet()) {
+            this.setHeadingAttribute(headingAttributeKey, node.headingAttributes.get(headingAttributeKey));
+        }
+
+        for (String propertyKey : node.properties.keySet()) {
+            this.setProperty(propertyKey, node.properties.get(propertyKey));
+        }
+
+        for (Node child : node.children) {
+            this.addChild(new Node(child));
+        }
     }
 
     public List<Node> getChildren() {
@@ -96,25 +112,6 @@ public class Node extends SceneEntryWithProps implements Cloneable {
         } else {
             return "."; //If the path of the parent is empty, then we have reached the root node.
         }
-    }
-
-    @Override
-    public Node clone() throws CloneNotSupportedException {
-        Node clone = (Node) super.clone();
-
-        for (String headingAttributeKey : this.headingAttributes.keySet()) {
-            clone.setHeadingAttribute(headingAttributeKey, this.headingAttributes.get(headingAttributeKey));
-        }
-
-        for (String propertyKey : this.properties.keySet()) {
-            clone.setProperty(propertyKey, this.properties.get(propertyKey));
-        }
-
-        for (Node child : this.children) {
-            clone.addChild(child.clone());
-        }
-
-        return clone;
     }
 
     @Override
