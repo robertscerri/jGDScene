@@ -20,6 +20,22 @@ public class Color {
         this.a = a;
     }
 
+    public Color add(Color other) {
+        return new Color(this.r + other.r, this.g + other.g, this.b + other.b, this.a + other.a);
+    }
+
+    public Color subtract(Color other) {
+        return new Color(this.r - other.r, this.g - other.g, this.b - other.b, this.a - other.a);
+    }
+
+    public Color multiply(Color other) {
+        return new Color(this.r * other.r, this.g * other.g, this.b * other.b, this.a * other.a);
+    }
+
+    public Color divide(Color other) {
+        return new Color(this.r / other.r, this.g / other.g, this.b / other.b, this.a / other.a);
+    }
+
     @Override
     public String toString() {
         float r = this.r / 255.0f;

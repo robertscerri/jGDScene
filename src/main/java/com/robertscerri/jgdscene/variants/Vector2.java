@@ -40,20 +40,20 @@ public class Vector2 {
         return Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.y, 2));
     }
 
-    public static Vector2 add(Vector2 a, Vector2 b) {
-        return new Vector2(a.x + b.x, a.y + b.y);
+    public Vector2 add(Vector2 other) {
+        return new Vector2(this.x + other.x, this.y + other.y);
     }
 
-    public static Vector2 subtract(Vector2 a, Vector2 b) {
-        return new Vector2(a.x - b.x, a.y - b.y);
+    public Vector2 subtract(Vector2 other) {
+        return new Vector2(this.x - other.x, this.y - other.y);
     }
 
-    public static Vector2 multiply(Vector2 a, Vector2 b) {
-        return new Vector2(a.x * b.x, a.y * b.y);
+    public Vector2 multiply(Vector2 other) {
+        return new Vector2(this.x * other.x, this.y * other.y);
     }
 
-    public static Vector2 divide(Vector2 a, Vector2 b) {
-        return new Vector2(a.x / b.x, a.y / b.y);
+    public Vector2 divide(Vector2 other) {
+        return new Vector2(this.x / other.x, this.y / other.y);
     }
 
     public String toString() {
