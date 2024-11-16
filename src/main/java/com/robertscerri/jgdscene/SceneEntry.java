@@ -3,7 +3,7 @@ package com.robertscerri.jgdscene;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class SceneEntry {
+public class SceneEntry implements Cloneable {
     private String resourceType;
     protected Map<String, Object> headingAttributes;
 
@@ -53,6 +53,7 @@ public class SceneEntry {
         return heading.toString();
     }
 
+    @Override
     public String toString() {
         return this.getHeading() + "\n";
     }

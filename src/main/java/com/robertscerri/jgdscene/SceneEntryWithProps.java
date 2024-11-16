@@ -28,6 +28,7 @@ public class SceneEntryWithProps extends SceneEntry {
         return properties;
     }
 
+    @Override
     public String toString() {
         StringBuilder str = new StringBuilder();
 
