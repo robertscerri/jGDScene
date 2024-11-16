@@ -3,7 +3,7 @@ package com.robertscerri.jgdscene;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Node extends SceneEntryWithProps {
+public class Node extends SceneEntryWithProps implements Cloneable {
     private List<Node> children = new ArrayList<Node>();
     private Node parent = null;
 
@@ -98,6 +98,26 @@ public class Node extends SceneEntryWithProps {
         }
     }
 
+    @Override
+    public Node clone() throws CloneNotSupportedException {
+        Node clone = (Node) super.clone();
+
+        for (String headingAttributeKey : this.headingAttributes.keySet()) {
+            clone.setHeadingAttribute(headingAttributeKey, this.headingAttributes.get(headingAttributeKey));
+        }
+
+        for (String propertyKey : this.properties.keySet()) {
+            clone.setProperty(propertyKey, this.properties.get(propertyKey));
+        }
+
+        for (Node child : this.children) {
+            clone.addChild(child.clone());
+        }
+
+        return clone;
+    }
+
+    @Override
     public String toString() {
         StringBuilder str = new StringBuilder();
 
