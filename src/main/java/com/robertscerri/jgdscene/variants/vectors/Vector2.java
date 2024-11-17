@@ -1,4 +1,4 @@
-package com.robertscerri.jgdscene.variants;
+package com.robertscerri.jgdscene.variants.vectors;
 
 public class Vector2 {
     public static final int AXIS_X = 0;
