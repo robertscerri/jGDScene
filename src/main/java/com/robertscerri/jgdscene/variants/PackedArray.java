@@ -3,11 +3,13 @@ package com.robertscerri.jgdscene.variants;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class PackedFloat32Array extends ArrayList<Float> {
-    public String toString() {
-        StringBuilder str = new StringBuilder("PackedFloat32Array(");
+public class PackedArray<T> extends ArrayList<T> {
+    //TODO: Add remaining packed array methods
 
-        Iterator<Float> it = this.iterator();
+    public String toString() {
+        StringBuilder str = new StringBuilder(this.getClass().getSimpleName()).append("(");
+
+        Iterator<T> it = this.iterator();
 
         while(it.hasNext()) {
             str.append(it.next());

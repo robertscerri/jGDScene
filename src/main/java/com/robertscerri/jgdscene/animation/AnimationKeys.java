@@ -1,44 +1,44 @@
 package com.robertscerri.jgdscene.animation;
 
 import com.robertscerri.jgdscene.animation.enums.UpdateMode;
-import com.robertscerri.jgdscene.variants.PackedFloat32Array;
+import com.robertscerri.jgdscene.variants.PackedArray;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public class AnimationKeys<T> {
-    PackedFloat32Array times;
-    PackedFloat32Array transitions;
+    PackedArray<Float> times;
+    PackedArray<Float> transitions;
     UpdateMode updateMode;
     ArrayList<T> values;
 
     public AnimationKeys() {
-        this.times = new PackedFloat32Array();
-        this.transitions = new PackedFloat32Array();
+        this.times = new PackedArray<Float>();
+        this.transitions = new PackedArray<Float>();
         this.updateMode = UpdateMode.UPDATE_CONTINUOUS;
         this.values = new ArrayList<T>();
     }
 
-    public AnimationKeys(PackedFloat32Array times, PackedFloat32Array transitions, UpdateMode updateMode, ArrayList<T> values) {
+    public AnimationKeys(PackedArray<Float> times, PackedArray<Float> transitions, UpdateMode updateMode, ArrayList<T> values) {
         this.times = times;
         this.transitions = transitions;
         this.updateMode = updateMode;
         this.values = values;
     }
 
-    public PackedFloat32Array getTimes() {
+    public PackedArray<Float> getTimes() {
         return times;
     }
 
-    public void setTimes(PackedFloat32Array times) {
+    public void setTimes(PackedArray<Float> times) {
         this.times = times;
     }
 
-    public PackedFloat32Array getTransitions() {
+    public PackedArray<Float> getTransitions() {
         return transitions;
     }
 
-    public void setTransitions(PackedFloat32Array transitions) {
+    public void setTransitions(PackedArray<Float> transitions) {
         this.transitions = transitions;
     }
 
