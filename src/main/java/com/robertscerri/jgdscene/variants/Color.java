@@ -1,6 +1,6 @@
 package com.robertscerri.jgdscene.variants;
 
-public class Color {
+public class Color extends Variant {
     public static final Color ALICE_BLUE = new Color(0.941176f, 0.972549f, 1f, 1f);
     public static final Color ANTIQUE_WHITE = new Color(0.980392f, 0.921569f, 0.843137f, 1f);
     public static final Color AQUA = new Color(0f, 1f, 1f, 1f);
@@ -332,6 +332,6 @@ public class Color {
 
     @Override
     public String toString() {
-        return "Color(%f, %f, %f, %f)".formatted(this.r, this.g, this.b, this.a);
+        return super.toString("%f, %f, %f, %f".formatted(this.r, this.g, this.b, this.a));
     }
 }

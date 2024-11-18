@@ -1,6 +1,8 @@
 package com.robertscerri.jgdscene.variants.vectors;
 
-public class Vector4 {
+import com.robertscerri.jgdscene.variants.Variant;
+
+public class Vector4 extends Variant {
     public static final int AXIS_X = 0;
     public static final int AXIS_Y = 1;
     public static final int AXIS_Z = 2;
@@ -69,6 +71,6 @@ public class Vector4 {
     }
 
     public String toString() {
-        return "%s(%f, %f, %f, %f)".formatted(this.getClass().getSimpleName(), this.x, this.y, this.z, this.w);
+        return super.toString("%f, %f, %f, %f".formatted(this.w, this.x, this.y, this.z));
     }
 }

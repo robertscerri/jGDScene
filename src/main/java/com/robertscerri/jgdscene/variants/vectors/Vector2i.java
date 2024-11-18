@@ -1,6 +1,8 @@
 package com.robertscerri.jgdscene.variants.vectors;
 
-public class Vector2i {
+import com.robertscerri.jgdscene.variants.Variant;
+
+public class Vector2i extends Variant {
     public static final int AXIS_X = 0;
     public static final int AXIS_Y = 1;
     public static final Vector2i ZERO = new Vector2i(0, 0);
@@ -66,6 +68,6 @@ public class Vector2i {
     }
 
     public String toString() {
-        return "%s(%d, %d)".formatted(this.getClass().getSimpleName(), this.x, this.y);
+        return super.toString("%d, %d".formatted(this.x, this.y));
     }
 }

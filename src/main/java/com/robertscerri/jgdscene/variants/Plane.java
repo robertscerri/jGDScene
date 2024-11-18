@@ -2,7 +2,7 @@ package com.robertscerri.jgdscene.variants;
 
 import com.robertscerri.jgdscene.variants.vectors.Vector3;
 
-public class Plane {
+public class Plane extends Variant {
     public static final Plane PLANE_YZ = new Plane(1, 0, 0, 0);
     public static final Plane PLANE_XZ = new Plane(0, 1, 0, 0);
     public static final Plane PLANE_XY = new Plane(0, 0, 1, 0);
