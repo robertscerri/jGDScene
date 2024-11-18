@@ -61,7 +61,11 @@ public class Vector2 extends Variant {
         return new Vector2(Math.max(min, Math.min(this.x, max)), Math.max(min, Math.min(this.y, max)));
     }
 
-    //TODO: cross, cubic_interpolate, cubic_interpolate_in_time
+    public float cross(Vector2 other) {
+        return (this.x * other.y) - (this.y * other.x);
+    }
+
+    //TODO: cubic_interpolate, cubic_interpolate_in_time
 
     public Vector2 directionTo(Vector2 to) {
         return to.subtract(this).normalized();
@@ -87,7 +91,9 @@ public class Vector2 extends Variant {
         return new Vector2((float) Math.cos(angle), (float) Math.sin(angle));
     }
 
-    //TODO: is_equal_approx
+    public boolean isEqualApprox(Vector2 to) {
+        return FloatUtils.isEqualApprox(this.x, to.x) && FloatUtils.isEqualApprox(this.y, to.y);
+    }
 
     public boolean isFinite() {
         return Float.isFinite(this.x) && Float.isFinite(this.y);
@@ -109,7 +115,9 @@ public class Vector2 extends Variant {
         return (this.x * this.x) + (this.y * this.y);
     }
 
-    //TODO: lerp
+    public Vector2 lerp(Vector2 to, float weight) {
+        return new Vector2(FloatUtils.lerp(this.x, to.x, weight), FloatUtils.lerp(this.y, to.y, weight));
+    }
 
     public Vector2 limitLength(float length) {
         if (this.length() < length) {
@@ -158,7 +166,21 @@ public class Vector2 extends Variant {
         return copy.divide(copy.length());
     }
 
-    //TODO: orthogonal, posmod, posmodv, project, reflect, rotated
+    public Vector2 orthogonal() {
+        return this.rotated(Math.PI / 2);
+    }
+
+    //TODO: posmod, posmodv, project, reflect
+
+    public Vector2 rotated(double angle) {
+        double sinTheta = Math.sin(angle);
+        double cosTheta = Math.cos(angle);
+
+        return new Vector2(
+                (float) ((this.x * cosTheta) - (this.y * sinTheta)),
+                (float) ((this.x * sinTheta) + (this.y * cosTheta))
+        );
+    }
 
     public Vector2 round() {
         return new Vector2((float) Math.round(this.x), (float) Math.round(this.y));

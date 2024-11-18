@@ -1,5 +1,7 @@
 package com.robertscerri.jgdscene.variants;
 
+import com.robertscerri.jgdscene.utils.FloatUtils;
+
 public class Color extends Variant {
     public static final Color ALICE_BLUE = new Color(0.941176f, 0.972549f, 1f, 1f);
     public static final Color ANTIQUE_WHITE = new Color(0.980392f, 0.921569f, 0.843137f, 1f);
@@ -210,7 +212,19 @@ public class Color extends Variant {
         return new Color(Math.max(min.r, Math.min(this.r, max.r)), Math.max(min.g, Math.min(this.g, max.g)), Math.max(min.b, Math.min(this.b, max.b)), Math.max(min.a, Math.min(this.a, max.a)));
     }
 
-    //TODO: Add darkened(), from_hsl, from_ok_hsl, from_rgbe9995, from_string, get_luminance
+    public Color darkened(float amount) {
+        float newR = this.r * (1 - amount);
+        float newG = this.g * (1 - amount);
+        float newB = this.b * (1 - amount);
+
+        return new Color(newR, newG, newB);
+    }
+
+    //TODO: Add from_hsv, from_ok_hsl, from_rgbe9995, from_string
+
+    public float getLuminance() {
+        return (0.2126f * this.r) + (0.7152f * this.g) + (0.0722f * this.b);
+    }
 
     public static Color hex(int hex) {
         long a = hex & 0xff;
@@ -236,7 +250,28 @@ public class Color extends Variant {
         return new Color(1 - this.r, 1 - this.g, 1 - this.b, a);
     }
 
-    //TODO: Add is_equal_approx(), lerp(), lightened(), linear_to_srgb(), srgb_to_linear()
+    public boolean isEqualApprox(Color to) {
+        return FloatUtils.isEqualApprox(this.r, to.r) && FloatUtils.isEqualApprox(this.g, to.g) && FloatUtils.isEqualApprox(this.b, to.b) && FloatUtils.isEqualApprox(this.a, to.a);
+    }
+
+    public Color lerp(Color to, float weight) {
+        float newR = FloatUtils.lerp(this.r, to.r, weight);
+        float newG = FloatUtils.lerp(this.g, to.g, weight);
+        float newB = FloatUtils.lerp(this.b, to.b, weight);
+        float newA = FloatUtils.lerp(this.a, to.a, weight);
+
+        return new Color(newR, newG, newB, newA);
+    }
+
+    public Color lightened(float amount) {
+       float newR = this.r + (1.0f - this.r) * amount;
+       float newG = this.g + (1.0f - this.g) * amount;
+       float newB = this.b + (1.0f - this.b) * amount;
+
+       return new Color(newR, newG, newB);
+    }
+
+    //TODO: linear_to_srgb(), srgb_to_linear()
 
     public int to_abgr32() {
         int r = ((int) this.r * 255);
@@ -294,8 +329,6 @@ public class Color extends Variant {
         return r + g + b + a;
     }
 
-    //TODO: Add != overload
-
     public Color multiply(Color right) {
         return new Color(this.r * right.r, this.g * right.g, this.b * right.b, this.a * right.a);
     }
@@ -328,7 +361,14 @@ public class Color extends Variant {
         return new Color(this.r / right, this.g / right, this.b / right, this.a / right);
     }
 
-    //TODO: Add == overload
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Color color) {
+            return this.r == color.r && this.g == color.g && this.b == color.b && this.a == color.a;
+        }
+
+        return false;
+    }
 
     @Override
     public String toString() {
