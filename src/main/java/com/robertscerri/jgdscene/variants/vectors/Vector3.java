@@ -1,7 +1,7 @@
 package com.robertscerri.jgdscene.variants.vectors;
 
 import com.robertscerri.jgdscene.variants.Variant;
-
+//TODO: UPDATE
 public class Vector3 extends Variant {
     public static final int AXIS_X = 0;
     public static final int AXIS_Y = 1;

@@ -40,14 +40,147 @@ public class Vector2 extends Variant {
         return new Vector2(Math.abs(this.x), Math.abs(this.y));
     }
 
-    //TODO: Add the rest of the Vector2 methods
-
-    public double angle() {
-        return Math.atan(this.y / this.x);
+    public float angle() {
+        return (float) Math.atan(this.y / this.x);
     }
 
-    public double length() {
-        return Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.y, 2));
+    public float angleTo(Vector2 to) {
+        return (float) Math.acos(this.dot(to) / (this.length() * to.length()));
+    }
+
+    public Vector2 ceil() {
+        return new Vector2((float) Math.ceil(this.x), (float) Math.ceil(this.y));
+    }
+
+    public Vector2 clamp(Vector2 min, Vector2 max) {
+        return new Vector2(Math.max(min.x, Math.min(this.x, max.x)), Math.max(min.y, Math.min(this.y, max.y)));
+    }
+
+    public Vector2 clampf(float min, float max) {
+        return new Vector2(Math.max(min, Math.min(this.x, max)), Math.max(min, Math.min(this.y, max)));
+    }
+
+    //TODO: cross, cubic_interpolate, cubic_interpolate_in_time
+
+    public Vector2 directionTo(Vector2 to) {
+        return to.subtract(this).normalized();
+    }
+
+    public float distanceSquaredTo(Vector2 to) {
+        return (float) (Math.pow(to.x - this.x, 2) + Math.pow(to.y - this.y, 2));
+    }
+
+    public float distanceTo(Vector2 to) {
+        return (float) Math.sqrt(Math.pow(to.x - this.x, 2) + Math.pow(to.y - this.y, 2));
+    }
+
+    public float dot(Vector2 with) {
+        return (this.x * with.x) + (this.y * with.y);
+    }
+
+    public Vector2 floor() {
+        return new Vector2((float) Math.floor(this.x), (float) Math.floor(this.y));
+    }
+
+    public Vector2 fromAngle(float angle) {
+        return new Vector2((float) Math.cos(angle), (float) Math.sin(angle));
+    }
+
+    //TODO: is_equal_approx
+
+    public boolean isFinite() {
+        return Float.isFinite(this.x) && Float.isFinite(this.y);
+    }
+
+    public boolean isNormalized() {
+        return Math.abs(this.length() - 1) < 0.00000001;
+    }
+
+    public boolean isZeroApprox() {
+        return Math.abs(this.x) < 0.00000001 && Math.abs(this.y) < 0.00000001;
+    }
+
+    public float length() {
+        return (float) Math.sqrt(this.lengthSquared());
+    }
+
+    public float lengthSquared() {
+        return (this.x * this.x) + (this.y * this.y);
+    }
+
+    //TODO: lerp
+
+    public Vector2 limitLength(float length) {
+        if (this.length() < length) {
+            return this;
+        } else {
+            return this.normalized().multiply(length);
+        }
+    }
+
+    public Vector2 max(Vector2 with) {
+        return new Vector2(Math.max(this.x, with.x), Math.max(this.y, with.y));
+    }
+
+    public int maxAxisIndex() {
+        if (this.x >= this.y) {
+            return Vector2.AXIS_X;
+        } else {
+            return Vector2.AXIS_Y;
+        }
+    }
+
+    public Vector2 maxf(float with) {
+        return new Vector2(Math.max(this.x, with), Math.max(this.y, with));
+    }
+
+    public Vector2 min(Vector2 with) {
+        return new Vector2(Math.min(this.x, with.x), Math.min(this.y, with.y));
+    }
+
+    public int minAxisIndex() {
+        if (this.y <= this.x) {
+            return Vector2.AXIS_Y;
+        } else {
+            return Vector2.AXIS_X;
+        }
+    }
+
+    public Vector2 minf(float with) {
+        return new Vector2(Math.min(this.x, with), Math.min(this.y, with));
+    }
+
+    //TODO: move_toward
+
+    public Vector2 normalized() {
+        Vector2 copy = new Vector2(this);
+        return copy.divide(copy.length());
+    }
+
+    //TODO: orthogonal, posmod, posmodv, project, reflect, rotated
+
+    public Vector2 round() {
+        return new Vector2((float) Math.round(this.x), (float) Math.round(this.y));
+    }
+
+    public Vector2 sign() {
+        return new Vector2(Math.signum(this.x), Math.signum(this.y));
+    }
+
+    //TODO: slerp, slide, snapped, snappedf
+
+    //TODO: multiply for Transform2D
+
+    public Vector2 multiply(Vector2 right) {
+        return new Vector2(this.x * right.x, this.y * right.y);
+    }
+
+    public Vector2 multiply(float right) {
+        return new Vector2(this.x * right, this.y * right);
+    }
+
+    public Vector2 multiply(int right) {
+        return new Vector2(this.x * right, this.y * right);
     }
 
     public Vector2 add(Vector2 other) {
@@ -58,14 +191,28 @@ public class Vector2 extends Variant {
         return new Vector2(this.x - other.x, this.y - other.y);
     }
 
-    public Vector2 multiply(Vector2 other) {
-        return new Vector2(this.x * other.x, this.y * other.y);
+    public Vector2 divide(Vector2 right) {
+        return new Vector2(this.x / right.x, this.y / right.y);
     }
 
-    public Vector2 divide(Vector2 other) {
-        return new Vector2(this.x / other.x, this.y / other.y);
+    public Vector2 divide(float right) {
+        return new Vector2(this.x / right, this.y / right);
     }
 
+    public Vector2 divide(int right) {
+        return new Vector2(this.x / right, this.y / right);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Vector2 vec) {
+            return this.x == vec.x && this.y == vec.y;
+        }
+
+        return false;
+    }
+
+    @Override
     public String toString() {
         return super.toString("%f, %f".formatted(this.x, this.y));
     }
