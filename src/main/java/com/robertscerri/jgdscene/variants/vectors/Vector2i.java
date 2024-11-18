@@ -1,5 +1,5 @@
 package com.robertscerri.jgdscene.variants.vectors;
-//TODO: UPDATE
+
 import com.robertscerri.jgdscene.variants.Variant;
 
 public class Vector2i extends Variant {
@@ -41,32 +41,124 @@ public class Vector2i extends Variant {
         return new Vector2i(Math.abs(this.x), Math.abs(this.y));
     }
 
-    //TODO: Add the rest of the Vector2i methods
-
-    public double angle() {
-        return Math.atan(this.y / (double) this.x);
+    public float aspect() {
+        return this.x / (float) this.y;
     }
 
-    public double length() {
-        return Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.y, 2));
+    public Vector2i clamp(Vector2i min, Vector2i max) {
+        return new Vector2i(Math.max(min.x, Math.min(this.x, max.x)), Math.max(min.y, Math.min(this.y, max.y)));
     }
 
-    public Vector2i add(Vector2i other) {
-        return new Vector2i(this.x + other.x, this.y + other.y);
+    public Vector2i clampi(int min, int max) {
+        return new Vector2i(Math.max(min, Math.min(this.x, max)), Math.max(min, Math.min(this.y, max)));
     }
 
-    public Vector2i subtract(Vector2i other) {
-        return new Vector2i(this.x - other.x, this.y - other.y);
+    public int distanceSquaredTo(Vector2i to) {
+        return ((to.x - this.x) * (to.x - this.x)) + ((to.y - this.y) * (to.y - this.y));
     }
 
-    public Vector2i multiply(Vector2i other) {
-        return new Vector2i(this.x * other.x, this.y * other.y);
+    public float distanceTo(Vector2i to) {
+        return (float) Math.sqrt(this.distanceSquaredTo(to));
     }
 
-    public Vector2i divide(Vector2i other) {
-        return new Vector2i(this.x / other.x, this.y / other.y);
+    public int lengthSquared() {
+        return (this.x * this.x) + (this.y * this.y);
     }
 
+    public float length() {
+        return (float) Math.sqrt(this.lengthSquared());
+    }
+
+    public Vector2i max(Vector2i with) {
+        return new Vector2i(Math.max(this.x, with.x), Math.max(this.y, with.y));
+    }
+
+    public Vector2i max(int with) {
+        return new Vector2i(Math.max(this.x, with), Math.max(this.y, with));
+    }
+
+    public int maxAxisIndex() {
+        if (this.x >= this.y) {
+            return Vector2i.AXIS_X;
+        } else {
+            return Vector2i.AXIS_Y;
+        }
+    }
+
+    public Vector2i min(Vector2i with) {
+        return new Vector2i(Math.min(this.x, with.x), Math.min(this.y, with.y));
+    }
+
+    public Vector2i min(int with) {
+        return new Vector2i(Math.min(this.x, with), Math.min(this.y, with));
+    }
+
+    public int minAxisIndex() {
+        if (this.y <= this.x) {
+            return Vector2i.AXIS_Y;
+        } else {
+            return Vector2i.AXIS_X;
+        }
+    }
+
+    public Vector2i sign() {
+        return new Vector2i(Integer.signum(this.x), Integer.signum(this.y));
+    }
+
+    //TODO: snapped(), snappedi
+
+    public Vector2i modulo(Vector2i right) {
+        return new Vector2i(this.x % right.x, this.y % right.y);
+    }
+
+    public Vector2i modulo(int right) {
+        return new Vector2i(this.x % right, this.y % right);
+    }
+
+    public Vector2i multiply(Vector2i right) {
+        return new Vector2i(this.x * right.x, this.y * right.y);
+    }
+
+    public Vector2 multiply(float right) {
+        return new Vector2(this.x * right, this.y * right);
+    }
+
+    public Vector2i multiply(int right) {
+        return new Vector2i(this.x * right, this.y * right);
+    }
+
+    public Vector2i add(Vector2i right) {
+        return new Vector2i(this.x + right.x, this.y + right.y);
+    }
+
+    public Vector2i subtract(Vector2i right) {
+        return new Vector2i(this.x - right.x, this.y - right.y);
+    }
+
+    public Vector2i divide(Vector2i right) {
+        return new Vector2i(this.x / right.x, this.y / right.y);
+    }
+
+    public Vector2 divide(float right) {
+        return new Vector2(this.x / right, this.y / right);
+    }
+
+    public Vector2i divide(int right) {
+        return new Vector2i(this.x / right, this.y / right);
+    }
+
+    //TODO: Comparators
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Vector2i vec) {
+            return this.x == vec.x && this.y == vec.y;
+        }
+
+        return false;
+    }
+
+    @Override
     public String toString() {
         return super.toString("%d, %d".formatted(this.x, this.y));
     }

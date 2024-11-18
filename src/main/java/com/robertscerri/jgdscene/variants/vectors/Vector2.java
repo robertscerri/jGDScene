@@ -49,6 +49,14 @@ public class Vector2 extends Variant {
         return (float) Math.acos(this.dot(to) / (this.length() * to.length()));
     }
 
+    //TODO: angle_to_point
+
+    public float aspect() {
+        return this.x / this.y;
+    }
+
+    //TODO: bezier_derivative, bezier_interpolate, bounce
+
     public Vector2 ceil() {
         return new Vector2((float) Math.ceil(this.x), (float) Math.ceil(this.y));
     }
@@ -57,7 +65,7 @@ public class Vector2 extends Variant {
         return new Vector2(Math.max(min.x, Math.min(this.x, max.x)), Math.max(min.y, Math.min(this.y, max.y)));
     }
 
-    public Vector2 clampf(float min, float max) {
+    public Vector2 clamp(float min, float max) {
         return new Vector2(Math.max(min, Math.min(this.x, max)), Math.max(min, Math.min(this.y, max)));
     }
 
@@ -131,6 +139,10 @@ public class Vector2 extends Variant {
         return new Vector2(Math.max(this.x, with.x), Math.max(this.y, with.y));
     }
 
+    public Vector2 max(float with) {
+        return new Vector2(Math.max(this.x, with), Math.max(this.y, with));
+    }
+
     public int maxAxisIndex() {
         if (this.x >= this.y) {
             return Vector2.AXIS_X;
@@ -139,12 +151,12 @@ public class Vector2 extends Variant {
         }
     }
 
-    public Vector2 maxf(float with) {
-        return new Vector2(Math.max(this.x, with), Math.max(this.y, with));
-    }
-
     public Vector2 min(Vector2 with) {
         return new Vector2(Math.min(this.x, with.x), Math.min(this.y, with.y));
+    }
+
+    public Vector2 min(float with) {
+        return new Vector2(Math.min(this.x, with), Math.min(this.y, with));
     }
 
     public int minAxisIndex() {
@@ -153,10 +165,6 @@ public class Vector2 extends Variant {
         } else {
             return Vector2.AXIS_X;
         }
-    }
-
-    public Vector2 minf(float with) {
-        return new Vector2(Math.min(this.x, with), Math.min(this.y, with));
     }
 
     //TODO: move_toward
@@ -225,6 +233,8 @@ public class Vector2 extends Variant {
     public Vector2 divide(int right) {
         return new Vector2(this.x / right, this.y / right);
     }
+
+    //TODO: Comparators
 
     @Override
     public boolean equals(Object obj) {
