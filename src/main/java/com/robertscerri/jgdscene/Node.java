@@ -31,6 +31,7 @@ public class Node extends SceneEntryWithProps {
     public Node(Node node) {
         this();
 
+        //TODO: This probably uses shallow copy
         for (String headingAttributeKey : node.headingAttributes.keySet()) {
             this.setHeadingAttribute(headingAttributeKey, node.headingAttributes.get(headingAttributeKey));
         }
