@@ -1,44 +1,45 @@
 package com.robertscerri.jgdscene.animation;
 
 import com.robertscerri.jgdscene.animation.enums.UpdateMode;
-import com.robertscerri.jgdscene.variants.PackedArray;
+import com.robertscerri.jgdscene.variants.packedarrays.PackedArray;
+import com.robertscerri.jgdscene.variants.packedarrays.PackedFloat32Array;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public class AnimationKeys<T> {
-    PackedArray<Float> times;
-    PackedArray<Float> transitions;
+    PackedFloat32Array times;
+    PackedFloat32Array transitions;
     UpdateMode updateMode;
     ArrayList<T> values;
 
     public AnimationKeys() {
-        this.times = new PackedArray<Float>();
-        this.transitions = new PackedArray<Float>();
+        this.times = new PackedFloat32Array();
+        this.transitions = new PackedFloat32Array();
         this.updateMode = UpdateMode.UPDATE_CONTINUOUS;
         this.values = new ArrayList<T>();
     }
 
-    public AnimationKeys(PackedArray<Float> times, PackedArray<Float> transitions, UpdateMode updateMode, ArrayList<T> values) {
+    public AnimationKeys(PackedFloat32Array times, PackedFloat32Array transitions, UpdateMode updateMode, ArrayList<T> values) {
         this.times = times;
         this.transitions = transitions;
         this.updateMode = updateMode;
         this.values = values;
     }
 
-    public PackedArray<Float> getTimes() {
+    public PackedFloat32Array getTimes() {
         return times;
     }
 
-    public void setTimes(PackedArray<Float> times) {
+    public void setTimes(PackedFloat32Array times) {
         this.times = times;
     }
 
-    public PackedArray<Float> getTransitions() {
+    public PackedFloat32Array getTransitions() {
         return transitions;
     }
 
-    public void setTransitions(PackedArray<Float> transitions) {
+    public void setTransitions(PackedFloat32Array transitions) {
         this.transitions = transitions;
     }
 
@@ -59,8 +60,8 @@ public class AnimationKeys<T> {
     }
 
     public void addKey(float time, float transition, T value) {
-        this.times.add(time);
-        this.transitions.add(transition);
+        this.times.append(time);
+        this.transitions.append(transition);
         this.values.add(value);
     }
 
