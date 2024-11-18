@@ -105,7 +105,13 @@ public class Vector2i extends Variant {
         return new Vector2i(Integer.signum(this.x), Integer.signum(this.y));
     }
 
-    //TODO: snapped(), snappedi
+    public Vector2i snapped(Vector2i step) {
+        return new Vector2i(Math.round(this.x / (float) step.x) * step.x, Math.round(this.y / (float) step.y) * step.y);
+    }
+
+    public Vector2i snapped(int step) {
+        return new Vector2i(Math.round(this.x / (float) step) * step, Math.round(this.y / (float) step) * step);
+    }
 
     public Vector2i modulo(Vector2i right) {
         return new Vector2i(this.x % right.x, this.y % right.y);

@@ -198,7 +198,15 @@ public class Vector2 extends Variant {
         return new Vector2(Math.signum(this.x), Math.signum(this.y));
     }
 
-    //TODO: slerp, slide, snapped, snappedf
+    //TODO: slerp, slide
+
+    public Vector2 snapped(Vector2 step) {
+        return new Vector2(Math.round(this.x / step.x) * step.x, Math.round(this.y / step.y) * step.y);
+    }
+
+    public Vector2 snapped(float step) {
+        return new Vector2(Math.round(this.x / step) * step, Math.round(this.y / step) * step);
+    }
 
     //TODO: multiply for Transform2D
 
