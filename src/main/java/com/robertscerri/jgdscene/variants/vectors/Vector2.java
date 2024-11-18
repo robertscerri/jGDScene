@@ -1,5 +1,6 @@
 package com.robertscerri.jgdscene.variants.vectors;
 
+import com.robertscerri.jgdscene.utils.FloatUtils;
 import com.robertscerri.jgdscene.variants.Variant;
 
 public class Vector2 extends Variant {
@@ -93,11 +94,11 @@ public class Vector2 extends Variant {
     }
 
     public boolean isNormalized() {
-        return Math.abs(this.length() - 1) < 0.00000001;
+        return FloatUtils.isEqualApprox(this.length(), 1);
     }
 
     public boolean isZeroApprox() {
-        return Math.abs(this.x) < 0.00000001 && Math.abs(this.y) < 0.00000001;
+        return FloatUtils.isEqualApprox(this.x, 0) && FloatUtils.isEqualApprox(this.y, 0);
     }
 
     public float length() {
