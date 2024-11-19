@@ -2,7 +2,7 @@ package com.robertscerri.jgdscene.variants.vectors;
 
 import com.robertscerri.jgdscene.variants.Variant;
 
-public class Vector2i extends Variant {
+public class Vector2i extends Variant implements Comparable<Vector2i> {
     public static final int AXIS_X = 0;
     public static final int AXIS_Y = 1;
     public static final Vector2i ZERO = new Vector2i(0, 0);
@@ -153,7 +153,16 @@ public class Vector2i extends Variant {
         return new Vector2i(this.x / right, this.y / right);
     }
 
-    //TODO: Comparators
+    @Override
+    public int compareTo(Vector2i o) {
+        int comparisonX = Integer.compare(this.x, o.x);
+
+        if (comparisonX != 0) {
+            return comparisonX;
+        } else {
+            return Integer.compare(this.y, o.y);
+        }
+    }
 
     @Override
     public boolean equals(Object obj) {

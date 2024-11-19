@@ -3,7 +3,7 @@ package com.robertscerri.jgdscene.variants.vectors;
 import com.robertscerri.jgdscene.utils.FloatUtils;
 import com.robertscerri.jgdscene.variants.Variant;
 
-public class Vector2 extends Variant {
+public class Vector2 extends Variant implements Comparable<Vector2> {
     public static final int AXIS_X = 0;
     public static final int AXIS_Y = 1;
     public static final Vector2 ZERO = new Vector2(0, 0);
@@ -49,13 +49,19 @@ public class Vector2 extends Variant {
         return (float) Math.acos(this.dot(to) / (this.length() * to.length()));
     }
 
-    //TODO: angle_to_point
+    public float angleToPoint(Vector2 to) {
+        return to.subtract(this).angle();
+    }
 
     public float aspect() {
         return this.x / this.y;
     }
 
-    //TODO: bezier_derivative, bezier_interpolate, bounce
+    //TODO: bezier_derivative, bezier_interpolate
+
+    public Vector2 bounce(Vector2 normal) {
+        return this.reflect(normal).multiply(-1);
+    }
 
     public Vector2 ceil() {
         return new Vector2((float) Math.ceil(this.x), (float) Math.ceil(this.y));
@@ -178,7 +184,19 @@ public class Vector2 extends Variant {
         return this.rotated(Math.PI / 2);
     }
 
-    //TODO: posmod, posmodv, project, reflect
+    //TODO: posmod, posmodv
+
+    public Vector2 project(Vector2 b) {
+        Vector2 bNorm = b.normalized();
+
+        return bNorm.multiply(this.dot(bNorm));
+    }
+
+    public Vector2 reflect(Vector2 normal) {
+        Vector2 normalSanitised = normal.normalized();
+
+        return normal.multiply(2 * this.dot(normalSanitised)).subtract(this);
+    }
 
     public Vector2 rotated(double angle) {
         double sinTheta = Math.sin(angle);
@@ -198,7 +216,26 @@ public class Vector2 extends Variant {
         return new Vector2(Math.signum(this.x), Math.signum(this.y));
     }
 
-    //TODO: slerp, slide
+    public Vector2 slerp(Vector2 to, float weight) {
+        float startLengthSquared = this.lengthSquared();
+        float endLengthSquared = to.lengthSquared();
+
+        if (startLengthSquared == 0 || endLengthSquared == 0) {
+            return this.lerp(to, weight);
+        }
+
+        float startLength = (float) Math.sqrt(startLengthSquared);
+        float resultLength = FloatUtils.lerp(startLength, (float) Math.sqrt(endLengthSquared), weight);
+        float angle = this.angleTo(to);
+
+        return this.rotated(angle * weight).multiply(resultLength / startLength);
+    }
+
+    public Vector2 slide(Vector2 normal) {
+        Vector2 normalSanitised = normal.normalized();
+
+        return this.subtract(normalSanitised).multiply(this.dot(normalSanitised));
+    }
 
     public Vector2 snapped(Vector2 step) {
         return new Vector2(Math.round(this.x / step.x) * step.x, Math.round(this.y / step.y) * step.y);
@@ -242,7 +279,16 @@ public class Vector2 extends Variant {
         return new Vector2(this.x / right, this.y / right);
     }
 
-    //TODO: Comparators
+    @Override
+    public int compareTo(Vector2 o) {
+        int comparisonX = Float.compare(this.x, o.x);
+
+        if (comparisonX != 0) {
+            return comparisonX;
+        } else {
+            return Float.compare(this.y, o.y);
+        }
+    }
 
     @Override
     public boolean equals(Object obj) {
