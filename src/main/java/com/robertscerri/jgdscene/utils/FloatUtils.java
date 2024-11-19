@@ -10,4 +10,8 @@ public class FloatUtils {
     public static float lerp(float from, float to, float weight) {
         return from + ((to - from) * weight);
     }
+
+    public static float posmod(float left, float right) {
+        return ((left % right) + right) % right;
+    }
 }

@@ -173,7 +173,16 @@ public class Vector2 extends Variant implements Comparable<Vector2> {
         }
     }
 
-    //TODO: move_toward
+    public Vector2 moveToward(Vector2 to, float delta) {
+        Vector2 difference = to.subtract(this);
+        float distance = difference.length();
+
+        if (distance <= delta || distance == 0) {
+            return new Vector2(to);
+        }
+
+        return this.add(difference.normalized().multiply(delta));
+    }
 
     public Vector2 normalized() {
         Vector2 copy = new Vector2(this);
@@ -184,7 +193,13 @@ public class Vector2 extends Variant implements Comparable<Vector2> {
         return this.rotated(Math.PI / 2);
     }
 
-    //TODO: posmod, posmodv
+    public Vector2 posmod(float mod) {
+        return new Vector2(FloatUtils.posmod(this.x, mod), FloatUtils.posmod(this.y, mod));
+    }
+
+    public Vector2 posmod(Vector2 mod) {
+        return new Vector2(FloatUtils.posmod(this.x, mod.x), FloatUtils.posmod(this.y, mod.y));
+    }
 
     public Vector2 project(Vector2 b) {
         Vector2 bNorm = b.normalized();
