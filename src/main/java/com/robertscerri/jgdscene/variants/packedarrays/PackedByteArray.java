@@ -1,5 +1,8 @@
 package com.robertscerri.jgdscene.variants.packedarrays;
 
+import com.robertscerri.jgdscene.variants.Color;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class PackedByteArray extends PackedArray<Byte> {
@@ -11,5 +14,10 @@ public class PackedByteArray extends PackedArray<Byte> {
 
     public PackedByteArray(Byte[] elements) {
         super(elements);
+    }
+
+    @Override
+    public PackedByteArray duplicate() {
+        return new PackedByteArray(new ArrayList<>(this.elements));
     }
 }

@@ -43,8 +43,7 @@ public abstract class PackedArray<T extends Comparable<? super T>> extends Varia
         return count;
     }
 
-    //TODO: duplicate()
-    //public abstract PackedArray<T> duplicate();
+    public abstract PackedArray<T> duplicate();
 
     public int find(T value) {
         return this.elements.indexOf(value);

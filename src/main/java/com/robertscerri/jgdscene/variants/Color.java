@@ -2,7 +2,7 @@ package com.robertscerri.jgdscene.variants;
 
 import com.robertscerri.jgdscene.utils.FloatUtils;
 
-public class Color extends Variant {
+public class Color extends Variant implements Comparable<Color> {
     public static final Color ALICE_BLUE = new Color(0.941176f, 0.972549f, 1f, 1f);
     public static final Color ANTIQUE_WHITE = new Color(0.980392f, 0.921569f, 0.843137f, 1f);
     public static final Color AQUA = new Color(0f, 1f, 1f, 1f);
@@ -359,6 +359,29 @@ public class Color extends Variant {
 
     public Color divide(int right) {
         return new Color(this.r / right, this.g / right, this.b / right, this.a / right);
+    }
+
+    @Override
+    public int compareTo(Color o) {
+        int compareR = Float.compare(this.r, o.r);
+
+        if (compareR != 0) {
+            return compareR;
+        }
+
+        int compareG = Float.compare(this.g, o.g);
+
+        if (compareG != 0) {
+            return compareG;
+        }
+
+        int compareB = Float.compare(this.b, o.b);
+
+        if (compareB != 0) {
+            return compareB;
+        }
+
+        return Float.compare(this.a, o.a);
     }
 
     @Override
