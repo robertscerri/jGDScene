@@ -89,7 +89,7 @@ public abstract class PackedArray<T extends Comparable<? super T>> extends Varia
         this.elements.set(index, value);
     }
 
-    //TODO: slice
+    //TODO: slice()
     //public abstract PackedArray<T> slice();
 
     public void sort() {

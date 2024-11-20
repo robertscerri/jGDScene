@@ -1,6 +1,5 @@
 package com.robertscerri.jgdscene.variants.packedarrays;
 
-import com.robertscerri.jgdscene.variants.Color;
 import com.robertscerri.jgdscene.variants.vectors.Vector2;
 
 import java.util.ArrayList;
