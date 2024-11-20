@@ -4,7 +4,7 @@ import com.robertscerri.jgdscene.variants.Variant;
 
 import java.util.*;
 
-public abstract class PackedArray<T> extends Variant {
+public abstract class PackedArray<T extends Comparable<? super T>> extends Variant {
     List<T> elements;
 
     public PackedArray() {
@@ -18,8 +18,6 @@ public abstract class PackedArray<T> extends Variant {
     public PackedArray(T[] elements) {
         this.elements = new ArrayList<>(List.of(elements));
     }
-
-    //TODO: Add remaining packed array methods
 
     public boolean append(T value) {
         return this.elements.add(value);
@@ -45,24 +43,58 @@ public abstract class PackedArray<T> extends Variant {
         return count;
     }
 
-    public boolean isEmpty() {
-        return this.elements.isEmpty();
+    //TODO: duplicate()
+    //public abstract PackedArray<T> duplicate();
+
+    public int find(T value) {
+        return this.elements.indexOf(value);
+    }
+
+    public int rFind(T value) {
+        return this.elements.lastIndexOf(value);
+    }
+
+    public int bsearch(T value) {
+        return Collections.binarySearch(this.elements, value);
+    }
+
+    public boolean has(T value) {
+        return this.elements.contains(value);
+    }
+
+    public void insert(int index, T value) {
+        this.elements.add(index, value);
     }
 
     public void removeAt(int index) {
         this.elements.remove(index);
     }
 
-    public void set(int index, T value) {
-        this.elements.set(index, value);
+    public boolean isEmpty() {
+        return this.elements.isEmpty();
     }
 
     public int size() {
         return this.elements.size();
     }
 
+    public void reverse() {
+        Collections.reverse(this.elements);
+    }
+
     public T get(int index) {
         return this.elements.get(index);
+    }
+
+    public void set(int index, T value) {
+        this.elements.set(index, value);
+    }
+
+    //TODO: slice
+    //public abstract PackedArray<T> slice();
+
+    public void sort() {
+        Collections.sort(this.elements);
     }
 
     @Override
