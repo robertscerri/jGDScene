@@ -14,4 +14,8 @@ public class FloatUtils {
     public static float posmod(float left, float right) {
         return ((left % right) + right) % right;
     }
+
+    public static float clamp(float value, float min, float max) {
+        return Math.min(Math.max(value, min), max);
+    }
 }

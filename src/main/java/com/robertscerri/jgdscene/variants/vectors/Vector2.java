@@ -68,11 +68,11 @@ public class Vector2 extends Variant implements Comparable<Vector2> {
     }
 
     public Vector2 clamp(Vector2 min, Vector2 max) {
-        return new Vector2(Math.max(min.x, Math.min(this.x, max.x)), Math.max(min.y, Math.min(this.y, max.y)));
+        return new Vector2(FloatUtils.clamp(this.x, min.x, max.x), FloatUtils.clamp(this.y, min.y, max.y));
     }
 
     public Vector2 clamp(float min, float max) {
-        return new Vector2(Math.max(min, Math.min(this.x, max)), Math.max(min, Math.min(this.y, max)));
+        return new Vector2(FloatUtils.clamp(this.x, min, max), FloatUtils.clamp(this.y, min, max));
     }
 
     public float cross(Vector2 other) {
@@ -86,7 +86,7 @@ public class Vector2 extends Variant implements Comparable<Vector2> {
     }
 
     public float distanceSquaredTo(Vector2 to) {
-        return (float) (Math.pow(to.x - this.x, 2) + Math.pow(to.y - this.y, 2));
+        return to.subtract(this).lengthSquared();
     }
 
     public float distanceTo(Vector2 to) {
@@ -185,8 +185,7 @@ public class Vector2 extends Variant implements Comparable<Vector2> {
     }
 
     public Vector2 normalized() {
-        Vector2 copy = new Vector2(this);
-        return copy.divide(copy.length());
+        return this.divide(this.length());
     }
 
     public Vector2 orthogonal() {

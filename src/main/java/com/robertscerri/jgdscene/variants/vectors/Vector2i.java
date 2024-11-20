@@ -53,20 +53,20 @@ public class Vector2i extends Variant implements Comparable<Vector2i> {
         return new Vector2i(Math.max(min, Math.min(this.x, max)), Math.max(min, Math.min(this.y, max)));
     }
 
-    public int distanceSquaredTo(Vector2i to) {
-        return ((to.x - this.x) * (to.x - this.x)) + ((to.y - this.y) * (to.y - this.y));
-    }
-
     public float distanceTo(Vector2i to) {
         return (float) Math.sqrt(this.distanceSquaredTo(to));
     }
 
-    public int lengthSquared() {
-        return (this.x * this.x) + (this.y * this.y);
+    public int distanceSquaredTo(Vector2i to) {
+        return to.subtract(this).lengthSquared();
     }
 
     public float length() {
         return (float) Math.sqrt(this.lengthSquared());
+    }
+
+    public int lengthSquared() {
+        return (this.x * this.x) + (this.y * this.y);
     }
 
     public Vector2i max(Vector2i with) {
