@@ -1,6 +1,7 @@
 package com.robertscerri.jgdscene.animation;
 
 import com.robertscerri.jgdscene.animation.enums.UpdateMode;
+import com.robertscerri.jgdscene.variants.Dictionary;
 import com.robertscerri.jgdscene.variants.packedarrays.PackedArray;
 import com.robertscerri.jgdscene.variants.packedarrays.PackedFloat32Array;
 
@@ -65,27 +66,14 @@ public class AnimationKeys<T> {
         this.values.add(value);
     }
 
+    @Override
     public String toString() {
-        StringBuilder stringBuilder = new StringBuilder("{\n");
+        Dictionary dictionary = new Dictionary();
+        dictionary.add("times", this.times);
+        dictionary.add("transitions", this.transitions);
+        dictionary.add("update", this.updateMode.ordinal());
+        dictionary.add("values", this.values);
 
-        stringBuilder.append("\"times\": ").append(this.times).append(",\n");
-        stringBuilder.append("\"transitions\": ").append(this.transitions).append(",\n");
-        stringBuilder.append("\"update\": ").append(this.updateMode.ordinal()).append(",\n");
-
-        stringBuilder.append("\"values\": [");
-
-        Iterator<T> valuesIterator = this.values.iterator();
-        while (valuesIterator.hasNext()) {
-            stringBuilder.append(valuesIterator.next());
-            if (valuesIterator.hasNext()) {
-                stringBuilder.append(", ");
-            }
-        }
-
-        stringBuilder.append("]\n");
-
-        stringBuilder.append("}");
-
-        return stringBuilder.toString();
+        return dictionary.toString();
     }
 }
