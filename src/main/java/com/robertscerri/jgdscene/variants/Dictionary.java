@@ -2,7 +2,7 @@ package com.robertscerri.jgdscene.variants;
 
 import java.util.*;
 
-public class Dictionary {
+public class Dictionary extends Variant {
     private Map<Object, Object> map;
 
     public Dictionary() {
