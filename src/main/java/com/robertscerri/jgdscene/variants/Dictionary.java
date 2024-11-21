@@ -49,7 +49,11 @@ public class Dictionary {
     public String toString() {
         StringBuilder sb = new StringBuilder("{");
 
-        for (Map.Entry<Object, Object> entry : map.entrySet()) {
+        Iterator<Map.Entry<Object, Object>> it = this.map.entrySet().iterator();
+
+        while (it.hasNext()) {
+            Map.Entry<Object, Object> entry = it.next();
+
             Object key = entry.getKey();
             Object value = entry.getValue();
 
@@ -59,10 +63,12 @@ public class Dictionary {
                 sb.append(key.toString());
             }
 
-            sb.append(": ").append(value.toString()).append("\n");
-        }
+            sb.append(": ").append(value.toString());
 
-        if (!this.isEmpty()) {
+            if (it.hasNext()) {
+                sb.append(",");
+            }
+
             sb.append("\n");
         }
 
