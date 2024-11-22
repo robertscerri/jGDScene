@@ -4,6 +4,8 @@ import com.robertscerri.jgdscene.nodes.enums.*;
 import com.robertscerri.jgdscene.variants.NodePath;
 import com.robertscerri.jgdscene.variants.vectors.Vector2;
 
+import java.math.BigDecimal;
+
 public class Control extends CanvasItem {
     public Float anchorBottom = null;
     public Float anchorLeft = null;
@@ -31,6 +33,7 @@ public class Control extends CanvasItem {
     public Float offsetTop = null;
     public Vector2 pivotOffset = null;
     public Vector2 position = null;
+    public BigDecimal rotation = null;
     public Vector2 scale = null;
     public Vector2 size = null;
     public Float sizeFlagsStretchRatio = null;
@@ -147,6 +150,10 @@ public class Control extends CanvasItem {
 
         if (position != null) {
             builder.append("position = ").append(position).append("\n");
+        }
+
+        if (rotation != null) {
+            builder.append("rotation = ").append(rotation).append("\n");
         }
 
         if (scale != null) {
