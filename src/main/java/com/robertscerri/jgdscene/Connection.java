@@ -25,8 +25,8 @@ public class Connection {
 
     public String getHeader() {
         return "[connection" +
-                " from=" + this.from.getNodePath() + "/" + this.from.getName() +
-                " to=" + this.to.getNodePath() + "/" + this.to.getName() +
+                " from=" + this.from.getNodePath() + "/" + this.from.name +
+                " to=" + this.to.getNodePath() + "/" + this.to.name +
                 "]\n";
     }
 

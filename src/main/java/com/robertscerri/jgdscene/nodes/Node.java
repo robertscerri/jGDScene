@@ -11,7 +11,7 @@ public class Node {
     protected List<Node> children;
     protected Node parent;
 
-    protected String name;
+    public String name;
     public PhysicsInterpolationMode physicsInterpolationMode = null;
     public ProcessMode processMode = null;
     public Integer processPhysicsPriority = null;
@@ -66,14 +66,6 @@ public class Node {
         parent.addChild(this);
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getNodePath() {
         if (this.parent == null) {
             return "";
@@ -81,7 +73,7 @@ public class Node {
 
         String parentPath = this.parent.getNodePath();
         if (!parentPath.isEmpty()) {
-            return parentPath + "/" + this.parent.getName();
+            return parentPath + "/" + this.parent.name;
         } else {
             return "."; //If the path of the parent is empty, then we have reached the root node.
         }
