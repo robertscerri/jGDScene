@@ -3,9 +3,11 @@ package com.robertscerri.jgdscene.nodes;
 import com.robertscerri.jgdscene.nodes.canvas.CanvasItem;
 import com.robertscerri.jgdscene.variants.vectors.Vector2;
 
+import java.math.BigDecimal;
+
 public class Node2D extends CanvasItem {
     public Vector2 position = null;
-    public Float rotation = null;
+    public BigDecimal rotation = null;
     public Vector2 scale = null;
     public Float skew = null;
 
