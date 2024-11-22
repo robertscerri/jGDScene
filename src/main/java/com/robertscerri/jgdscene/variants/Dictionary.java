@@ -1,5 +1,7 @@
 package com.robertscerri.jgdscene.variants;
 
+import com.robertscerri.jgdscene.Referable;
+
 import java.util.*;
 
 public class Dictionary extends Variant {
@@ -52,6 +54,8 @@ public class Dictionary extends Variant {
         Iterator<Map.Entry<Object, Object>> it = this.map.entrySet().iterator();
 
         while (it.hasNext()) {
+            sb.append("\n");
+
             Map.Entry<Object, Object> entry = it.next();
 
             Object key = entry.getKey();
@@ -63,13 +67,11 @@ public class Dictionary extends Variant {
                 sb.append(key.toString());
             }
 
-            sb.append(": ").append(value.toString());
+            sb.append(": ").append(value instanceof Referable ref ? ref.getReference() : value);
 
             if (it.hasNext()) {
                 sb.append(",");
             }
-
-            sb.append("\n");
         }
 
         sb.append("}");

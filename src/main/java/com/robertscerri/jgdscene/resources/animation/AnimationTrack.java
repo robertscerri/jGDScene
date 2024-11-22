@@ -1,18 +1,19 @@
-package com.robertscerri.jgdscene.animation;
+package com.robertscerri.jgdscene.resources.animation;
 
-import com.robertscerri.jgdscene.animation.enums.InterpolationType;
-import com.robertscerri.jgdscene.animation.enums.TrackType;
+import com.robertscerri.jgdscene.resources.animation.enums.InterpolationType;
+import com.robertscerri.jgdscene.resources.animation.enums.TrackType;
+import com.robertscerri.jgdscene.variants.NodePath;
 
 public class AnimationTrack<T> {
     private TrackType trackType;
     private boolean imported;
     private boolean enabled;
-    private String path;
+    private NodePath path;
     private InterpolationType interpolationType;
     private boolean loopWrap;
     private AnimationKeys<T> keys;
 
-    public AnimationTrack(TrackType trackType, boolean imported, boolean enabled, String path, InterpolationType interpolationType, boolean loopWrap) {
+    public AnimationTrack(TrackType trackType, boolean imported, boolean enabled, NodePath path, InterpolationType interpolationType, boolean loopWrap) {
         this.trackType = trackType;
         this.imported = imported;
         this.enabled = enabled;
@@ -46,11 +47,11 @@ public class AnimationTrack<T> {
         this.enabled = enabled;
     }
 
-    public String getPath() {
+    public NodePath getPath() {
         return path;
     }
 
-    public void setPath(String path) {
+    public void setPath(NodePath path) {
         this.path = path;
     }
 
@@ -79,17 +80,13 @@ public class AnimationTrack<T> {
     }
 
     public String toString(int index) {
-        StringBuilder stringBuilder = new StringBuilder();
-
-        stringBuilder.append("tracks/%d/type = \"%s\"\n".formatted(index, this.trackType));
-        stringBuilder.append("tracks/%d/imported = %s\n".formatted(index, this.imported));
-        stringBuilder.append("tracks/%d/enabled = %s\n".formatted(index, this.enabled));
-        stringBuilder.append("tracks/%d/path = NodePath(\"%s\")\n".formatted(index, this.path));
-        stringBuilder.append("tracks/%d/interp = %d\n".formatted(index, this.interpolationType.ordinal()));
-        stringBuilder.append("tracks/%d/loop_wrap = %s\n".formatted(index, this.loopWrap));
-        stringBuilder.append("tracks/%d/keys = %s\n".formatted(index, this.keys));
-
-        return stringBuilder.toString();
+        return "tracks/%d/type = \"%s\"\n".formatted(index, this.trackType) +
+                "tracks/%d/imported = %s\n".formatted(index, this.imported) +
+                "tracks/%d/enabled = %s\n".formatted(index, this.enabled) +
+                "tracks/%d/path = %s\n".formatted(index, this.path) +
+                "tracks/%d/interp = %d\n".formatted(index, this.interpolationType.ordinal()) +
+                "tracks/%d/loop_wrap = %s\n".formatted(index, this.loopWrap) +
+                "tracks/%d/keys = %s\n".formatted(index, this.keys);
     }
 
     public String toString() {

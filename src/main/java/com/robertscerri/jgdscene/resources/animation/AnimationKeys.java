@@ -1,12 +1,10 @@
-package com.robertscerri.jgdscene.animation;
+package com.robertscerri.jgdscene.resources.animation;
 
-import com.robertscerri.jgdscene.animation.enums.UpdateMode;
+import com.robertscerri.jgdscene.resources.animation.enums.UpdateMode;
 import com.robertscerri.jgdscene.variants.Dictionary;
-import com.robertscerri.jgdscene.variants.packedarrays.PackedArray;
 import com.robertscerri.jgdscene.variants.packedarrays.PackedFloat32Array;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class AnimationKeys<T> {
     PackedFloat32Array times;

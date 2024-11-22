@@ -1,4 +1,4 @@
-package com.robertscerri.jgdscene.animation.enums;
+package com.robertscerri.jgdscene.resources.animation.enums;
 
 public enum UpdateMode {
     UPDATE_CONTINUOUS,

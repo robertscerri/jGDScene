@@ -1,5 +1,7 @@
 package com.robertscerri.jgdscene;
 
+import com.robertscerri.jgdscene.nodes.Node;
+
 public class Connection extends SceneEntry {
     private Node from;
     private Node to;

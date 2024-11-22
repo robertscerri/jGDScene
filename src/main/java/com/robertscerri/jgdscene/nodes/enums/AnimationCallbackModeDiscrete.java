@@ -1,0 +1,7 @@
+package com.robertscerri.jgdscene.nodes.enums;
+
+public enum AnimationCallbackModeDiscrete {
+    ANIMATION_CALLBACK_MODE_DISCRETE_DOMINANT,
+    ANIMATION_CALLBACK_MODE_DISCRETE_RECESSIVE,
+    ANIMATION_CALLBACK_MODE_DISCRETE_FORCE_CONTINUOUS
+}

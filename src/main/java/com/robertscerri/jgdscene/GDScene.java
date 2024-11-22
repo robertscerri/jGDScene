@@ -1,65 +1,85 @@
 package com.robertscerri.jgdscene;
 
+import com.robertscerri.jgdscene.nodes.Node;
+import com.robertscerri.jgdscene.resources.ExtResource;
+import com.robertscerri.jgdscene.resources.SubResource;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GDScene extends SceneEntry {
-    protected List<ExtResource> extResources = new ArrayList<ExtResource>();
-    protected List<SubResource> subResources = new ArrayList<SubResource>();
+public class GDScene {
+    private int loadSteps;
+    private int format;
 
-    protected Node rootNode;
+    private List<ExtResource> extResources;
+    private List<SubResource> subResources;
 
-    protected List<Connection> connections = new ArrayList<Connection>();
+    private Node rootNode;
+
+    private List<Connection> connections;
 
     public GDScene() {
-        super("gd_scene");
-
-        this.setHeadingAttribute("loadSteps", 4);
-        this.setHeadingAttribute("format", 3);
-
-        this.rootNode = new Node("RootNode", "Node2D");
+        this.loadSteps = 4;
+        this.format = 3;
+        this.extResources = new ArrayList<>();
+        this.subResources = new ArrayList<>();
+        this.rootNode = null;
+        this.connections = new ArrayList<>();
     }
 
-    public GDScene(Node rootNode){
-        this();
+    public GDScene(Node rootNode) {
+        this.loadSteps = 4;
+        this.format = 3;
         this.rootNode = rootNode;
+        this.extResources = new ArrayList<>();
+        this.subResources = new ArrayList<>();
+        this.rootNode = null;
+        this.connections = new ArrayList<>();
     }
 
-    public GDScene(int loadSteps, int format) {
-        super("gd_scene");
-
-        this.setHeadingAttribute("loadSteps", loadSteps);
-        this.setHeadingAttribute("format", format);
-
-        this.rootNode = new Node("RootNode", "Node2D");
-    }
-
-    public GDScene(int loadSteps, int format, Node rootNode) {
-        this(loadSteps, format);
+    public GDScene(Node rootNode, List<ExtResource> extResources, List<SubResource> subResources, List<Connection> connections) {
+        this.loadSteps = 4;
+        this.format = 3;
         this.rootNode = rootNode;
+        this.extResources = extResources;
+        this.subResources = subResources;
+        this.connections = connections;
+    }
+
+    public GDScene(int loadSteps, int format, Node rootNode, List<ExtResource> extResources, List<SubResource> subResources, List<Connection> connections) {
+        this.loadSteps = loadSteps;
+        this.format = format;
+        this.rootNode = rootNode;
+        this.extResources = extResources;
+        this.subResources = subResources;
+        this.connections = connections;
     }
 
     public int getLoadSteps() {
-        return (int) this.getHeadingAttribute("loadSteps");
+        return loadSteps;
     }
 
     public void setLoadSteps(int loadSteps) {
-        this.setHeadingAttribute("loadSteps", loadSteps);
+        this.loadSteps = loadSteps;
     }
 
     public int getFormat() {
-        return (int) this.getHeadingAttribute("format");
+        return format;
     }
 
     public void setFormat(int format) {
-        this.setHeadingAttribute("format", format);
+        this.format = format;
     }
 
     public List<ExtResource> getExtResources() {
-        return this.extResources;
+        return extResources;
+    }
+
+    public void setExtResources(List<ExtResource> extResources) {
+        this.extResources = extResources;
     }
 
     public void addExtResource(ExtResource extResource) {
@@ -71,15 +91,15 @@ public class GDScene extends SceneEntry {
     }
 
     public List<SubResource> getSubResources() {
-        return this.subResources;
+        return subResources;
+    }
+
+    public void setSubResources(List<SubResource> subResources) {
+        this.subResources = subResources;
     }
 
     public void addSubResource(SubResource subResource) {
         this.subResources.add(subResource);
-    }
-
-    public void addSubResource(int index, SubResource subResource) {
-        this.subResources.add(index, subResource);
     }
 
     public void removeSubResource(SubResource subResource) {
@@ -87,7 +107,7 @@ public class GDScene extends SceneEntry {
     }
 
     public Node getRootNode() {
-        return this.rootNode;
+        return rootNode;
     }
 
     public void setRootNode(Node rootNode) {
@@ -95,7 +115,11 @@ public class GDScene extends SceneEntry {
     }
 
     public List<Connection> getConnections() {
-        return this.connections;
+        return connections;
+    }
+
+    public void setConnections(List<Connection> connections) {
+        this.connections = connections;
     }
 
     public void addConnection(Connection connection) {
@@ -104,6 +128,10 @@ public class GDScene extends SceneEntry {
 
     public void removeConnection(Connection connection) {
         this.connections.remove(connection);
+    }
+
+    private String getHeader() {
+        return "[gd_scene loadSteps=" + this.loadSteps + " format=" + this.format + "]\n";
     }
 
     public void writeToFile(String path) {
@@ -115,7 +143,7 @@ public class GDScene extends SceneEntry {
             PrintWriter scenePrintWriter = new PrintWriter(sceneFileWriter);
 
             //Print scene file descriptor
-            scenePrintWriter.println(this);
+            scenePrintWriter.println(this.getHeader());
 
             //Print ExtResources
             for (ExtResource extResource : this.extResources) {
