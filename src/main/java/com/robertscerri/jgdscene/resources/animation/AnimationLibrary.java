@@ -7,12 +7,11 @@ public class AnimationLibrary extends SubResource {
     public Dictionary _data;
 
     public AnimationLibrary() {
-        super("AnimationLibrary");
         this._data = new Dictionary();
     }
 
     public AnimationLibrary(String id) {
-        super("AnimationLibrary", id);
+        super(id);
         this._data = new Dictionary();
     }
 
