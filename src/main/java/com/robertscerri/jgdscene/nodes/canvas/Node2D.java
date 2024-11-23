@@ -16,9 +16,9 @@ public class Node2D extends CanvasItem {
 
     public Node2D(Node2D from) {
         super(from);
-        this.position = new Vector2(from.position);
+        this.position = from.position == null ? null : new Vector2(from.position);
         this.rotation = from.rotation;
-        this.scale = new Vector2(from.scale);
+        this.scale = from.scale == null ? null : new Vector2(from.scale);
         this.skew = from.skew;
     }
 
@@ -26,9 +26,9 @@ public class Node2D extends CanvasItem {
     public Node2D clone() {
         Node2D clone = (Node2D) super.clone();
 
-        clone.position = new Vector2(this.position);
+        clone.position = this.position == null ? null : new Vector2(this.position);
         clone.rotation = this.rotation;
-        clone.scale = new Vector2(this.scale);
+        clone.scale = this.scale == null ? null : new Vector2(this.scale);
         clone.skew = this.skew;
 
         return clone;

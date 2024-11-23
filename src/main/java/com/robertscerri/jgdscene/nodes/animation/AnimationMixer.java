@@ -32,9 +32,9 @@ public class AnimationMixer extends Node {
         this.callbackModeProcess = from.callbackModeProcess;
         this.deterministic = from.deterministic;
         this.resetOnSave = from.resetOnSave;
-        this.rootMotionTrack = from.rootMotionTrack;
-        this.rootNode = from.rootNode;
-        this.libraries = from.libraries;
+        this.rootMotionTrack = from.rootMotionTrack == null ? null : new NodePath(from.rootMotionTrack);
+        this.rootNode = from.rootNode == null ? null : new NodePath(from.rootNode);
+        this.libraries = from.libraries == null ? null : new Dictionary(from.libraries);
     }
 
     @Override
@@ -48,9 +48,9 @@ public class AnimationMixer extends Node {
         clone.callbackModeProcess = this.callbackModeProcess;
         clone.deterministic = this.deterministic;
         clone.resetOnSave = this.resetOnSave;
-        clone.rootMotionTrack = new NodePath(this.rootMotionTrack);
-        clone.rootNode = new NodePath(this.rootNode);
-        clone.libraries = new Dictionary(this.libraries);
+        clone.rootMotionTrack = this.rootMotionTrack == null ? null : new NodePath(this.rootMotionTrack);
+        clone.rootNode = this.rootNode == null ? null : new NodePath(this.rootNode);
+        clone.libraries = this.libraries == null ? null : new Dictionary(this.libraries);
 
         return clone;
     }

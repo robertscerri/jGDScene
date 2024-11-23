@@ -27,10 +27,10 @@ public class Sprite2D extends Node2D {
         this.flipH = from.flipH;
         this.flipV = from.flipV;
         this.frame = from.frame;
-        this.frameCoords = new Vector2i(from.frameCoords);
+        this.frameCoords = from.frameCoords == null ? null : new Vector2i(from.frameCoords);
         this.hFrames = from.hFrames;
         this.vFrames = from.vFrames;
-        this.offset = new Vector2(from.offset);
+        this.offset = from.offset == null ? null : new Vector2(from.offset);
         this.regionEnabled = from.regionEnabled;
         this.regionFilterClipEnabled = from.regionFilterClipEnabled;
         this.texture = from.texture;
@@ -44,10 +44,10 @@ public class Sprite2D extends Node2D {
         clone.flipH = this.flipH;
         clone.flipV = this.flipV;
         clone.frame = this.frame;
-        clone.frameCoords = new Vector2i(this.frameCoords);
+        clone.frameCoords = this.frameCoords == null ? null : new Vector2i(this.frameCoords);
         clone.hFrames = this.hFrames;
         clone.vFrames = this.vFrames;
-        clone.offset = new Vector2(this.offset);
+        clone.offset = this.offset == null ? null : new Vector2(this.offset);
         clone.regionEnabled = this.regionEnabled;
         clone.regionFilterClipEnabled = this.regionFilterClipEnabled;
         clone.texture = this.texture;
