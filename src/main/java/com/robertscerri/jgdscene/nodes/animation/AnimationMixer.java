@@ -4,6 +4,7 @@ import com.robertscerri.jgdscene.nodes.Node;
 import com.robertscerri.jgdscene.nodes.enums.AnimationCallbackModeDiscrete;
 import com.robertscerri.jgdscene.nodes.enums.AnimationCallbackModeMethod;
 import com.robertscerri.jgdscene.nodes.enums.AnimationCallbackModeProcess;
+import com.robertscerri.jgdscene.resources.animation.AnimationLibrary;
 import com.robertscerri.jgdscene.variants.Dictionary;
 import com.robertscerri.jgdscene.variants.NodePath;
 
@@ -17,7 +18,7 @@ public class AnimationMixer extends Node {
     public Boolean resetOnSave = null;
     public NodePath rootMotionTrack = null;
     public NodePath rootNode = null;
-    public Dictionary libraries = null;
+    public Dictionary<String, AnimationLibrary> libraries = null;
 
     public AnimationMixer(String name) {
         super(name);
@@ -34,7 +35,7 @@ public class AnimationMixer extends Node {
         this.resetOnSave = from.resetOnSave;
         this.rootMotionTrack = from.rootMotionTrack == null ? null : new NodePath(from.rootMotionTrack);
         this.rootNode = from.rootNode == null ? null : new NodePath(from.rootNode);
-        this.libraries = from.libraries == null ? null : new Dictionary(from.libraries);
+        this.libraries = from.libraries == null ? null : new Dictionary<>(from.libraries);
     }
 
     @Override
@@ -50,7 +51,7 @@ public class AnimationMixer extends Node {
         clone.resetOnSave = this.resetOnSave;
         clone.rootMotionTrack = this.rootMotionTrack == null ? null : new NodePath(this.rootMotionTrack);
         clone.rootNode = this.rootNode == null ? null : new NodePath(this.rootNode);
-        clone.libraries = this.libraries == null ? null : new Dictionary(this.libraries);
+        clone.libraries = this.libraries == null ? null : new Dictionary<>(this.libraries);
 
         return clone;
     }
