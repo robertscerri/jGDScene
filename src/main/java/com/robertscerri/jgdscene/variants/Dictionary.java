@@ -53,8 +53,12 @@ public class Dictionary extends Variant {
 
         Iterator<Map.Entry<Object, Object>> it = this.map.entrySet().iterator();
 
-        while (it.hasNext()) {
+        if (it.hasNext()) {
             sb.append("\n");
+        }
+
+        while (it.hasNext()) {
+            sb.append("\t");
 
             Map.Entry<Object, Object> entry = it.next();
 
@@ -72,9 +76,11 @@ public class Dictionary extends Variant {
             if (it.hasNext()) {
                 sb.append(",");
             }
+
+            sb.append("\n");
         }
 
-        sb.append("}");
+        sb.append("}\n");
 
         return sb.toString();
     }
