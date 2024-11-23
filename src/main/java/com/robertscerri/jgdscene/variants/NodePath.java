@@ -40,6 +40,11 @@ public class NodePath extends Variant {
         this.path = String.join("/", newNames);
     }
 
+    public String tail() {
+        String[] names = this.path.split("/");
+        return names[names.length - 1];
+    }
+
     public boolean isAbsolute() {
         if (this.path.isEmpty()) {
             return false;
