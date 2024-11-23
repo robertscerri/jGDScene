@@ -67,8 +67,8 @@ public abstract class Resource implements Referable {
         builder.append(" type=\"").append(this.getClass().getSimpleName()).append("\"");
         builder.append(" id=\"").append(this.id).append("\"");
 
-        if (resourceName != null) {
-            builder.append(" path=\"").append(resourceName).append("\"");
+        if (resourcePath != null) {
+            builder.append(" path=\"").append(resourcePath).append("\"");
         }
 
         builder.append("]\n");
