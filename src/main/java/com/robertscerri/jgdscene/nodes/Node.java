@@ -126,6 +126,10 @@ public class Node {
             builder.append("unique_name_in_owner = ").append(uniqueNameInOwner).append("\n");
         }
 
+        for (Node child : children) {
+            builder.append(child.toString());
+        }
+
         return builder.toString();
     }
 }

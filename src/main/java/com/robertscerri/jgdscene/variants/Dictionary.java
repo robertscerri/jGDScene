@@ -80,7 +80,7 @@ public class Dictionary extends Variant {
             sb.append("\n");
         }
 
-        sb.append("}\n");
+        sb.append("}");
 
         return sb.toString();
     }

@@ -81,7 +81,7 @@ public class Sprite2D extends Node2D {
         }
 
         if (texture != null) {
-            builder.append("texture = ").append(this.texture).append("\n");
+            builder.append("texture = ").append(this.texture.getReference()).append("\n");
         }
 
         return builder.toString();

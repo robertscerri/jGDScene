@@ -55,27 +55,27 @@ public class TextureButton extends BaseButton {
         }
 
         if (textureClickMask != null) {
-            builder.append("texture_click_mask = ").append(textureClickMask).append("\n");
+            builder.append("texture_click_mask = ").append(textureClickMask.getReference()).append("\n");
         }
 
         if (textureDisabled != null) {
-            builder.append("texture_disabled = ").append(textureDisabled).append("\n");
+            builder.append("texture_disabled = ").append(textureDisabled.getReference()).append("\n");
         }
 
         if (textureFocused != null) {
-            builder.append("texture_focused = ").append(textureFocused).append("\n");
+            builder.append("texture_focused = ").append(textureFocused.getReference()).append("\n");
         }
 
         if (textureHover != null) {
-            builder.append("texture_hover = ").append(textureHover).append("\n");
+            builder.append("texture_hover = ").append(textureHover.getReference()).append("\n");
         }
 
         if (textureNormal != null) {
-            builder.append("texture_normal = ").append(textureNormal).append("\n");
+            builder.append("texture_normal = ").append(textureNormal.getReference()).append("\n");
         }
 
         if (texturePressed != null) {
-            builder.append("texture_pressed = ").append(texturePressed).append("\n");
+            builder.append("texture_pressed = ").append(texturePressed.getReference()).append("\n");
         }
 
         return builder.toString();
