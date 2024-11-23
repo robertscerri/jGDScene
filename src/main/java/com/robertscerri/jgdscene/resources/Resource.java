@@ -78,7 +78,17 @@ public abstract class Resource implements Referable {
 
     @Override
     public String getReference() {
-        return this.getClass().getSimpleName() + "(" + id + ")";
+        StringBuilder builder = new StringBuilder();
+
+        if (this instanceof SubResource) {
+            builder.append("SubResource");
+        } else if (this instanceof ExtResource) {
+            builder.append("ExtResource");
+        }
+
+        builder.append("(").append(id).append(")");
+
+        return builder.toString();
     }
 
     @Override
