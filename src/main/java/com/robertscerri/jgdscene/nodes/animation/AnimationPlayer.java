@@ -18,6 +18,19 @@ public class AnimationPlayer extends AnimationMixer {
         super(name);
     }
 
+    public AnimationPlayer(AnimationPlayer from) {
+        super(from);
+        this.autoplay = from.autoplay;
+        this.currentAnimation = from.currentAnimation;
+        this.movieQuitOnFinish = from.movieQuitOnFinish;
+        this.playbackAutoCapture = from.playbackAutoCapture;
+        this.playbackAutoCaptureDuration = from.playbackAutoCaptureDuration;
+        this.playbackAutoCaptureEaseType = from.playbackAutoCaptureEaseType;
+        this.playbackAutoCaptureTransitionType = from.playbackAutoCaptureTransitionType;
+        this.playbackDefaultBlendTime = from.playbackDefaultBlendTime;
+        this.speedScale = from.speedScale;
+    }
+
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder(super.toString());

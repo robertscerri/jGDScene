@@ -44,6 +44,42 @@ public class Control extends CanvasItem {
         super(name);
     }
 
+    public Control(Control from) {
+        super(from);
+        this.anchorBottom = from.anchorBottom;
+        this.anchorLeft = from.anchorLeft;
+        this.anchorRight = from.anchorRight;
+        this.anchorTop = from.anchorTop;
+        this.clipContents = from.clipContents;
+        this.customMinimumSize = from.customMinimumSize;
+        this.focusMode = from.focusMode;
+        this.focusNeighborBottom = from.focusNeighborBottom;
+        this.focusNeighborLeft = from.focusNeighborLeft;
+        this.focusNeighborRight = from.focusNeighborRight;
+        this.focusNeighborTop = from.focusNeighborTop;
+        this.focusNext = from.focusNext;
+        this.focusPrevious = from.focusPrevious;
+        this.growHorizontal = from.growHorizontal;
+        this.growVertical = from.growVertical;
+        this.layoutHorizontal = from.layoutHorizontal;
+        this.localizeNumeralSystem = from.localizeNumeralSystem;
+        this.mouseDefaultCursorShape = from.mouseDefaultCursorShape;
+        this.mouseFilter = from.mouseFilter;
+        this.mouseForcePassScrollEvents = from.mouseForcePassScrollEvents;
+        this.offsetBottom = from.offsetBottom;
+        this.offsetLeft = from.offsetLeft;
+        this.offsetRight = from.offsetRight;
+        this.offsetTop = from.offsetTop;
+        this.pivotOffset = from.pivotOffset;
+        this.position = from.position;
+        this.rotation = from.rotation;
+        this.scale = from.scale;
+        this.size = from.size;
+        this.sizeFlagsStretchRatio = from.sizeFlagsStretchRatio;
+        this.themeTypeVariation = from.themeTypeVariation;
+        this.tooltipText = from.tooltipText;
+    }
+
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder(super.toString());

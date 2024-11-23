@@ -15,6 +15,17 @@ public abstract class BaseButton extends Control {
         super(name);
     }
 
+    public BaseButton(BaseButton from) {
+        super(from);
+        this.actionMode = from.actionMode;
+        this.buttonPressed = from.buttonPressed;
+        this.disabled = from.disabled;
+        this.keepPressedOutside = from.keepPressedOutside;
+        this.shortcutFeedback = from.shortcutFeedback;
+        this.shortcutInTooltip = from.shortcutInTooltip;
+        this.toggleMode = from.toggleMode;
+    }
+
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder(super.toString());

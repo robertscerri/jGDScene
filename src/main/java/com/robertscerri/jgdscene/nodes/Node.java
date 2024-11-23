@@ -37,6 +37,18 @@ public class Node {
         this.name = name;
     }
 
+    public Node(Node from) {
+        this.children = from.children;
+        this.parent = from.parent;
+        this.name = from.name;
+        this.physicsInterpolationMode = from.physicsInterpolationMode;
+        this.processMode = from.processMode;
+        this.processPhysicsPriority = from.processPhysicsPriority;
+        this.processPriority = from.processPriority;
+        this.processThreadGroup = from.processThreadGroup;
+        this.uniqueNameInOwner = from.uniqueNameInOwner;
+    }
+
     public List<Node> getChildren() {
         return children;
     }

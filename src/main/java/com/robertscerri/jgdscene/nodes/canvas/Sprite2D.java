@@ -1,4 +1,4 @@
-package com.robertscerri.jgdscene.nodes;
+package com.robertscerri.jgdscene.nodes.canvas;
 
 import com.robertscerri.jgdscene.resources.Texture2D;
 import com.robertscerri.jgdscene.variants.vectors.Vector2;
@@ -19,6 +19,21 @@ public class Sprite2D extends Node2D {
 
     public Sprite2D(String name) {
         super(name);
+    }
+
+    public Sprite2D(Sprite2D from) {
+        super(from);
+        this.centered = from.centered;
+        this.flipH = from.flipH;
+        this.flipV = from.flipV;
+        this.frame = from.frame;
+        this.frameCoords = from.frameCoords;
+        this.hFrames = from.hFrames;
+        this.vFrames = from.vFrames;
+        this.offset = from.offset;
+        this.regionEnabled = from.regionEnabled;
+        this.regionFilterClipEnabled = from.regionFilterClipEnabled;
+        this.texture = from.texture;
     }
 
     @Override

@@ -23,6 +23,20 @@ public class AnimationMixer extends Node {
         super(name);
     }
 
+    public AnimationMixer(AnimationMixer from) {
+        super(from);
+        this.active = from.active;
+        this.audioMaxPolyphony = from.audioMaxPolyphony;
+        this.callbackModeDiscrete = from.callbackModeDiscrete;
+        this.callbackModeMethod = from.callbackModeMethod;
+        this.callbackModeProcess = from.callbackModeProcess;
+        this.deterministic = from.deterministic;
+        this.resetOnSave = from.resetOnSave;
+        this.rootMotionTrack = from.rootMotionTrack;
+        this.rootNode = from.rootNode;
+        this.libraries = from.libraries;
+    }
+
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder(super.toString());

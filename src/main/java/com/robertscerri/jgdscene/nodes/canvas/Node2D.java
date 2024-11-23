@@ -1,6 +1,5 @@
-package com.robertscerri.jgdscene.nodes;
+package com.robertscerri.jgdscene.nodes.canvas;
 
-import com.robertscerri.jgdscene.nodes.canvas.CanvasItem;
 import com.robertscerri.jgdscene.variants.vectors.Vector2;
 
 import java.math.BigDecimal;
@@ -13,6 +12,14 @@ public class Node2D extends CanvasItem {
 
     public Node2D(String name) {
         super(name);
+    }
+
+    public Node2D(Node2D from) {
+        super(from);
+        this.position = from.position;
+        this.rotation = from.rotation;
+        this.scale = from.scale;
+        this.skew = from.skew;
     }
 
     @Override

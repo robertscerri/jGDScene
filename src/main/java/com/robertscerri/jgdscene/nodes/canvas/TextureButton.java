@@ -20,6 +20,20 @@ public class TextureButton extends BaseButton {
         super(name);
     }
 
+    public TextureButton(TextureButton from) {
+        super(from);
+        this.flipH = from.flipH;
+        this.flipV = from.flipV;
+        this.ignoreTextureSize = from.ignoreTextureSize;
+        this.stretchMode = from.stretchMode;
+        this.textureClickMask = from.textureClickMask;
+        this.textureDisabled = from.textureDisabled;
+        this.textureFocused = from.textureFocused;
+        this.textureHover = from.textureHover;
+        this.textureNormal = from.textureNormal;
+        this.texturePressed = from.texturePressed;
+    }
+
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder(super.toString());
