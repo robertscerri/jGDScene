@@ -205,11 +205,11 @@ public class Control extends CanvasItem {
         }
 
         if (themeTypeVariation != null) {
-            builder.append("theme_type_variation = ").append(themeTypeVariation).append("\n");
+            builder.append("theme_type_variation = \"").append(themeTypeVariation).append("\"\n");
         }
 
         if (tooltipText != null) {
-            builder.append("tooltip_text = ").append(tooltipText).append("\n");
+            builder.append("tooltip_text = \"").append(tooltipText).append("\"\n");
         }
 
         return builder.toString();

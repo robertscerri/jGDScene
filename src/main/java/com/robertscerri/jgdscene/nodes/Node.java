@@ -38,7 +38,7 @@ public class Node {
     }
 
     public Node(Node from) {
-        this.children = from.children;
+        this.children = new ArrayList<>(from.children);
         this.parent = from.parent;
         this.name = from.name;
         this.physicsInterpolationMode = from.physicsInterpolationMode;
@@ -92,7 +92,7 @@ public class Node {
     }
 
     private String getHeader() {
-        return "[node name=" + this.name +
+        return "[node name=\"" + this.name + "\"" +
                 " type=\"" + this.getClass().getSimpleName() + "\"" +
                 " parent=\"" + this.getNodePath() + "\"" +
                 "]\n";

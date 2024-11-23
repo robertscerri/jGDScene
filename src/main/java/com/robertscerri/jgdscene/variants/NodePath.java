@@ -63,6 +63,6 @@ public class NodePath extends Variant {
 
     @Override
     public String toString() {
-        return super.toString(this.path);
+        return super.toString("\"" + this.path + "\"");
     }
 }

@@ -86,7 +86,7 @@ public abstract class Resource implements Referable {
             builder.append("ExtResource");
         }
 
-        builder.append("(").append(id).append(")");
+        builder.append("(\"").append(id).append("\")");
 
         return builder.toString();
     }
@@ -96,7 +96,7 @@ public abstract class Resource implements Referable {
         StringBuilder builder = new StringBuilder(this.getHeader());
 
         if (resourceName != null) {
-            builder.append("resource_name = ").append(this.resourceName).append("\n");
+            builder.append("resource_name = \"").append(this.resourceName).append("\"\n");
         }
 
         return builder.toString();

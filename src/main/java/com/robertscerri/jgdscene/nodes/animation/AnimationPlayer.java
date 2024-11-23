@@ -36,11 +36,11 @@ public class AnimationPlayer extends AnimationMixer {
         StringBuilder builder = new StringBuilder(super.toString());
 
         if (autoplay != null) {
-            builder.append("autoplay = ").append(autoplay).append("\n");
+            builder.append("autoplay = \"").append(autoplay).append("\"\n");
         }
 
         if (currentAnimation != null) {
-            builder.append("current_animation = ").append(currentAnimation).append("\n");
+            builder.append("current_animation = \"").append(currentAnimation).append("\"\n");
         }
 
         if (movieQuitOnFinish != null) {

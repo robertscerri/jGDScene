@@ -46,7 +46,7 @@ public class Animation extends SubResource {
 
         int trackIndex = 0;
         for (AnimationTrack<?> track : this.tracks) {
-            builder.append(track.toString(trackIndex)).append("\n");
+            builder.append(track.toString(trackIndex));
             trackIndex++;
         }
 
