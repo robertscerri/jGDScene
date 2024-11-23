@@ -36,7 +36,6 @@ public class GDScene {
         this.rootNode = rootNode;
         this.extResources = new ArrayList<>();
         this.subResources = new ArrayList<>();
-        this.rootNode = null;
         this.connections = new ArrayList<>();
     }
 
