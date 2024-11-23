@@ -27,6 +27,21 @@ public abstract class BaseButton extends Control {
     }
 
     @Override
+    public BaseButton clone() {
+        BaseButton clone = (BaseButton) super.clone();
+
+        clone.actionMode = this.actionMode;
+        clone.buttonPressed = this.buttonPressed;
+        clone.disabled = this.disabled;
+        clone.keepPressedOutside = this.keepPressedOutside;
+        clone.shortcutFeedback = this.shortcutFeedback;
+        clone.shortcutInTooltip = this.shortcutInTooltip;
+        clone.toggleMode = this.toggleMode;
+
+        return clone;
+    }
+
+    @Override
     public String toString() {
         StringBuilder builder = new StringBuilder(super.toString());
 

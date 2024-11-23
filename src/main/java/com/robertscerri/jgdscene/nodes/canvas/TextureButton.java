@@ -35,6 +35,24 @@ public class TextureButton extends BaseButton {
     }
 
     @Override
+    public TextureButton clone() {
+        TextureButton clone = (TextureButton) super.clone();
+
+        clone.flipH = this.flipH;
+        clone.flipV = this.flipV;
+        clone.ignoreTextureSize = this.ignoreTextureSize;
+        clone.stretchMode = this.stretchMode;
+        clone.textureClickMask = this.textureClickMask;
+        clone.textureDisabled = this.textureDisabled;
+        clone.textureFocused = this.textureFocused;
+        clone.textureHover = this.textureHover;
+        clone.textureNormal = this.textureNormal;
+        clone.texturePressed = this.texturePressed;
+
+        return clone;
+    }
+
+    @Override
     public String toString() {
         StringBuilder builder = new StringBuilder(super.toString());
 

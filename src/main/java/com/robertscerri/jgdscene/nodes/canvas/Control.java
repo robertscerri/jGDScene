@@ -51,14 +51,14 @@ public class Control extends CanvasItem {
         this.anchorRight = from.anchorRight;
         this.anchorTop = from.anchorTop;
         this.clipContents = from.clipContents;
-        this.customMinimumSize = from.customMinimumSize;
+        this.customMinimumSize = new Vector2(from.customMinimumSize);
         this.focusMode = from.focusMode;
-        this.focusNeighborBottom = from.focusNeighborBottom;
-        this.focusNeighborLeft = from.focusNeighborLeft;
-        this.focusNeighborRight = from.focusNeighborRight;
-        this.focusNeighborTop = from.focusNeighborTop;
-        this.focusNext = from.focusNext;
-        this.focusPrevious = from.focusPrevious;
+        this.focusNeighborBottom = new NodePath(from.focusNeighborBottom);
+        this.focusNeighborLeft = new NodePath(from.focusNeighborLeft);
+        this.focusNeighborRight = new NodePath(from.focusNeighborRight);
+        this.focusNeighborTop = new NodePath(from.focusNeighborTop);
+        this.focusNext = new NodePath(from.focusNext);
+        this.focusPrevious = new NodePath(from.focusPrevious);
         this.growHorizontal = from.growHorizontal;
         this.growVertical = from.growVertical;
         this.layoutHorizontal = from.layoutHorizontal;
@@ -70,14 +70,54 @@ public class Control extends CanvasItem {
         this.offsetLeft = from.offsetLeft;
         this.offsetRight = from.offsetRight;
         this.offsetTop = from.offsetTop;
-        this.pivotOffset = from.pivotOffset;
-        this.position = from.position;
+        this.pivotOffset = new Vector2(from.pivotOffset);
+        this.position = new Vector2(from.position);
         this.rotation = from.rotation;
-        this.scale = from.scale;
-        this.size = from.size;
+        this.scale = new Vector2(from.scale);
+        this.size = new Vector2(from.size);
         this.sizeFlagsStretchRatio = from.sizeFlagsStretchRatio;
         this.themeTypeVariation = from.themeTypeVariation;
         this.tooltipText = from.tooltipText;
+    }
+
+    @Override
+    public Control clone() {
+        Control clone = (Control) super.clone();
+
+        clone.anchorBottom = this.anchorBottom;
+        clone.anchorLeft = this.anchorLeft;
+        clone.anchorRight = this.anchorRight;
+        clone.anchorTop = this.anchorTop;
+        clone.clipContents = this.clipContents;
+        clone.customMinimumSize = new Vector2(this.customMinimumSize);
+        clone.focusMode = this.focusMode;
+        clone.focusNeighborBottom = new NodePath(this.focusNeighborBottom);
+        clone.focusNeighborLeft = new NodePath(this.focusNeighborLeft);
+        clone.focusNeighborRight = new NodePath(this.focusNeighborRight);
+        clone.focusNeighborTop = new NodePath(this.focusNeighborTop);
+        clone.focusNext = new NodePath(this.focusNext);
+        clone.focusPrevious = new NodePath(this.focusPrevious);
+        clone.growHorizontal = this.growHorizontal;
+        clone.growVertical = this.growVertical;
+        clone.layoutHorizontal = this.layoutHorizontal;
+        clone.localizeNumeralSystem = this.localizeNumeralSystem;
+        clone.mouseDefaultCursorShape = this.mouseDefaultCursorShape;
+        clone.mouseFilter = this.mouseFilter;
+        clone.mouseForcePassScrollEvents = this.mouseForcePassScrollEvents;
+        clone.offsetBottom = this.offsetBottom;
+        clone.offsetLeft = this.offsetLeft;
+        clone.offsetRight = this.offsetRight;
+        clone.offsetTop = this.offsetTop;
+        clone.pivotOffset = new Vector2(this.pivotOffset);
+        clone.position = new Vector2(this.position);
+        clone.rotation = this.rotation;
+        clone.scale = new Vector2(this.scale);
+        clone.size = new Vector2(this.size);
+        clone.sizeFlagsStretchRatio = this.sizeFlagsStretchRatio;
+        clone.themeTypeVariation = this.themeTypeVariation;
+        clone.tooltipText = this.tooltipText;
+
+        return clone;
     }
 
     @Override

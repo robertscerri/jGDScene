@@ -7,7 +7,7 @@ import com.robertscerri.jgdscene.nodes.enums.ProcessThreadGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Node {
+public class Node implements Cloneable {
     protected List<Node> children;
     protected Node parent;
 
@@ -102,6 +102,29 @@ public class Node {
         }
 
         return builder.append("]").toString();
+    }
+
+    @Override
+    public Node clone() {
+        Node clone;
+
+        try {
+            clone = (Node) super.clone();
+        } catch (CloneNotSupportedException e) {
+            return new Node();
+        }
+
+        clone.children = new ArrayList<>(this.children);
+        clone.parent = this.parent;
+        clone.name = this.name;
+        clone.physicsInterpolationMode = this.physicsInterpolationMode;
+        clone.processMode = this.processMode;
+        clone.processPhysicsPriority = this.processPhysicsPriority;
+        clone.processPriority = this.processPriority;
+        clone.processThreadGroup = this.processThreadGroup;
+        clone.uniqueNameInOwner = this.uniqueNameInOwner;
+
+        return clone;
     }
 
     @Override

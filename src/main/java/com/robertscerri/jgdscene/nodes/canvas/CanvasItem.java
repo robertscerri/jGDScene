@@ -44,6 +44,28 @@ public class CanvasItem extends Node {
     }
 
     @Override
+    public CanvasItem clone() {
+        CanvasItem clone = (CanvasItem) super.clone();
+
+        clone.clipChildren = this.clipChildren;
+        clone.lightMask = this.lightMask;
+        clone.modulate = this.modulate;
+        clone.selfModulate = this.selfModulate;
+        clone.showBehindParent = this.showBehindParent;
+        clone.textureFilter = this.textureFilter;
+        clone.textureRepeat = this.textureRepeat;
+        clone.topLevel = this.topLevel;
+        clone.useParentMaterial = this.useParentMaterial;
+        clone.visibilityLayer = this.visibilityLayer;
+        clone.visible = this.visible;
+        clone.ySortEnabled = this.ySortEnabled;
+        clone.zAsRelative = this.zAsRelative;
+        clone.zIndex = this.zIndex;
+
+        return clone;
+    }
+
+    @Override
     public String toString() {
         StringBuilder builder = new StringBuilder(super.toString());
 

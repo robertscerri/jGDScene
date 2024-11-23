@@ -27,13 +27,32 @@ public class Sprite2D extends Node2D {
         this.flipH = from.flipH;
         this.flipV = from.flipV;
         this.frame = from.frame;
-        this.frameCoords = from.frameCoords;
+        this.frameCoords = new Vector2i(from.frameCoords);
         this.hFrames = from.hFrames;
         this.vFrames = from.vFrames;
-        this.offset = from.offset;
+        this.offset = new Vector2(from.offset);
         this.regionEnabled = from.regionEnabled;
         this.regionFilterClipEnabled = from.regionFilterClipEnabled;
         this.texture = from.texture;
+    }
+
+    @Override
+    public Sprite2D clone() {
+        Sprite2D clone = (Sprite2D) super.clone();
+
+        clone.centered = this.centered;
+        clone.flipH = this.flipH;
+        clone.flipV = this.flipV;
+        clone.frame = this.frame;
+        clone.frameCoords = new Vector2i(this.frameCoords);
+        clone.hFrames = this.hFrames;
+        clone.vFrames = this.vFrames;
+        clone.offset = new Vector2(this.offset);
+        clone.regionEnabled = this.regionEnabled;
+        clone.regionFilterClipEnabled = this.regionFilterClipEnabled;
+        clone.texture = this.texture;
+
+        return clone;
     }
 
     @Override

@@ -38,6 +38,24 @@ public class AnimationMixer extends Node {
     }
 
     @Override
+    public AnimationMixer clone() {
+        AnimationMixer clone = (AnimationMixer) super.clone();
+
+        clone.active = this.active;
+        clone.audioMaxPolyphony = this.audioMaxPolyphony;
+        clone.callbackModeDiscrete = this.callbackModeDiscrete;
+        clone.callbackModeMethod = this.callbackModeMethod;
+        clone.callbackModeProcess = this.callbackModeProcess;
+        clone.deterministic = this.deterministic;
+        clone.resetOnSave = this.resetOnSave;
+        clone.rootMotionTrack = new NodePath(this.rootMotionTrack);
+        clone.rootNode = new NodePath(this.rootNode);
+        clone.libraries = new Dictionary(this.libraries);
+
+        return clone;
+    }
+
+    @Override
     public String toString() {
         StringBuilder builder = new StringBuilder(super.toString());
 

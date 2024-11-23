@@ -32,6 +32,23 @@ public class AnimationPlayer extends AnimationMixer {
     }
 
     @Override
+    public AnimationPlayer clone() {
+        AnimationPlayer clone = (AnimationPlayer) super.clone();
+
+        clone.autoplay = this.autoplay;
+        clone.currentAnimation = this.currentAnimation;
+        clone.movieQuitOnFinish = this.movieQuitOnFinish;
+        clone.playbackAutoCapture = this.playbackAutoCapture;
+        clone.playbackAutoCaptureDuration = this.playbackAutoCaptureDuration;
+        clone.playbackAutoCaptureEaseType = this.playbackAutoCaptureEaseType;
+        clone.playbackAutoCaptureTransitionType = this.playbackAutoCaptureTransitionType;
+        clone.playbackDefaultBlendTime = this.playbackDefaultBlendTime;
+        clone.speedScale = this.speedScale;
+
+        return clone;
+    }
+
+    @Override
     public String toString() {
         StringBuilder builder = new StringBuilder(super.toString());
 
