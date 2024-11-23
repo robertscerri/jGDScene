@@ -99,6 +99,6 @@ public abstract class Resource implements Referable {
             builder.append("resource_name = ").append(this.resourceName).append("\n");
         }
 
-        return builder.append("]").toString();
+        return builder.toString();
     }
 }

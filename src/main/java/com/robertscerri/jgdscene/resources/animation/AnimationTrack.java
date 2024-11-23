@@ -86,7 +86,7 @@ public class AnimationTrack<T> {
                 "tracks/%d/path = %s\n".formatted(index, this.path) +
                 "tracks/%d/interp = %d\n".formatted(index, this.interpolationType.ordinal()) +
                 "tracks/%d/loop_wrap = %s\n".formatted(index, this.loopWrap) +
-                "tracks/%d/keys = %s\n".formatted(index, this.keys);
+                "tracks/%d/keys = %s".formatted(index, this.keys);
     }
 
     public String toString() {
