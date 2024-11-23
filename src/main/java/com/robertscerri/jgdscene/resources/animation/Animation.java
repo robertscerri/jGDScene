@@ -28,6 +28,14 @@ public class Animation extends SubResource {
         this.length = length;
     }
 
+    public AnimationTrack<?> getTrack(int index) {
+        return this.tracks.get(index);
+    }
+
+    public List<AnimationTrack<?>> getTracks() {
+        return tracks;
+    }
+
     public void addTrack(AnimationTrack<?> track) {
         this.tracks.add(track);
     }
