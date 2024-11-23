@@ -27,13 +27,13 @@ public class Connection {
         return "[connection" +
                 " from=" + this.from.getNodePath() + "/" + this.from.name +
                 " to=" + this.to.getNodePath() + "/" + this.to.name +
-                "]\n";
+                "]";
     }
 
     @Override
     public String toString() {
         return this.getHeader() +
-                "signal = " + signal + "\n" +
-                "method = " + method + "\n";
+                "\nsignal = " + signal +
+                "\nmethod = " + method;
     }
 }

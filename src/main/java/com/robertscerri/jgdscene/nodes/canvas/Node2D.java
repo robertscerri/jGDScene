@@ -27,19 +27,19 @@ public class Node2D extends CanvasItem {
         StringBuilder builder = new StringBuilder(super.toString());
 
         if (this.position != null) {
-            builder.append("position = ").append(position).append("\n");
+            builder.append("\n").append("position = ").append(position);
         }
 
         if (this.rotation != null) {
-            builder.append("rotation = ").append(rotation).append("\n");
+            builder.append("\n").append("rotation = ").append(rotation);
         }
 
         if (this.scale != null) {
-            builder.append("scale = ").append(scale).append("\n");
+            builder.append("\n").append("scale = ").append(scale);
         }
 
         if (this.skew != null) {
-            builder.append("skew = ").append(skew).append("\n");
+            builder.append("\n").append("skew = ").append(skew);
         }
 
         return builder.toString();

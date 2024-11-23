@@ -31,31 +31,31 @@ public abstract class BaseButton extends Control {
         StringBuilder builder = new StringBuilder(super.toString());
 
         if (actionMode != null) {
-            builder.append("action_mode = ").append(actionMode.ordinal()).append("\n");
+            builder.append("\n").append("action_mode = ").append(actionMode.ordinal());
         }
 
         if (buttonPressed != null) {
-            builder.append("button_pressed = ").append(buttonPressed).append("\n");
+            builder.append("\n").append("button_pressed = ").append(buttonPressed);
         }
 
         if (disabled != null) {
-            builder.append("disabled = ").append(disabled).append("\n");
+            builder.append("\n").append("disabled = ").append(disabled);
         }
 
         if (keepPressedOutside != null) {
-            builder.append("keep_pressed_outside = ").append(keepPressedOutside).append("\n");
+            builder.append("\n").append("keep_pressed_outside = ").append(keepPressedOutside);
         }
 
         if (shortcutFeedback != null) {
-            builder.append("shortcut_feedback = ").append(shortcutFeedback).append("\n");
+            builder.append("\n").append("shortcut_feedback = ").append(shortcutFeedback);
         }
 
         if (shortcutInTooltip != null) {
-            builder.append("shortcut_in_tooltip = ").append(shortcutInTooltip).append("\n");
+            builder.append("\n").append("shortcut_in_tooltip = ").append(shortcutInTooltip);
         }
 
         if (toggleMode != null) {
-            builder.append("toggle_mode = ").append(toggleMode).append("\n");
+            builder.append("\n").append("toggle_mode = ").append(toggleMode);
         }
 
         return builder.toString();

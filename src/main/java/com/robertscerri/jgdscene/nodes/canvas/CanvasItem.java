@@ -48,59 +48,59 @@ public class CanvasItem extends Node {
         StringBuilder builder = new StringBuilder(super.toString());
 
         if (clipChildren != null) {
-            builder.append("clip_children = ").append(this.clipChildren.ordinal()).append("\n");
+            builder.append("\n").append("clip_children = ").append(this.clipChildren.ordinal());
         }
 
         if (lightMask != null) {
-            builder.append("light_mask = ").append(this.lightMask).append("\n");
+            builder.append("\n").append("light_mask = ").append(this.lightMask);
         }
 
         if (modulate != null) {
-            builder.append("modulate = ").append(this.modulate).append("\n");
+            builder.append("\n").append("modulate = ").append(this.modulate);
         }
 
         if (selfModulate != null) {
-            builder.append("self_modulate = ").append(this.selfModulate).append("\n");
+            builder.append("\n").append("self_modulate = ").append(this.selfModulate);
         }
 
         if (showBehindParent != null) {
-            builder.append("show_behind_parent = ").append(this.showBehindParent).append("\n");
+            builder.append("\n").append("show_behind_parent = ").append(this.showBehindParent);
         }
 
         if (textureFilter != null) {
-            builder.append("texture_filter = ").append(this.textureFilter.ordinal()).append("\n");
+            builder.append("\n").append("texture_filter = ").append(this.textureFilter.ordinal());
         }
 
         if (textureRepeat != null) {
-            builder.append("texture_repeat = ").append(this.textureRepeat.ordinal()).append("\n");
+            builder.append("\n").append("texture_repeat = ").append(this.textureRepeat.ordinal());
         }
 
         if (topLevel != null) {
-            builder.append("top_level = ").append(this.topLevel).append("\n");
+            builder.append("\n").append("top_level = ").append(this.topLevel);
         }
 
         if (useParentMaterial != null) {
-            builder.append("use_parent_material = ").append(this.useParentMaterial).append("\n");
+            builder.append("\n").append("use_parent_material = ").append(this.useParentMaterial);
         }
 
         if (visibilityLayer != null) {
-            builder.append("visibility_layer = ").append(this.visibilityLayer).append("\n");
+            builder.append("\n").append("visibility_layer = ").append(this.visibilityLayer);
         }
 
         if (visible != null) {
-            builder.append("visible = ").append(this.visible).append("\n");
+            builder.append("\n").append("visible = ").append(this.visible);
         }
 
         if (ySortEnabled != null) {
-            builder.append("y_sort_enabled = ").append(this.ySortEnabled).append("\n");
+            builder.append("\n").append("y_sort_enabled = ").append(this.ySortEnabled);
         }
 
         if (zAsRelative != null) {
-            builder.append("z_as_relative = ").append(this.zAsRelative).append("\n");
+            builder.append("\n").append("z_as_relative = ").append(this.zAsRelative);
         }
 
         if (zIndex != null) {
-            builder.append("z_index = ").append(this.zIndex).append("\n");
+            builder.append("\n").append("z_index = ").append(this.zIndex);
         }
 
         return builder.toString();

@@ -42,43 +42,43 @@ public class AnimationMixer extends Node {
         StringBuilder builder = new StringBuilder(super.toString());
 
         if (active != null) {
-            builder.append("active = ").append(active).append("\n");
+            builder.append("\n").append("active = ").append(active);
         }
 
         if (audioMaxPolyphony != null) {
-            builder.append("audioMaxPolyphony = ").append(audioMaxPolyphony).append("\n");
+            builder.append("\n").append("audioMaxPolyphony = ").append(audioMaxPolyphony);
         }
 
         if (callbackModeDiscrete != null) {
-            builder.append("callbackModeDiscrete = ").append(callbackModeDiscrete.ordinal()).append("\n");
+            builder.append("\n").append("callbackModeDiscrete = ").append(callbackModeDiscrete.ordinal());
         }
 
         if (callbackModeMethod != null) {
-            builder.append("callbackModeMethod = ").append(callbackModeMethod.ordinal()).append("\n");
+            builder.append("\n").append("callbackModeMethod = ").append(callbackModeMethod.ordinal());
         }
 
         if (callbackModeProcess != null) {
-            builder.append("callbackModeProcess = ").append(callbackModeProcess.ordinal()).append("\n");
+            builder.append("\n").append("callbackModeProcess = ").append(callbackModeProcess.ordinal());
         }
 
         if (deterministic != null) {
-            builder.append("deterministic = ").append(deterministic).append("\n");
+            builder.append("\n").append("deterministic = ").append(deterministic);
         }
 
         if (resetOnSave != null) {
-            builder.append("resetOnSave = ").append(resetOnSave).append("\n");
+            builder.append("\n").append("resetOnSave = ").append(resetOnSave);
         }
 
         if (rootMotionTrack != null) {
-            builder.append("rootMotionTrack = ").append(rootMotionTrack).append("\n");
+            builder.append("\n").append("rootMotionTrack = ").append(rootMotionTrack);
         }
 
         if (rootNode != null) {
-            builder.append("rootNode = ").append(rootNode).append("\n");
+            builder.append("\n").append("rootNode = ").append(rootNode);
         }
 
         if (libraries != null) {
-            builder.append("libraries = ").append(libraries).append("\n");
+            builder.append("\n").append("libraries = ").append(libraries);
         }
 
         return builder.toString();

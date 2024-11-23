@@ -36,39 +36,39 @@ public class AnimationPlayer extends AnimationMixer {
         StringBuilder builder = new StringBuilder(super.toString());
 
         if (autoplay != null) {
-            builder.append("autoplay = \"").append(autoplay).append("\"\n");
+            builder.append("\n").append("autoplay = \"").append(autoplay).append("\"");
         }
 
         if (currentAnimation != null) {
-            builder.append("current_animation = \"").append(currentAnimation).append("\"\n");
+            builder.append("\n").append("current_animation = \"").append(currentAnimation).append("\"");
         }
 
         if (movieQuitOnFinish != null) {
-            builder.append("movie_quit_on_finish = ").append(movieQuitOnFinish).append("\n");
+            builder.append("\n").append("movie_quit_on_finish = ").append(movieQuitOnFinish);
         }
 
         if (playbackAutoCapture != null) {
-            builder.append("playback_auto_capture = ").append(playbackAutoCapture).append("\n");
+            builder.append("\n").append("playback_auto_capture = ").append(playbackAutoCapture);
         }
 
         if (playbackAutoCaptureDuration != null) {
-            builder.append("playback_auto_capture_duration = ").append(playbackAutoCaptureDuration).append("\n");
+            builder.append("\n").append("playback_auto_capture_duration = ").append(playbackAutoCaptureDuration);
         }
 
         if (playbackAutoCaptureEaseType != null) {
-            builder.append("playback_auto_capture_ease_type = ").append(playbackAutoCaptureEaseType).append("\n");
+            builder.append("\n").append("playback_auto_capture_ease_type = ").append(playbackAutoCaptureEaseType);
         }
 
         if (playbackAutoCaptureTransitionType != null) {
-            builder.append("playback_auto_cature_transition_type = ").append(playbackAutoCaptureTransitionType).append("\n");
+            builder.append("\n").append("playback_auto_cature_transition_type = ").append(playbackAutoCaptureTransitionType);
         }
 
         if (playbackDefaultBlendTime != null) {
-            builder.append("playback_default_blend_time = ").append(playbackDefaultBlendTime).append("\n");
+            builder.append("\n").append("playback_default_blend_time = ").append(playbackDefaultBlendTime);
         }
 
         if (speedScale != null) {
-            builder.append("speed_scale = ").append(speedScale).append("\n");
+            builder.append("\n").append("speed_scale = ").append(speedScale);
         }
 
         return builder.toString();

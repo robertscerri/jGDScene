@@ -85,131 +85,131 @@ public class Control extends CanvasItem {
         StringBuilder builder = new StringBuilder(super.toString());
 
         if (anchorBottom != null) {
-            builder.append("anchor_bottom = ").append(anchorBottom).append("\n");
+            builder.append("\n").append("anchor_bottom = ").append(anchorBottom);
         }
 
         if (anchorLeft != null) {
-            builder.append("anchor_left = ").append(anchorLeft).append("\n");
+            builder.append("\n").append("anchor_left = ").append(anchorLeft);
         }
 
         if (anchorRight != null) {
-            builder.append("anchor_right = ").append(anchorRight).append("\n");
+            builder.append("\n").append("anchor_right = ").append(anchorRight);
         }
 
         if (anchorTop != null) {
-            builder.append("anchor_top = ").append(anchorTop).append("\n");
+            builder.append("\n").append("anchor_top = ").append(anchorTop);
         }
 
         if (clipContents != null) {
-            builder.append("clip_contents = ").append(clipContents).append("\n");
+            builder.append("\n").append("clip_contents = ").append(clipContents);
         }
 
         if (customMinimumSize != null) {
-            builder.append("custom_minimum_size = ").append(customMinimumSize).append("\n");
+            builder.append("\n").append("custom_minimum_size = ").append(customMinimumSize);
         }
 
         if (focusMode != null) {
-            builder.append("focus_mode = ").append(focusMode.ordinal()).append("\n");
+            builder.append("\n").append("focus_mode = ").append(focusMode.ordinal());
         }
 
         if (focusNeighborBottom != null) {
-            builder.append("focus_neighbor_bottom = ").append(focusNeighborBottom).append("\n");
+            builder.append("\n").append("focus_neighbor_bottom = ").append(focusNeighborBottom);
         }
 
         if (focusNeighborLeft != null) {
-            builder.append("focus_neighbor_left = ").append(focusNeighborLeft).append("\n");
+            builder.append("\n").append("focus_neighbor_left = ").append(focusNeighborLeft);
         }
 
         if (focusNeighborRight != null) {
-            builder.append("focus_neighbor_right = ").append(focusNeighborRight).append("\n");
+            builder.append("\n").append("focus_neighbor_right = ").append(focusNeighborRight);
         }
 
         if (focusNeighborTop != null) {
-            builder.append("focus_neighbor_top = ").append(focusNeighborTop).append("\n");
+            builder.append("\n").append("focus_neighbor_top = ").append(focusNeighborTop);
         }
 
         if (focusNext != null) {
-            builder.append("focus_next = ").append(focusNext).append("\n");
+            builder.append("\n").append("focus_next = ").append(focusNext);
         }
 
         if (focusPrevious != null) {
-            builder.append("focus_previous = ").append(focusPrevious).append("\n");
+            builder.append("\n").append("focus_previous = ").append(focusPrevious);
         }
 
         if (growHorizontal != null) {
-            builder.append("grow_horizontal = ").append(growHorizontal.ordinal()).append("\n");
+            builder.append("\n").append("grow_horizontal = ").append(growHorizontal.ordinal());
         }
 
         if (growVertical != null) {
-            builder.append("grow_vertical = ").append(growVertical.ordinal()).append("\n");
+            builder.append("\n").append("grow_vertical = ").append(growVertical.ordinal());
         }
 
         if (layoutHorizontal != null) {
-            builder.append("layout_horizontal = ").append(layoutHorizontal.ordinal()).append("\n");
+            builder.append("\n").append("layout_horizontal = ").append(layoutHorizontal.ordinal());
         }
 
         if (localizeNumeralSystem != null) {
-            builder.append("localize_numeral_system = ").append(localizeNumeralSystem).append("\n");
+            builder.append("\n").append("localize_numeral_system = ").append(localizeNumeralSystem);
         }
 
         if (mouseDefaultCursorShape != null) {
-            builder.append("mouse_default_cursor_shape = ").append(mouseDefaultCursorShape.ordinal()).append("\n");
+            builder.append("\n").append("mouse_default_cursor_shape = ").append(mouseDefaultCursorShape.ordinal());
         }
 
         if (mouseFilter != null) {
-            builder.append("mouse_filter = ").append(mouseFilter.ordinal()).append("\n");
+            builder.append("\n").append("mouse_filter = ").append(mouseFilter.ordinal());
         }
 
         if (mouseForcePassScrollEvents != null) {
-            builder.append("mouse_force_pass_scroll_events = ").append(mouseForcePassScrollEvents).append("\n");
+            builder.append("\n").append("mouse_force_pass_scroll_events = ").append(mouseForcePassScrollEvents);
         }
 
         if (offsetBottom != null) {
-            builder.append("offset_bottom = ").append(offsetBottom).append("\n");
+            builder.append("\n").append("offset_bottom = ").append(offsetBottom);
         }
 
         if (offsetLeft != null) {
-            builder.append("offset_left = ").append(offsetLeft).append("\n");
+            builder.append("\n").append("offset_left = ").append(offsetLeft);
         }
 
         if (offsetRight != null) {
-            builder.append("offset_right = ").append(offsetRight).append("\n");
+            builder.append("\n").append("offset_right = ").append(offsetRight);
         }
 
         if (offsetTop != null) {
-            builder.append("offset_top = ").append(offsetTop).append("\n");
+            builder.append("\n").append("offset_top = ").append(offsetTop);
         }
 
         if (pivotOffset != null) {
-            builder.append("pivot_offset = ").append(pivotOffset).append("\n");
+            builder.append("\n").append("pivot_offset = ").append(pivotOffset);
         }
 
         if (position != null) {
-            builder.append("position = ").append(position).append("\n");
+            builder.append("\n").append("position = ").append(position);
         }
 
         if (rotation != null) {
-            builder.append("rotation = ").append(rotation).append("\n");
+            builder.append("\n").append("rotation = ").append(rotation);
         }
 
         if (scale != null) {
-            builder.append("scale = ").append(scale).append("\n");
+            builder.append("\n").append("scale = ").append(scale);
         }
 
         if (size != null) {
-            builder.append("size = ").append(size).append("\n");
+            builder.append("\n").append("size = ").append(size);
         }
 
         if (sizeFlagsStretchRatio != null) {
-            builder.append("size_flags_stretch_ratio = ").append(sizeFlagsStretchRatio).append("\n");
+            builder.append("\n").append("size_flags_stretch_ratio = ").append(sizeFlagsStretchRatio);
         }
 
         if (themeTypeVariation != null) {
-            builder.append("theme_type_variation = \"").append(themeTypeVariation).append("\"\n");
+            builder.append("\n").append("theme_type_variation = \"").append(themeTypeVariation).append("\"");
         }
 
         if (tooltipText != null) {
-            builder.append("tooltip_text = \"").append(tooltipText).append("\"\n");
+            builder.append("\n").append("tooltip_text = \"").append(tooltipText).append("\"");
         }
 
         return builder.toString();

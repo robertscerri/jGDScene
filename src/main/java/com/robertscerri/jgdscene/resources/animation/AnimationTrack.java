@@ -80,13 +80,13 @@ public class AnimationTrack<T> {
     }
 
     public String toString(int index) {
-        return "tracks/%d/type = \"%s\"\n".formatted(index, this.trackType) +
-                "tracks/%d/imported = %s\n".formatted(index, this.imported) +
-                "tracks/%d/enabled = %s\n".formatted(index, this.enabled) +
-                "tracks/%d/path = %s\n".formatted(index, this.path) +
-                "tracks/%d/interp = %d\n".formatted(index, this.interpolationType.ordinal()) +
-                "tracks/%d/loop_wrap = %s\n".formatted(index, this.loopWrap) +
-                "tracks/%d/keys = %s".formatted(index, this.keys);
+        return "\ntracks/%d/type = \"%s\"".formatted(index, this.trackType) +
+                "\ntracks/%d/imported = %s".formatted(index, this.imported) +
+                "\ntracks/%d/enabled = %s".formatted(index, this.enabled) +
+                "\ntracks/%d/path = %s".formatted(index, this.path) +
+                "\ntracks/%d/interp = %d".formatted(index, this.interpolationType.ordinal()) +
+                "\ntracks/%d/loop_wrap = %s".formatted(index, this.loopWrap) +
+                "\ntracks/%d/keys = %s".formatted(index, this.keys);
     }
 
     public String toString() {

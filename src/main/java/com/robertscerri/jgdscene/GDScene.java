@@ -130,7 +130,7 @@ public class GDScene {
     }
 
     private String getHeader() {
-        return "[gd_scene loadSteps=" + this.loadSteps + " format=" + this.format + "]\n";
+        return "[gd_scene loadSteps=" + this.loadSteps + " format=" + this.format + "]";
     }
 
     public void writeToFile(String path) {
@@ -142,24 +142,27 @@ public class GDScene {
             PrintWriter scenePrintWriter = new PrintWriter(sceneFileWriter);
 
             //Print scene file descriptor
-            scenePrintWriter.println(this.getHeader());
+            scenePrintWriter.println(this.getHeader() + "\n");
 
             //Print ExtResources
             for (ExtResource extResource : this.extResources) {
                 scenePrintWriter.println(extResource);
+                scenePrintWriter.print("\n");
             }
 
             //Print SubResources
             for (SubResource subResource : this.subResources) {
                 scenePrintWriter.println(subResource);
+                scenePrintWriter.print("\n");
             }
 
             //Print nodes
-            scenePrintWriter.println(this.rootNode);
+            scenePrintWriter.println(this.rootNode.structureToString());
 
             //Print connections
             for (Connection connection : this.connections) {
                 scenePrintWriter.println(connection);
+                scenePrintWriter.print("\n");
             }
 
             scenePrintWriter.close();

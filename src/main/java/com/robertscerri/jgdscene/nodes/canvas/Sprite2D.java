@@ -41,47 +41,47 @@ public class Sprite2D extends Node2D {
         StringBuilder builder = new StringBuilder(super.toString());
 
         if (centered != null) {
-            builder.append("centered = ").append(this.centered).append("\n");
+            builder.append("\n").append("centered = ").append(this.centered);
         }
 
         if (flipH != null) {
-            builder.append("flip_h = ").append(this.flipH).append("\n");
+            builder.append("\n").append("flip_h = ").append(this.flipH);
         }
 
         if (flipV != null) {
-            builder.append("flip_v = ").append(this.flipV).append("\n");
+            builder.append("\n").append("flip_v = ").append(this.flipV);
         }
 
         if (frame != null) {
-            builder.append("frame = ").append(this.frame).append("\n");
+            builder.append("\n").append("frame = ").append(this.frame);
         }
 
         if (frameCoords != null) {
-            builder.append("frame_coords = ").append(this.frameCoords).append("\n");
+            builder.append("\n").append("frame_coords = ").append(this.frameCoords);
         }
 
         if (hFrames != null) {
-            builder.append("hframes = ").append(this.hFrames).append("\n");
+            builder.append("\n").append("hframes = ").append(this.hFrames);
         }
 
         if (vFrames != null) {
-            builder.append("vframes = ").append(this.vFrames).append("\n");
+            builder.append("\n").append("vframes = ").append(this.vFrames);
         }
 
         if (offset != null) {
-            builder.append("offset = ").append(this.offset).append("\n");
+            builder.append("\n").append("offset = ").append(this.offset);
         }
 
         if (regionEnabled != null) {
-            builder.append("region_enabled = ").append(this.regionEnabled).append("\n");
+            builder.append("\n").append("region_enabled = ").append(this.regionEnabled);
         }
 
         if (regionFilterClipEnabled != null) {
-            builder.append("region_filter_clip_enabled = ").append(this.regionFilterClipEnabled).append("\n");
+            builder.append("\n").append("region_filter_clip_enabled = ").append(this.regionFilterClipEnabled);
         }
 
         if (texture != null) {
-            builder.append("texture = ").append(this.texture.getReference()).append("\n");
+            builder.append("\n").append("texture = ").append(this.texture.getReference());
         }
 
         return builder.toString();

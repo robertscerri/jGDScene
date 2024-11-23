@@ -92,10 +92,16 @@ public class Node {
     }
 
     private String getHeader() {
-        return "[node name=\"" + this.name + "\"" +
-                " type=\"" + this.getClass().getSimpleName() + "\"" +
-                " parent=\"" + this.getNodePath() + "\"" +
-                "]\n";
+        StringBuilder builder = new StringBuilder("[node");
+
+        builder.append(" name=\"").append(this.name).append("\"");
+        builder.append(" type=\"").append(this.getClass().getSimpleName()).append("\"");
+
+        if (this.parent != null) {
+            builder.append(" parent=\"").append(this.getNodePath()).append("\"");
+        }
+
+        return builder.append("]").toString();
     }
 
     @Override
@@ -103,31 +109,37 @@ public class Node {
         StringBuilder builder = new StringBuilder(this.getHeader());
 
         if (physicsInterpolationMode != null) {
-            builder.append("physics_interpolation_mode = ").append(physicsInterpolationMode.ordinal()).append("\n");
+            builder.append("\n").append("physics_interpolation_mode = ").append(physicsInterpolationMode.ordinal());
         }
 
         if (processMode != null) {
-            builder.append("process_mode = ").append(processMode.ordinal()).append("\n");
+            builder.append("\n").append("process_mode = ").append(processMode.ordinal());
         }
 
         if (processPhysicsPriority != null) {
-            builder.append("process_physics_priority = ").append(processPhysicsPriority).append("\n");
+            builder.append("\n").append("process_physics_priority = ").append(processPhysicsPriority);
         }
 
         if (processPriority != null) {
-            builder.append("process_priority = ").append(processPriority).append("\n");
+            builder.append("\n").append("process_priority = ").append(processPriority);
         }
 
         if (processThreadGroup != null) {
-            builder.append("process_thread_group = ").append(processThreadGroup.ordinal()).append("\n");
+            builder.append("\n").append("process_thread_group = ").append(processThreadGroup.ordinal());
         }
 
         if (uniqueNameInOwner != null) {
-            builder.append("unique_name_in_owner = ").append(uniqueNameInOwner).append("\n");
+            builder.append("\n").append("unique_name_in_owner = ").append(uniqueNameInOwner);
         }
 
-        for (Node child : children) {
-            builder.append(child.toString());
+        return builder.toString();
+    }
+
+    public String structureToString() {
+        StringBuilder builder = new StringBuilder(this.toString());
+
+        for (Node child : this.children) {
+            builder.append("\n\n").append(child.structureToString());
         }
 
         return builder.toString();

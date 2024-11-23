@@ -41,7 +41,7 @@ public class Animation extends SubResource {
         StringBuilder builder = new StringBuilder(super.toString());
 
         if (this.length != 1.0f) {
-            builder.append("length = ").append(this.length).append("\n");
+            builder.append("\n").append("length = ").append(this.length);
         }
 
         int trackIndex = 0;

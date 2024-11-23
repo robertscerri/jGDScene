@@ -39,43 +39,43 @@ public class TextureButton extends BaseButton {
         StringBuilder builder = new StringBuilder(super.toString());
 
         if (flipH != null) {
-            builder.append("flip_h = ").append(flipH).append("\n");
+            builder.append("\n").append("flip_h = ").append(flipH);
         }
 
         if (flipV != null) {
-            builder.append("flip_v = ").append(flipV).append("\n");
+            builder.append("\n").append("flip_v = ").append(flipV);
         }
 
         if (ignoreTextureSize != null) {
-            builder.append("ignore_texture_size = ").append(ignoreTextureSize).append("\n");
+            builder.append("\n").append("ignore_texture_size = ").append(ignoreTextureSize);
         }
 
         if (stretchMode != null) {
-            builder.append("stretch_mode = ").append(stretchMode.ordinal()).append("\n");
+            builder.append("\n").append("stretch_mode = ").append(stretchMode.ordinal());
         }
 
         if (textureClickMask != null) {
-            builder.append("texture_click_mask = ").append(textureClickMask.getReference()).append("\n");
+            builder.append("\n").append("texture_click_mask = ").append(textureClickMask.getReference());
         }
 
         if (textureDisabled != null) {
-            builder.append("texture_disabled = ").append(textureDisabled.getReference()).append("\n");
+            builder.append("\n").append("texture_disabled = ").append(textureDisabled.getReference());
         }
 
         if (textureFocused != null) {
-            builder.append("texture_focused = ").append(textureFocused.getReference()).append("\n");
+            builder.append("\n").append("texture_focused = ").append(textureFocused.getReference());
         }
 
         if (textureHover != null) {
-            builder.append("texture_hover = ").append(textureHover.getReference()).append("\n");
+            builder.append("\n").append("texture_hover = ").append(textureHover.getReference());
         }
 
         if (textureNormal != null) {
-            builder.append("texture_normal = ").append(textureNormal.getReference()).append("\n");
+            builder.append("\n").append("texture_normal = ").append(textureNormal.getReference());
         }
 
         if (texturePressed != null) {
-            builder.append("texture_pressed = ").append(texturePressed.getReference()).append("\n");
+            builder.append("\n").append("texture_pressed = ").append(texturePressed.getReference());
         }
 
         return builder.toString();
