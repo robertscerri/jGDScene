@@ -94,7 +94,7 @@ public class Node {
     private String getHeader() {
         return "[node name=" + this.name +
                 " type=\"" + this.getClass().getSimpleName() + "\"" +
-                " parent=\"" + this.parent.getNodePath() + "\"" +
+                " parent=\"" + this.getNodePath() + "\"" +
                 "]\n";
     }
 
