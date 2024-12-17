@@ -5,12 +5,13 @@ import com.robertscerri.jgdscene.variants.Dictionary;
 import com.robertscerri.jgdscene.variants.packedarrays.PackedFloat32Array;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class AnimationKeys<T> {
     PackedFloat32Array times;
     PackedFloat32Array transitions;
     UpdateMode updateMode;
-    ArrayList<T> values;
+    List<T> values;
 
     public AnimationKeys() {
         this.times = new PackedFloat32Array();
@@ -19,7 +20,7 @@ public class AnimationKeys<T> {
         this.values = new ArrayList<T>();
     }
 
-    public AnimationKeys(PackedFloat32Array times, PackedFloat32Array transitions, UpdateMode updateMode, ArrayList<T> values) {
+    public AnimationKeys(PackedFloat32Array times, PackedFloat32Array transitions, UpdateMode updateMode, List<T> values) {
         this.times = times;
         this.transitions = transitions;
         this.updateMode = updateMode;
@@ -50,11 +51,11 @@ public class AnimationKeys<T> {
         this.updateMode = updateMode;
     }
 
-    public ArrayList<T> getValues() {
+    public List<T> getValues() {
         return values;
     }
 
-    public void setValues(ArrayList<T> values) {
+    public void setValues(List<T> values) {
         this.values = values;
     }
 
