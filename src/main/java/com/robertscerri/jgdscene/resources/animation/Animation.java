@@ -3,6 +3,7 @@ package com.robertscerri.jgdscene.resources.animation;
 import com.robertscerri.jgdscene.resources.SubResource;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class Animation extends SubResource {
@@ -38,6 +39,10 @@ public class Animation extends SubResource {
 
     public void addTrack(AnimationTrack<?> track) {
         this.tracks.add(track);
+    }
+
+    public void addTracks(Collection<AnimationTrack<?>> tracks) {
+        this.tracks.addAll(tracks);
     }
 
     public void removeTrack(AnimationTrack<?> track) {
