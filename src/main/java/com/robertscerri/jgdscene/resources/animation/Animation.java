@@ -41,10 +41,6 @@ public class Animation extends SubResource {
         this.tracks.add(track);
     }
 
-    public void addTracks(Collection<AnimationTrack<?>> tracks) {
-        this.tracks.addAll(tracks);
-    }
-
     public void removeTrack(AnimationTrack<?> track) {
         this.tracks.remove(track);
     }

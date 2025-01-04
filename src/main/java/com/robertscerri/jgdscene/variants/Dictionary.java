@@ -71,6 +71,18 @@ public class Dictionary<K, V> extends Variant {
                 sb.append(key.toString());
             }
 
+            //Handle lists of referable
+            if (value instanceof List<?> list && !list.isEmpty() && list.getFirst() instanceof Referable) {
+                List<String> referenceList = new ArrayList<>();
+
+                for (Object obj : list) {
+                    Referable referable = (Referable) obj;
+                    referenceList.add(referable.getReference());
+                }
+
+                value = referenceList;
+            }
+
             sb.append(": ").append(value instanceof Referable ref ? ref.getReference() : value);
 
             if (it.hasNext()) {

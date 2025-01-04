@@ -67,7 +67,7 @@ public class AnimationKeys<T> {
 
     @Override
     public String toString() {
-        Dictionary dictionary = new Dictionary();
+        Dictionary<String, Object> dictionary = new Dictionary<>();
         dictionary.add("times", this.times);
         dictionary.add("transitions", this.transitions);
         dictionary.add("update", this.updateMode.ordinal());
