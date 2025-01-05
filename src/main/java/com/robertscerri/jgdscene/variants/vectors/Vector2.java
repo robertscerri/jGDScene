@@ -185,7 +185,8 @@ public class Vector2 extends Variant implements Comparable<Vector2> {
     }
 
     public Vector2 normalized() {
-        return this.divide(this.length());
+        float length = this.length();
+        return length == 0 ? Vector2.ZERO : this.divide(this.length());
     }
 
     public Vector2 orthogonal() {

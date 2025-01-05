@@ -216,7 +216,8 @@ public class Vector3 extends Variant implements Comparable<Vector3> {
     }
 
     public Vector3 normalized() {
-        return this.divide(this.length());
+        float length = this.length();
+        return length == 0 ? Vector3.ZERO : this.divide(this.length());
     }
 
     //TODO: octahedron_decode, octahedron_encode, outer

@@ -176,7 +176,8 @@ public class Vector4 extends Variant implements Comparable<Vector4> {
     }
 
     public Vector4 normalized() {
-        return this.divide(this.length());
+        float length = this.length();
+        return length == 0 ? Vector4.ZERO : this.divide(this.length());
     }
 
     public Vector4 posmod(float mod) {
