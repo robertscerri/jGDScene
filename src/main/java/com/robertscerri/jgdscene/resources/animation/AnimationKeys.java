@@ -65,6 +65,28 @@ public class AnimationKeys<T> {
         this.values.add(value);
     }
 
+    public T getValueAtTime(float time) {
+        int index = this.times.find(time);
+
+        if (index == -1 || index >= this.values.size()) {
+            return null;
+        }
+
+        return this.values.get(index);
+    }
+
+    public void setValueAtTime(float time, float transition, T value) {
+        int index = this.times.find(time);
+
+        if (index == -1 || index >= this.values.size()) {
+            this.times.append(time);
+            this.transitions.append(transition);
+            this.values.add(value);
+        } else {
+            this.values.set(index, value);
+        }
+    }
+
     @Override
     public String toString() {
         Dictionary<String, Object> dictionary = new Dictionary<>();
