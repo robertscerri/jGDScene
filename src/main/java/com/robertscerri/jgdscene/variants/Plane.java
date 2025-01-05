@@ -1,6 +1,6 @@
 package com.robertscerri.jgdscene.variants;
 
-import com.robertscerri.jgdscene.utils.FloatUtils;
+import com.robertscerri.jgdscene.utils.NumberUtils;
 import com.robertscerri.jgdscene.variants.vectors.Vector3;
 
 public class Plane extends Variant {
@@ -54,7 +54,7 @@ public class Plane extends Variant {
     }
 
     public boolean isEqualApprox(Plane toPlane) {
-        return this.normal.isEqualApprox(toPlane.normal) && FloatUtils.isEqualApprox(this.d, toPlane.d);
+        return this.normal.isEqualApprox(toPlane.normal) && NumberUtils.isEqualApprox(this.d, toPlane.d);
     }
 
     public boolean isFinite() {
@@ -72,7 +72,7 @@ public class Plane extends Variant {
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof Plane plane) {
-            return this.normal.equals(plane.normal) && FloatUtils.isEqualApprox(this.d, plane.d);
+            return this.normal.equals(plane.normal) && NumberUtils.isEqualApprox(this.d, plane.d);
         }
 
         return false;

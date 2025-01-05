@@ -1,12 +1,11 @@
 package com.robertscerri.jgdscene.nodes.canvas;
 
+import com.robertscerri.jgdscene.utils.NumberUtils;
 import com.robertscerri.jgdscene.variants.vectors.Vector2;
-
-import java.math.BigDecimal;
 
 public class Node2D extends CanvasItem {
     public Vector2 position = null;
-    public BigDecimal rotation = null;
+    public Float rotation = null;
     public Vector2 scale = null;
     public Float skew = null;
 
@@ -43,7 +42,7 @@ public class Node2D extends CanvasItem {
         }
 
         if (this.rotation != null) {
-            builder.append("\n").append("rotation = ").append(rotation);
+            builder.append("\n").append("rotation = ").append(NumberUtils.toStringDecimal(rotation));
         }
 
         if (this.scale != null) {
@@ -51,7 +50,7 @@ public class Node2D extends CanvasItem {
         }
 
         if (this.skew != null) {
-            builder.append("\n").append("skew = ").append(skew);
+            builder.append("\n").append("skew = ").append(NumberUtils.toStringDecimal(skew));
         }
 
         return builder.toString();

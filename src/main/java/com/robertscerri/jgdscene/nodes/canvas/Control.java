@@ -1,10 +1,9 @@
 package com.robertscerri.jgdscene.nodes.canvas;
 
 import com.robertscerri.jgdscene.nodes.enums.*;
+import com.robertscerri.jgdscene.utils.NumberUtils;
 import com.robertscerri.jgdscene.variants.NodePath;
 import com.robertscerri.jgdscene.variants.vectors.Vector2;
-
-import java.math.BigDecimal;
 
 public class Control extends CanvasItem {
     public Float anchorBottom = null;
@@ -33,7 +32,7 @@ public class Control extends CanvasItem {
     public Float offsetTop = null;
     public Vector2 pivotOffset = null;
     public Vector2 position = null;
-    public BigDecimal rotation = null;
+    public Float rotation = null;
     public Vector2 scale = null;
     public Vector2 size = null;
     public Float sizeFlagsStretchRatio = null;
@@ -229,7 +228,7 @@ public class Control extends CanvasItem {
         }
 
         if (rotation != null) {
-            builder.append("\n").append("rotation = ").append(rotation);
+            builder.append("\n").append("rotation = ").append(NumberUtils.toStringDecimal(rotation));
         }
 
         if (scale != null) {

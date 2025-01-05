@@ -1,6 +1,6 @@
 package com.robertscerri.jgdscene.variants;
 
-import com.robertscerri.jgdscene.utils.FloatUtils;
+import com.robertscerri.jgdscene.utils.NumberUtils;
 
 public class Color extends Variant implements Comparable<Color> {
     public static final Color ALICE_BLUE = new Color(0.941176f, 0.972549f, 1f, 1f);
@@ -251,14 +251,14 @@ public class Color extends Variant implements Comparable<Color> {
     }
 
     public boolean isEqualApprox(Color to) {
-        return FloatUtils.isEqualApprox(this.r, to.r) && FloatUtils.isEqualApprox(this.g, to.g) && FloatUtils.isEqualApprox(this.b, to.b) && FloatUtils.isEqualApprox(this.a, to.a);
+        return NumberUtils.isEqualApprox(this.r, to.r) && NumberUtils.isEqualApprox(this.g, to.g) && NumberUtils.isEqualApprox(this.b, to.b) && NumberUtils.isEqualApprox(this.a, to.a);
     }
 
     public Color lerp(Color to, float weight) {
-        float newR = FloatUtils.lerp(this.r, to.r, weight);
-        float newG = FloatUtils.lerp(this.g, to.g, weight);
-        float newB = FloatUtils.lerp(this.b, to.b, weight);
-        float newA = FloatUtils.lerp(this.a, to.a, weight);
+        float newR = NumberUtils.lerp(this.r, to.r, weight);
+        float newG = NumberUtils.lerp(this.g, to.g, weight);
+        float newB = NumberUtils.lerp(this.b, to.b, weight);
+        float newA = NumberUtils.lerp(this.a, to.a, weight);
 
         return new Color(newR, newG, newB, newA);
     }

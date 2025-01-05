@@ -1,6 +1,6 @@
 package com.robertscerri.jgdscene.variants.vectors;
 
-import com.robertscerri.jgdscene.utils.FloatUtils;
+import com.robertscerri.jgdscene.utils.NumberUtils;
 import com.robertscerri.jgdscene.variants.Variant;
 
 public class Vector2 extends Variant implements Comparable<Vector2> {
@@ -68,11 +68,11 @@ public class Vector2 extends Variant implements Comparable<Vector2> {
     }
 
     public Vector2 clamp(Vector2 min, Vector2 max) {
-        return new Vector2(FloatUtils.clamp(this.x, min.x, max.x), FloatUtils.clamp(this.y, min.y, max.y));
+        return new Vector2(NumberUtils.clamp(this.x, min.x, max.x), NumberUtils.clamp(this.y, min.y, max.y));
     }
 
     public Vector2 clamp(float min, float max) {
-        return new Vector2(FloatUtils.clamp(this.x, min, max), FloatUtils.clamp(this.y, min, max));
+        return new Vector2(NumberUtils.clamp(this.x, min, max), NumberUtils.clamp(this.y, min, max));
     }
 
     public float cross(Vector2 other) {
@@ -106,7 +106,7 @@ public class Vector2 extends Variant implements Comparable<Vector2> {
     }
 
     public boolean isEqualApprox(Vector2 to) {
-        return FloatUtils.isEqualApprox(this.x, to.x) && FloatUtils.isEqualApprox(this.y, to.y);
+        return NumberUtils.isEqualApprox(this.x, to.x) && NumberUtils.isEqualApprox(this.y, to.y);
     }
 
     public boolean isFinite() {
@@ -114,11 +114,11 @@ public class Vector2 extends Variant implements Comparable<Vector2> {
     }
 
     public boolean isNormalized() {
-        return FloatUtils.isEqualApprox(this.length(), 1);
+        return NumberUtils.isEqualApprox(this.length(), 1);
     }
 
     public boolean isZeroApprox() {
-        return FloatUtils.isEqualApprox(this.x, 0) && FloatUtils.isEqualApprox(this.y, 0);
+        return NumberUtils.isEqualApprox(this.x, 0) && NumberUtils.isEqualApprox(this.y, 0);
     }
 
     public float length() {
@@ -130,7 +130,7 @@ public class Vector2 extends Variant implements Comparable<Vector2> {
     }
 
     public Vector2 lerp(Vector2 to, float weight) {
-        return new Vector2(FloatUtils.lerp(this.x, to.x, weight), FloatUtils.lerp(this.y, to.y, weight));
+        return new Vector2(NumberUtils.lerp(this.x, to.x, weight), NumberUtils.lerp(this.y, to.y, weight));
     }
 
     public Vector2 limitLength(float length) {
@@ -193,11 +193,11 @@ public class Vector2 extends Variant implements Comparable<Vector2> {
     }
 
     public Vector2 posmod(float mod) {
-        return new Vector2(FloatUtils.posmod(this.x, mod), FloatUtils.posmod(this.y, mod));
+        return new Vector2(NumberUtils.posmod(this.x, mod), NumberUtils.posmod(this.y, mod));
     }
 
     public Vector2 posmod(Vector2 mod) {
-        return new Vector2(FloatUtils.posmod(this.x, mod.x), FloatUtils.posmod(this.y, mod.y));
+        return new Vector2(NumberUtils.posmod(this.x, mod.x), NumberUtils.posmod(this.y, mod.y));
     }
 
     public Vector2 project(Vector2 b) {
@@ -239,7 +239,7 @@ public class Vector2 extends Variant implements Comparable<Vector2> {
         }
 
         float startLength = (float) Math.sqrt(startLengthSquared);
-        float resultLength = FloatUtils.lerp(startLength, (float) Math.sqrt(endLengthSquared), weight);
+        float resultLength = NumberUtils.lerp(startLength, (float) Math.sqrt(endLengthSquared), weight);
         float angle = this.angleTo(to);
 
         return this.rotated(angle * weight).multiply(resultLength / startLength);

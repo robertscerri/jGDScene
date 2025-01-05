@@ -1,6 +1,8 @@
 package com.robertscerri.jgdscene.utils;
 
-public class FloatUtils {
+import java.math.BigDecimal;
+
+public class NumberUtils {
     private static final float TOLERANCE = 0.00000000000001f;
 
     public static boolean isEqualApprox(float a, float b) {
@@ -17,5 +19,13 @@ public class FloatUtils {
 
     public static float clamp(float value, float min, float max) {
         return Math.min(Math.max(value, min), max);
+    }
+
+    public static String toStringDecimal(float value) {
+        return new BigDecimal(value).toPlainString();
+    }
+
+    public static String toStringDecimal(double value) {
+        return new BigDecimal(value).toPlainString();
     }
 }

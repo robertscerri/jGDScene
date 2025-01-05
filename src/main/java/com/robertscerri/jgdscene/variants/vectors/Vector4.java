@@ -1,6 +1,6 @@
 package com.robertscerri.jgdscene.variants.vectors;
 
-import com.robertscerri.jgdscene.utils.FloatUtils;
+import com.robertscerri.jgdscene.utils.NumberUtils;
 import com.robertscerri.jgdscene.variants.Variant;
 
 public class Vector4 extends Variant implements Comparable<Vector4> {
@@ -54,11 +54,11 @@ public class Vector4 extends Variant implements Comparable<Vector4> {
     }
 
     public Vector4 clamp(Vector4 min, Vector4 max) {
-        return new Vector4(FloatUtils.clamp(this.x, min.x, max.x), FloatUtils.clamp(this.y, min.y, max.y), FloatUtils.clamp(this.z, min.z, max.z), FloatUtils.clamp(this.w, min.w, max.w));
+        return new Vector4(NumberUtils.clamp(this.x, min.x, max.x), NumberUtils.clamp(this.y, min.y, max.y), NumberUtils.clamp(this.z, min.z, max.z), NumberUtils.clamp(this.w, min.w, max.w));
     }
 
     public Vector4 clamp(float min, float max) {
-        return new Vector4(FloatUtils.clamp(this.x, min, max), FloatUtils.clamp(this.y, min, max), FloatUtils.clamp(this.z, min, max), FloatUtils.clamp(this.w, min, max));
+        return new Vector4(NumberUtils.clamp(this.x, min, max), NumberUtils.clamp(this.y, min, max), NumberUtils.clamp(this.z, min, max), NumberUtils.clamp(this.w, min, max));
     }
 
     //TODO: cubic_interpolate, cubic_interpolate_in_time
@@ -88,7 +88,7 @@ public class Vector4 extends Variant implements Comparable<Vector4> {
     }
 
     public boolean isEqualApprox(Vector4 to) {
-        return FloatUtils.isEqualApprox(this.x, to.x) && FloatUtils.isEqualApprox(this.y, to.y) && FloatUtils.isEqualApprox(this.z, to.z) && FloatUtils.isEqualApprox(this.w, to.w);
+        return NumberUtils.isEqualApprox(this.x, to.x) && NumberUtils.isEqualApprox(this.y, to.y) && NumberUtils.isEqualApprox(this.z, to.z) && NumberUtils.isEqualApprox(this.w, to.w);
     }
 
     public boolean isFinite() {
@@ -96,11 +96,11 @@ public class Vector4 extends Variant implements Comparable<Vector4> {
     }
 
     public boolean isNormalized() {
-        return FloatUtils.isEqualApprox(this.length(), 1);
+        return NumberUtils.isEqualApprox(this.length(), 1);
     }
 
     public boolean isZeroApprox() {
-        return FloatUtils.isEqualApprox(this.x, 0) && FloatUtils.isEqualApprox(this.y, 0) && FloatUtils.isEqualApprox(this.z, 0) && FloatUtils.isEqualApprox(this.w, 0);
+        return NumberUtils.isEqualApprox(this.x, 0) && NumberUtils.isEqualApprox(this.y, 0) && NumberUtils.isEqualApprox(this.z, 0) && NumberUtils.isEqualApprox(this.w, 0);
     }
 
     public float length() {
@@ -112,7 +112,7 @@ public class Vector4 extends Variant implements Comparable<Vector4> {
     }
 
     public Vector4 lerp(Vector4 to, float weight) {
-        return new Vector4(FloatUtils.lerp(this.x, to.x, weight), FloatUtils.lerp(this.y, to.y, weight), FloatUtils.lerp(this.z, to.z, weight), FloatUtils.lerp(this.w, to.w, weight));
+        return new Vector4(NumberUtils.lerp(this.x, to.x, weight), NumberUtils.lerp(this.y, to.y, weight), NumberUtils.lerp(this.z, to.z, weight), NumberUtils.lerp(this.w, to.w, weight));
     }
 
     public Vector4 max(Vector4 with) {
@@ -180,11 +180,11 @@ public class Vector4 extends Variant implements Comparable<Vector4> {
     }
 
     public Vector4 posmod(float mod) {
-        return new Vector4(FloatUtils.posmod(this.x, mod), FloatUtils.posmod(this.y, mod), FloatUtils.posmod(this.z, mod), FloatUtils.posmod(this.w, mod));
+        return new Vector4(NumberUtils.posmod(this.x, mod), NumberUtils.posmod(this.y, mod), NumberUtils.posmod(this.z, mod), NumberUtils.posmod(this.w, mod));
     }
 
     public Vector4 posmod(Vector4 mod) {
-        return new Vector4(FloatUtils.posmod(this.x, mod.x), FloatUtils.posmod(this.y, mod.y), FloatUtils.posmod(this.z, mod.z), FloatUtils.posmod(this.w, mod.w));
+        return new Vector4(NumberUtils.posmod(this.x, mod.x), NumberUtils.posmod(this.y, mod.y), NumberUtils.posmod(this.z, mod.z), NumberUtils.posmod(this.w, mod.w));
     }
 
     public Vector4 round() {

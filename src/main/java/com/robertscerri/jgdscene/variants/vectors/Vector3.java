@@ -1,6 +1,6 @@
 package com.robertscerri.jgdscene.variants.vectors;
 
-import com.robertscerri.jgdscene.utils.FloatUtils;
+import com.robertscerri.jgdscene.utils.NumberUtils;
 import com.robertscerri.jgdscene.variants.Variant;
 
 public class Vector3 extends Variant implements Comparable<Vector3> {
@@ -79,11 +79,11 @@ public class Vector3 extends Variant implements Comparable<Vector3> {
     }
 
     public Vector3 clamp(Vector3 min, Vector3 max) {
-        return new Vector3(FloatUtils.clamp(this.x, min.x, max.x), FloatUtils.clamp(this.y, min.y, max.y), FloatUtils.clamp(this.z, min.z, max.z));
+        return new Vector3(NumberUtils.clamp(this.x, min.x, max.x), NumberUtils.clamp(this.y, min.y, max.y), NumberUtils.clamp(this.z, min.z, max.z));
     }
 
     public Vector3 clamp(float min, float max) {
-        return new Vector3(FloatUtils.clamp(this.x, min, max), FloatUtils.clamp(this.y, min, max), FloatUtils.clamp(this.z, min, max));
+        return new Vector3(NumberUtils.clamp(this.x, min, max), NumberUtils.clamp(this.y, min, max), NumberUtils.clamp(this.z, min, max));
     }
 
     public Vector3 cross(Vector3 with) {
@@ -121,7 +121,7 @@ public class Vector3 extends Variant implements Comparable<Vector3> {
     }
 
     public boolean isEqualApprox(Vector3 to) {
-        return FloatUtils.isEqualApprox(this.x, to.x) && FloatUtils.isEqualApprox(this.y, to.y) && FloatUtils.isEqualApprox(this.z, to.z);
+        return NumberUtils.isEqualApprox(this.x, to.x) && NumberUtils.isEqualApprox(this.y, to.y) && NumberUtils.isEqualApprox(this.z, to.z);
     }
 
     public boolean isFinite() {
@@ -129,11 +129,11 @@ public class Vector3 extends Variant implements Comparable<Vector3> {
     }
 
     public boolean isNormalized() {
-        return FloatUtils.isEqualApprox(this.length(), 1);
+        return NumberUtils.isEqualApprox(this.length(), 1);
     }
 
     public boolean isZeroApprox() {
-        return FloatUtils.isEqualApprox(this.x, 0) && FloatUtils.isEqualApprox(this.y, 0) && FloatUtils.isEqualApprox(this.z, 0);
+        return NumberUtils.isEqualApprox(this.x, 0) && NumberUtils.isEqualApprox(this.y, 0) && NumberUtils.isEqualApprox(this.z, 0);
     }
 
     public float length() {
@@ -145,7 +145,7 @@ public class Vector3 extends Variant implements Comparable<Vector3> {
     }
 
     public Vector3 lerp(Vector3 to, float weight) {
-        return new Vector3(FloatUtils.lerp(this.x, to.x, weight), FloatUtils.lerp(this.y, to.y, weight), FloatUtils.lerp(this.z, to.z, weight));
+        return new Vector3(NumberUtils.lerp(this.x, to.x, weight), NumberUtils.lerp(this.y, to.y, weight), NumberUtils.lerp(this.z, to.z, weight));
     }
 
     public Vector3 limitLength(float length) {
@@ -222,11 +222,11 @@ public class Vector3 extends Variant implements Comparable<Vector3> {
     //TODO: octahedron_decode, octahedron_encode, outer
 
     public Vector3 posmod(float mod) {
-        return new Vector3(FloatUtils.posmod(this.x, mod), FloatUtils.posmod(this.y, mod), FloatUtils.posmod(this.z, mod));
+        return new Vector3(NumberUtils.posmod(this.x, mod), NumberUtils.posmod(this.y, mod), NumberUtils.posmod(this.z, mod));
     }
 
     public Vector3 posmod(Vector3 mod) {
-        return new Vector3(FloatUtils.posmod(this.x, mod.x), FloatUtils.posmod(this.y, mod.y), FloatUtils.posmod(this.z, mod.z));
+        return new Vector3(NumberUtils.posmod(this.x, mod.x), NumberUtils.posmod(this.y, mod.y), NumberUtils.posmod(this.z, mod.z));
     }
 
     public Vector3 project(Vector3 to) {
@@ -266,7 +266,7 @@ public class Vector3 extends Variant implements Comparable<Vector3> {
 
         axis = axis.divide((float) Math.sqrt(axisLengthSquared));
         float startLength = (float) Math.sqrt(startLengthSquared);
-        float resultLength = FloatUtils.lerp(startLength, (float) Math.sqrt(endLengthSquared), weight);
+        float resultLength = NumberUtils.lerp(startLength, (float) Math.sqrt(endLengthSquared), weight);
         float angle = this.angleTo(to);
 
         return new Vector3();

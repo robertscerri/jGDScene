@@ -1,6 +1,7 @@
 package com.robertscerri.jgdscene.variants;
 
 import com.robertscerri.jgdscene.Referable;
+import com.robertscerri.jgdscene.utils.NumberUtils;
 
 import java.util.*;
 
@@ -72,15 +73,31 @@ public class Dictionary<K, V> extends Variant {
             }
 
             //Handle lists of referable
-            if (value instanceof List<?> list && !list.isEmpty() && list.getFirst() instanceof Referable) {
-                List<String> referenceList = new ArrayList<>();
+            if (value instanceof List<?> list && !list.isEmpty()) {
+                List<String> stringList = new ArrayList<>();
 
-                for (Object obj : list) {
-                    Referable referable = (Referable) obj;
-                    referenceList.add(referable.getReference());
+                if (list.getFirst() instanceof Referable) {
+                    for (Object obj : list) {
+                        Referable referable = (Referable) obj;
+                        stringList.add(referable.getReference());
+                    }
+
+                    value = stringList;
+                } else if (list.getFirst() instanceof Float) {
+                    for (Object obj : list) {
+                        Float num = (Float) obj;
+                        stringList.add(NumberUtils.toStringDecimal(num));
+                    }
+
+                    value = stringList;
+                } else if (list.getFirst() instanceof Double) {
+                    for (Object obj : list) {
+                        Double num = (Double) obj;
+                        stringList.add(NumberUtils.toStringDecimal(num));
+                    }
+
+                    value = stringList;
                 }
-
-                value = referenceList;
             }
 
             sb.append(": ").append(value instanceof Referable ref ? ref.getReference() : value);
