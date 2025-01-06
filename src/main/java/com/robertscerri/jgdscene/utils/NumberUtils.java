@@ -21,6 +21,10 @@ public class NumberUtils {
         return Math.min(Math.max(value, min), max);
     }
 
+    public static int clamp(int value, int min, int max) {
+        return Math.min(Math.max(value, min), max);
+    }
+
     public static String toStringDecimal(float value) {
         return new BigDecimal(value).toPlainString();
     }

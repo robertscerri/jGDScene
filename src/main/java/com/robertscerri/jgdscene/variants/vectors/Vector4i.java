@@ -1,6 +1,6 @@
 package com.robertscerri.jgdscene.variants.vectors;
 
-import com.robertscerri.jgdscene.utils.IntegerUtils;
+import com.robertscerri.jgdscene.utils.NumberUtils;
 import com.robertscerri.jgdscene.variants.Variant;
 
 public class Vector4i extends Variant implements Comparable<Vector4i> {
@@ -51,11 +51,11 @@ public class Vector4i extends Variant implements Comparable<Vector4i> {
     }
 
     public Vector4i clamp(Vector4i min, Vector4i max) {
-        return new Vector4i(IntegerUtils.clamp(this.x, min.x, max.x), IntegerUtils.clamp(this.y, min.y, max.y), IntegerUtils.clamp(this.z, min.z, max.z), IntegerUtils.clamp(this.w, min.w, max.w));
+        return new Vector4i(NumberUtils.clamp(this.x, min.x, max.x), NumberUtils.clamp(this.y, min.y, max.y), NumberUtils.clamp(this.z, min.z, max.z), NumberUtils.clamp(this.w, min.w, max.w));
     }
 
     public Vector4i clamp(int min, int max) {
-        return new Vector4i(IntegerUtils.clamp(this.x, min, max), IntegerUtils.clamp(this.y, min, max), IntegerUtils.clamp(this.z, min, max), IntegerUtils.clamp(this.w, min, max));
+        return new Vector4i(NumberUtils.clamp(this.x, min, max), NumberUtils.clamp(this.y, min, max), NumberUtils.clamp(this.z, min, max), NumberUtils.clamp(this.w, min, max));
     }
 
     public double distanceSquaredTo(Vector4i to) {
