@@ -47,6 +47,15 @@ public class Transform2D extends Variant {
         return (float) Math.acos(this.x.normalized().dot(this.y.normalized().multiply(Math.signum(determinant)))) - ((float) Math.PI * 0.5f);
     }
 
+    public Transform2D multiply(Transform2D right) {
+        Vector2 resOrigin = new Vector2((this.x.x * right.origin.x) + (this.x.y * right.origin.y), (this.y.x * right.origin.x) + (this.y.y * right.origin.y)).add(this.origin);
+
+        Vector2 resX = new Vector2((this.x.x * right.x.x) + (this.y.x * right.x.y), (this.x.y * right.x.x) + (this.y.y * right.x.y));
+        Vector2 resY = new Vector2((this.x.x * right.y.x) + (this.y.x * right.y.y), (this.x.y * right.y.x) + (this.y.y * right.y.y));
+
+        return new Transform2D(resX, resY, resOrigin);
+    }
+
     @Override
     public String toString() {
         return super.toString("%f, %f, %f, %f, %f, %f".formatted(this.x.x, this.x.y, this.y.x, this.y.y, this.origin.x, this.origin.y));
