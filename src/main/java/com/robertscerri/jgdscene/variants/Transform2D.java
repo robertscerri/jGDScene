@@ -29,22 +29,22 @@ public class Transform2D extends Variant {
         this.y = y;
     }
 
-    public float determinant() {
+    public double determinant() {
         return this.x.x * this.y.y - this.x.y * this.y.x;
     }
 
-    public float getRotation() {
-        return (float) Math.atan2(this.x.y, this.x.x);
+    public double getRotation() {
+        return Math.atan2(this.x.y, this.x.x);
     }
 
     public Vector2 getScale() {
-        float sign = Math.signum(this.determinant());
+        double sign = Math.signum(this.determinant());
         return new Vector2(this.x.length(), sign * this.y.length());
     }
 
-    public float getSkew() {
-        float determinant = this.determinant();
-        return (float) Math.acos(this.x.normalized().dot(this.y.normalized().multiply(Math.signum(determinant)))) - ((float) Math.PI * 0.5f);
+    public double getSkew() {
+        double determinant = this.determinant();
+        return Math.acos(this.x.normalized().dot(this.y.normalized().multiply(Math.signum(determinant)))) - ((double) Math.PI * 0.5f);
     }
 
     public Transform2D multiply(Transform2D right) {

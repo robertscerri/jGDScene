@@ -10,12 +10,12 @@ public class Vector4 extends Variant implements Comparable<Vector4> {
     public static final int AXIS_W = 3;
     public static final Vector4 ZERO = new Vector4(0, 0, 0, 0);
     public static final Vector4 ONE = new Vector4(1, 1, 1, 1);
-    public static final Vector4 INF = new Vector4(Float.POSITIVE_INFINITY, Float.POSITIVE_INFINITY, Float.POSITIVE_INFINITY, Float.POSITIVE_INFINITY);
+    public static final Vector4 INF = new Vector4(Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY);
 
-    public float w;
-    public float x;
-    public float y;
-    public float z;
+    public double w;
+    public double x;
+    public double y;
+    public double z;
 
     public Vector4() {
         w = 0;
@@ -38,7 +38,7 @@ public class Vector4 extends Variant implements Comparable<Vector4> {
         this.z = from.z;
     }
 
-    public Vector4(float x, float y, float z, float w) {
+    public Vector4(double x, double y, double z, double w) {
         this.x = x;
         this.y = y;
         this.z = z;
@@ -50,14 +50,14 @@ public class Vector4 extends Variant implements Comparable<Vector4> {
     }
 
     public Vector4 ceil() {
-        return new Vector4((float) Math.ceil(this.x), (float) Math.ceil(this.y), (float) Math.ceil(this.z), (float) Math.ceil(this.w));
+        return new Vector4((double) Math.ceil(this.x), (double) Math.ceil(this.y), (double) Math.ceil(this.z), (double) Math.ceil(this.w));
     }
 
     public Vector4 clamp(Vector4 min, Vector4 max) {
         return new Vector4(NumberUtils.clamp(this.x, min.x, max.x), NumberUtils.clamp(this.y, min.y, max.y), NumberUtils.clamp(this.z, min.z, max.z), NumberUtils.clamp(this.w, min.w, max.w));
     }
 
-    public Vector4 clamp(float min, float max) {
+    public Vector4 clamp(double min, double max) {
         return new Vector4(NumberUtils.clamp(this.x, min, max), NumberUtils.clamp(this.y, min, max), NumberUtils.clamp(this.z, min, max), NumberUtils.clamp(this.w, min, max));
     }
 
@@ -67,20 +67,20 @@ public class Vector4 extends Variant implements Comparable<Vector4> {
         return to.subtract(this).normalized();
     }
 
-    public float distanceSquaredTo(Vector4 to) {
+    public double distanceSquaredTo(Vector4 to) {
         return to.subtract(this).lengthSquared();
     }
 
-    public float distanceTo(Vector4 to) {
+    public double distanceTo(Vector4 to) {
         return to.subtract(this).length();
     }
 
-    public float dot(Vector4 with) {
+    public double dot(Vector4 with) {
         return (this.x * with.x) + (this.y * with.y) + (this.z * with.z) + (this.w * with.w);
     }
 
     public Vector4 floor() {
-        return new Vector4((float) Math.floor(this.x), (float) Math.floor(this.y), (float) Math.floor(this.z), (float) Math.floor(this.w));
+        return new Vector4((double) Math.floor(this.x), (double) Math.floor(this.y), (double) Math.floor(this.z), (double) Math.floor(this.w));
     }
 
     public Vector4 inverse() {
@@ -92,7 +92,7 @@ public class Vector4 extends Variant implements Comparable<Vector4> {
     }
 
     public boolean isFinite() {
-        return Float.isFinite(this.x) && Float.isFinite(this.y) && Float.isFinite(this.z) && Float.isFinite(this.w);
+        return Double.isFinite(this.x) && Double.isFinite(this.y) && Double.isFinite(this.z) && Double.isFinite(this.w);
     }
 
     public boolean isNormalized() {
@@ -103,15 +103,15 @@ public class Vector4 extends Variant implements Comparable<Vector4> {
         return NumberUtils.isEqualApprox(this.x, 0) && NumberUtils.isEqualApprox(this.y, 0) && NumberUtils.isEqualApprox(this.z, 0) && NumberUtils.isEqualApprox(this.w, 0);
     }
 
-    public float length() {
-        return (float) Math.sqrt(this.lengthSquared());
+    public double length() {
+        return (double) Math.sqrt(this.lengthSquared());
     }
 
-    public float lengthSquared() {
+    public double lengthSquared() {
         return (this.x * this.x) + (this.y * this.y) + (this.z * this.z) + (this.w * this.w);
     }
 
-    public Vector4 lerp(Vector4 to, float weight) {
+    public Vector4 lerp(Vector4 to, double weight) {
         return new Vector4(NumberUtils.lerp(this.x, to.x, weight), NumberUtils.lerp(this.y, to.y, weight), NumberUtils.lerp(this.z, to.z, weight), NumberUtils.lerp(this.w, to.w, weight));
     }
 
@@ -119,13 +119,13 @@ public class Vector4 extends Variant implements Comparable<Vector4> {
         return new Vector4(Math.max(this.x, with.x), Math.max(this.y, with.y), Math.max(this.z, with.z), Math.max(this.w, with.w));
     }
 
-    public Vector4 max(float with) {
+    public Vector4 max(double with) {
         return new Vector4(Math.max(this.x, with), Math.max(this.y, with), Math.max(this.z, with), Math.max(this.w, with));
     }
 
     public int maxAxisIndex() {
         int maxIndex = Vector4.AXIS_X;
-        float maxValue = x;
+        double maxValue = x;
 
         if (this.y > maxValue) {
             maxValue = this.y;
@@ -149,13 +149,13 @@ public class Vector4 extends Variant implements Comparable<Vector4> {
         return new Vector4(Math.min(this.x, with.x), Math.min(this.y, with.y), Math.min(this.z, with.z), Math.min(this.w, with.w));
     }
 
-    public Vector4 min(float with) {
+    public Vector4 min(double with) {
         return new Vector4(Math.min(this.x, with), Math.min(this.y, with), Math.min(this.z, with), Math.min(this.w, with));
     }
 
     public int minAxisIndex() {
         int maxIndex = Vector4.AXIS_X;
-        float maxValue = x;
+        double maxValue = x;
 
         if (this.y <= maxValue) {
             maxValue = this.y;
@@ -176,11 +176,11 @@ public class Vector4 extends Variant implements Comparable<Vector4> {
     }
 
     public Vector4 normalized() {
-        float length = this.length();
+        double length = this.length();
         return length == 0 ? Vector4.ZERO : this.divide(this.length());
     }
 
-    public Vector4 posmod(float mod) {
+    public Vector4 posmod(double mod) {
         return new Vector4(NumberUtils.posmod(this.x, mod), NumberUtils.posmod(this.y, mod), NumberUtils.posmod(this.z, mod), NumberUtils.posmod(this.w, mod));
     }
 
@@ -200,7 +200,7 @@ public class Vector4 extends Variant implements Comparable<Vector4> {
         return new Vector4(Math.round(this.x / step.x) * step.x, Math.round(this.y / step.y) * step.y, Math.round(this.z / step.z) * step.z, Math.round(this.w / step.w) * step.w);
     }
 
-    public Vector4 snapped(float step) {
+    public Vector4 snapped(double step) {
         return new Vector4(Math.round(this.x / step) * step, Math.round(this.y / step) * step, Math.round(this.z / step) * step, Math.round(this.w / step) * step);
     }
 
@@ -210,7 +210,7 @@ public class Vector4 extends Variant implements Comparable<Vector4> {
         return new Vector4(this.x * right.x, this.y * right.y, this.z * right.z, this.w * right.w);
     }
 
-    public Vector4 multiply(float right) {
+    public Vector4 multiply(double right) {
         return new Vector4(this.x * right, this.y * right, this.z * right, this.w * right);
     }
 
@@ -230,7 +230,7 @@ public class Vector4 extends Variant implements Comparable<Vector4> {
         return new Vector4(this.x / right.x, this.y / right.y, this.z / right.z, this.w / right.w);
     }
 
-    public Vector4 divide(float right) {
+    public Vector4 divide(double right) {
         return new Vector4(this.x / right, this.y / right, this.z / right, this.w / right);
     }
 
@@ -240,24 +240,24 @@ public class Vector4 extends Variant implements Comparable<Vector4> {
 
     @Override
     public int compareTo(Vector4 o) {
-        int comparisonX = Float.compare(this.x, o.x);
+        int comparisonX = Double.compare(this.x, o.x);
 
         if (comparisonX != 0) {
             return comparisonX;
         }
 
-        int comparisonY = Float.compare(this.y, o.y);
+        int comparisonY = Double.compare(this.y, o.y);
 
         if (comparisonY != 0) {
             return comparisonY;
         }
 
-        int comparisonZ = Float.compare(this.z, o.z);
+        int comparisonZ = Double.compare(this.z, o.z);
 
         if (comparisonZ != 0) {
             return comparisonZ;
         } else {
-            return Float.compare(this.w, o.w);
+            return Double.compare(this.w, o.w);
         }
     }
 

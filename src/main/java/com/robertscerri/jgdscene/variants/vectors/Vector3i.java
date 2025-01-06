@@ -62,12 +62,12 @@ public class Vector3i extends Variant implements Comparable<Vector3i> {
         return to.subtract(this).lengthSquared();
     }
 
-    public float distanceTo(Vector3i to) {
+    public double distanceTo(Vector3i to) {
         return to.subtract(this).length();
     }
 
-    public float length() {
-        return (float) Math.sqrt(this.lengthSquared());
+    public double length() {
+        return (double) Math.sqrt(this.lengthSquared());
     }
 
     public int lengthSquared() {
@@ -127,11 +127,11 @@ public class Vector3i extends Variant implements Comparable<Vector3i> {
     }
 
     public Vector3i snapped(Vector3i step) {
-        return new Vector3i(Math.round(this.x / (float) step.x) * step.x, Math.round(this.y / (float) step.y) * step.y, Math.round(this.z / (float) step.z) * step.z);
+        return new Vector3i((int) Math.round(this.x / (double) step.x) * step.x, (int) Math.round(this.y / (double) step.y) * step.y, (int) Math.round(this.z / (double) step.z) * step.z);
     }
 
     public Vector3i snapped(int step) {
-        return new Vector3i(Math.round(this.x / (float) step) * step, Math.round(this.y / (float) step) * step, Math.round(this.z / (float) step) * step);
+        return new Vector3i((int) Math.round(this.x / (double) step) * step, (int) Math.round(this.y / (double) step) * step, (int) Math.round(this.z / (double) step) * step);
     }
 
     public Vector3i modulo(Vector3i right) {
@@ -146,7 +146,7 @@ public class Vector3i extends Variant implements Comparable<Vector3i> {
         return new Vector3i(this.x * right.x, this.y * right.y, this.z * right.z);
     }
 
-    public Vector3 multiply(float right) {
+    public Vector3 multiply(double right) {
         return new Vector3(this.x * right, this.y * right, this.z * right);
     }
 
@@ -166,7 +166,7 @@ public class Vector3i extends Variant implements Comparable<Vector3i> {
         return new Vector3i(this.x / right.x, this.y / right.y, this.z / right.z);
     }
 
-    public Vector3 divide(float right) {
+    public Vector3 divide(double right) {
         return new Vector3(this.x / right, this.y / right, this.z / right);
     }
 

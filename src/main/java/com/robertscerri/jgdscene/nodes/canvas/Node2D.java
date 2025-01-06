@@ -5,9 +5,9 @@ import com.robertscerri.jgdscene.variants.vectors.Vector2;
 
 public class Node2D extends CanvasItem {
     public Vector2 position = null;
-    public Float rotation = null;
+    public Double rotation = null;
     public Vector2 scale = null;
-    public Float skew = null;
+    public Double skew = null;
 
     public Node2D(String name) {
         super(name);

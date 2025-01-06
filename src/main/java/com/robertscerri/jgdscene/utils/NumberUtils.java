@@ -3,21 +3,21 @@ package com.robertscerri.jgdscene.utils;
 import java.math.BigDecimal;
 
 public class NumberUtils {
-    private static final float TOLERANCE = 0.00000000000001f;
+    private static final double TOLERANCE = 0.00000000000001f;
 
-    public static boolean isEqualApprox(float a, float b) {
+    public static boolean isEqualApprox(double a, double b) {
         return Math.abs(a - b) < TOLERANCE;
     }
 
-    public static float lerp(float from, float to, float weight) {
+    public static double lerp(double from, double to, double weight) {
         return from + ((to - from) * weight);
     }
 
-    public static float posmod(float left, float right) {
+    public static double posmod(double left, double right) {
         return ((left % right) + right) % right;
     }
 
-    public static float clamp(float value, float min, float max) {
+    public static double clamp(double value, double min, double max) {
         return Math.min(Math.max(value, min), max);
     }
 

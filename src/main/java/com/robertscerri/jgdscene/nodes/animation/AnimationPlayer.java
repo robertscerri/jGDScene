@@ -8,11 +8,11 @@ public class AnimationPlayer extends AnimationMixer {
     public String currentAnimation = null;
     public Boolean movieQuitOnFinish = null;
     public Boolean playbackAutoCapture = null;
-    public Float playbackAutoCaptureDuration = null;
+    public Double playbackAutoCaptureDuration = null;
     public EaseType playbackAutoCaptureEaseType = null;
     public TransitionType playbackAutoCaptureTransitionType = null;
-    public Float playbackDefaultBlendTime = null;
-    public Float speedScale = null;
+    public Double playbackDefaultBlendTime = null;
+    public Double speedScale = null;
 
     public AnimationPlayer(String name) {
         super(name);

@@ -150,10 +150,10 @@ public class Color extends Variant implements Comparable<Color> {
     public static final Color YELLOW = new Color(1f, 1f, 0f, 1f);
     public static final Color YELLOW_GREEN = new Color(0.603922f, 0.803922f, 0.196078f, 1f);
 
-    public float r;
-    public float g;
-    public float b;
-    public float a;
+    public double r;
+    public double g;
+    public double b;
+    public double a;
 
     public Color() {
         this.r = 0;
@@ -162,7 +162,7 @@ public class Color extends Variant implements Comparable<Color> {
         this.a = 0;
     }
 
-    public Color(Color from, float alpha) {
+    public Color(Color from, double alpha) {
         this.r = from.r;
         this.g = from.g;
         this.b = from.b;
@@ -178,7 +178,7 @@ public class Color extends Variant implements Comparable<Color> {
 
     //TODO: Add constructor from hex
 
-    public Color(float r, float g, float b) {
+    public Color(double r, double g, double b) {
         this.r = r;
         this.g = g;
         this.b = b;
@@ -192,7 +192,7 @@ public class Color extends Variant implements Comparable<Color> {
         this.a = 1.0f;
     }
 
-    public Color(float r, float g, float b, float a) {
+    public Color(double r, double g, double b, double a) {
         this.r = r;
         this.g = g;
         this.b = b;
@@ -212,17 +212,17 @@ public class Color extends Variant implements Comparable<Color> {
         return new Color(Math.max(min.r, Math.min(this.r, max.r)), Math.max(min.g, Math.min(this.g, max.g)), Math.max(min.b, Math.min(this.b, max.b)), Math.max(min.a, Math.min(this.a, max.a)));
     }
 
-    public Color darkened(float amount) {
-        float newR = this.r * (1 - amount);
-        float newG = this.g * (1 - amount);
-        float newB = this.b * (1 - amount);
+    public Color darkened(double amount) {
+        double newR = this.r * (1 - amount);
+        double newG = this.g * (1 - amount);
+        double newB = this.b * (1 - amount);
 
         return new Color(newR, newG, newB);
     }
 
     //TODO: Add from_hsv, from_ok_hsl, from_rgbe9995, from_string
 
-    public float getLuminance() {
+    public double getLuminance() {
         return (0.2126f * this.r) + (0.7152f * this.g) + (0.0722f * this.b);
     }
 
@@ -254,19 +254,19 @@ public class Color extends Variant implements Comparable<Color> {
         return NumberUtils.isEqualApprox(this.r, to.r) && NumberUtils.isEqualApprox(this.g, to.g) && NumberUtils.isEqualApprox(this.b, to.b) && NumberUtils.isEqualApprox(this.a, to.a);
     }
 
-    public Color lerp(Color to, float weight) {
-        float newR = NumberUtils.lerp(this.r, to.r, weight);
-        float newG = NumberUtils.lerp(this.g, to.g, weight);
-        float newB = NumberUtils.lerp(this.b, to.b, weight);
-        float newA = NumberUtils.lerp(this.a, to.a, weight);
+    public Color lerp(Color to, double weight) {
+        double newR = NumberUtils.lerp(this.r, to.r, weight);
+        double newG = NumberUtils.lerp(this.g, to.g, weight);
+        double newB = NumberUtils.lerp(this.b, to.b, weight);
+        double newA = NumberUtils.lerp(this.a, to.a, weight);
 
         return new Color(newR, newG, newB, newA);
     }
 
-    public Color lightened(float amount) {
-       float newR = this.r + (1.0f - this.r) * amount;
-       float newG = this.g + (1.0f - this.g) * amount;
-       float newB = this.b + (1.0f - this.b) * amount;
+    public Color lightened(double amount) {
+       double newR = this.r + (1.0f - this.r) * amount;
+       double newG = this.g + (1.0f - this.g) * amount;
+       double newB = this.b + (1.0f - this.b) * amount;
 
        return new Color(newR, newG, newB);
     }
@@ -333,7 +333,7 @@ public class Color extends Variant implements Comparable<Color> {
         return new Color(this.r * right.r, this.g * right.g, this.b * right.b, this.a * right.a);
     }
 
-    public Color multiply(float right) {
+    public Color multiply(double right) {
         return new Color(this.r * right, this.g * right, this.b * right, this.a * right);
     }
 
@@ -353,7 +353,7 @@ public class Color extends Variant implements Comparable<Color> {
         return new Color(this.r / right.r, this.g / right.g, this.b / right.b, this.a / right.a);
     }
 
-    public Color divide(float right) {
+    public Color divide(double right) {
         return new Color(this.r / right, this.g / right, this.b / right, this.a / right);
     }
 
@@ -363,25 +363,25 @@ public class Color extends Variant implements Comparable<Color> {
 
     @Override
     public int compareTo(Color o) {
-        int compareR = Float.compare(this.r, o.r);
+        int compareR = Double.compare(this.r, o.r);
 
         if (compareR != 0) {
             return compareR;
         }
 
-        int compareG = Float.compare(this.g, o.g);
+        int compareG = Double.compare(this.g, o.g);
 
         if (compareG != 0) {
             return compareG;
         }
 
-        int compareB = Float.compare(this.b, o.b);
+        int compareB = Double.compare(this.b, o.b);
 
         if (compareB != 0) {
             return compareB;
         }
 
-        return Float.compare(this.a, o.a);
+        return Double.compare(this.a, o.a);
     }
 
     @Override

@@ -58,19 +58,19 @@ public class Vector4i extends Variant implements Comparable<Vector4i> {
         return new Vector4i(IntegerUtils.clamp(this.x, min, max), IntegerUtils.clamp(this.y, min, max), IntegerUtils.clamp(this.z, min, max), IntegerUtils.clamp(this.w, min, max));
     }
 
-    public float distanceSquaredTo(Vector4i to) {
+    public double distanceSquaredTo(Vector4i to) {
         return to.subtract(this).lengthSquared();
     }
 
-    public float distanceTo(Vector4i to) {
+    public double distanceTo(Vector4i to) {
         return to.subtract(this).length();
     }
 
-    public float length() {
-        return (float) Math.sqrt(this.lengthSquared());
+    public double length() {
+        return (double) Math.sqrt(this.lengthSquared());
     }
 
-    public float lengthSquared() {
+    public double lengthSquared() {
         return (this.x * this.x) + (this.y * this.y) + (this.z * this.z) + (this.w * this.w);
     }
 
@@ -84,7 +84,7 @@ public class Vector4i extends Variant implements Comparable<Vector4i> {
 
     public int maxAxisIndex() {
         int maxIndex = Vector4i.AXIS_X;
-        float maxValue = x;
+        double maxValue = x;
 
         if (this.y > maxValue) {
             maxValue = this.y;
@@ -114,7 +114,7 @@ public class Vector4i extends Variant implements Comparable<Vector4i> {
 
     public int minAxisIndex() {
         int maxIndex = Vector4i.AXIS_X;
-        float maxValue = x;
+        double maxValue = x;
 
         if (this.y <= maxValue) {
             maxValue = this.y;
@@ -139,11 +139,11 @@ public class Vector4i extends Variant implements Comparable<Vector4i> {
     }
 
     public Vector4i snapped(Vector4i step) {
-        return new Vector4i(Math.round(this.x / (float) step.x) * step.x, Math.round(this.y / (float) step.y) * step.y, Math.round(this.z / (float) step.z) * step.z, Math.round(this.w / (float) step.w) * step.w);
+        return new Vector4i((int) Math.round(this.x / (double) step.x) * step.x, (int) Math.round(this.y / (double) step.y) * step.y, (int) Math.round(this.z / (double) step.z) * step.z, (int) Math.round(this.w / (double) step.w) * step.w);
     }
 
     public Vector4i snapped(int step) {
-        return new Vector4i(Math.round(this.x / (float) step) * step, Math.round(this.y / (float) step) * step, Math.round(this.z / (float) step) * step, Math.round(this.w / (float) step) * step);
+        return new Vector4i((int) Math.round(this.x / (double) step) * step, (int) Math.round(this.y / (double) step) * step, (int) Math.round(this.z / (double) step) * step, (int) Math.round(this.w / (double) step) * step);
     }
 
     public Vector4i modulo(Vector4i right) {
@@ -158,7 +158,7 @@ public class Vector4i extends Variant implements Comparable<Vector4i> {
         return new Vector4i(this.x * right.x, this.y * right.y, this.z * right.z, this.w * right.w);
     }
 
-    public Vector4 multiply(float right) {
+    public Vector4 multiply(double right) {
         return new Vector4(this.x * right, this.y * right, this.z * right, this.w * right);
     }
 
@@ -178,7 +178,7 @@ public class Vector4i extends Variant implements Comparable<Vector4i> {
         return new Vector4i(this.x / right.x, this.y / right.y, this.z / right.z, this.w / right.w);
     }
 
-    public Vector4 divide(float right) {
+    public Vector4 divide(double right) {
         return new Vector4(this.x / right, this.y / right, this.z / right, this.w / right);
     }
 

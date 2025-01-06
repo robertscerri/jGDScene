@@ -8,14 +8,14 @@ public class Vector2 extends Variant implements Comparable<Vector2> {
     public static final int AXIS_Y = 1;
     public static final Vector2 ZERO = new Vector2(0, 0);
     public static final Vector2 ONE = new Vector2(1, 1);
-    public static final Vector2 INF = new Vector2(Float.POSITIVE_INFINITY, Float.POSITIVE_INFINITY);
+    public static final Vector2 INF = new Vector2(Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY);
     public static final Vector2 LEFT = new Vector2(-1, 0);
     public static final Vector2 RIGHT = new Vector2(1, 0);
     public static final Vector2 UP = new Vector2(0, -1);
     public static final Vector2 DOWN = new Vector2(0, 1);
 
-    public float x;
-    public float y;
+    public double x;
+    public double y;
 
     public Vector2() {
         x = 0;
@@ -32,7 +32,7 @@ public class Vector2 extends Variant implements Comparable<Vector2> {
         this.y = from.y;
     }
 
-    public Vector2(float x, float y) {
+    public Vector2(double x, double y) {
         this.x = x;
         this.y = y;
     }
@@ -41,19 +41,19 @@ public class Vector2 extends Variant implements Comparable<Vector2> {
         return new Vector2(Math.abs(this.x), Math.abs(this.y));
     }
 
-    public float angle() {
-        return (float) Math.atan(this.y / this.x);
+    public double angle() {
+        return (double) Math.atan(this.y / this.x);
     }
 
-    public float angleTo(Vector2 to) {
-        return (float) Math.acos(this.dot(to) / (this.length() * to.length()));
+    public double angleTo(Vector2 to) {
+        return (double) Math.acos(this.dot(to) / (this.length() * to.length()));
     }
 
-    public float angleToPoint(Vector2 to) {
+    public double angleToPoint(Vector2 to) {
         return to.subtract(this).angle();
     }
 
-    public float aspect() {
+    public double aspect() {
         return this.x / this.y;
     }
 
@@ -64,18 +64,18 @@ public class Vector2 extends Variant implements Comparable<Vector2> {
     }
 
     public Vector2 ceil() {
-        return new Vector2((float) Math.ceil(this.x), (float) Math.ceil(this.y));
+        return new Vector2((double) Math.ceil(this.x), (double) Math.ceil(this.y));
     }
 
     public Vector2 clamp(Vector2 min, Vector2 max) {
         return new Vector2(NumberUtils.clamp(this.x, min.x, max.x), NumberUtils.clamp(this.y, min.y, max.y));
     }
 
-    public Vector2 clamp(float min, float max) {
+    public Vector2 clamp(double min, double max) {
         return new Vector2(NumberUtils.clamp(this.x, min, max), NumberUtils.clamp(this.y, min, max));
     }
 
-    public float cross(Vector2 other) {
+    public double cross(Vector2 other) {
         return (this.x * other.y) - (this.y * other.x);
     }
 
@@ -85,24 +85,24 @@ public class Vector2 extends Variant implements Comparable<Vector2> {
         return to.subtract(this).normalized();
     }
 
-    public float distanceSquaredTo(Vector2 to) {
+    public double distanceSquaredTo(Vector2 to) {
         return to.subtract(this).lengthSquared();
     }
 
-    public float distanceTo(Vector2 to) {
-        return (float) Math.sqrt(Math.pow(to.x - this.x, 2) + Math.pow(to.y - this.y, 2));
+    public double distanceTo(Vector2 to) {
+        return (double) Math.sqrt(Math.pow(to.x - this.x, 2) + Math.pow(to.y - this.y, 2));
     }
 
-    public float dot(Vector2 with) {
+    public double dot(Vector2 with) {
         return (this.x * with.x) + (this.y * with.y);
     }
 
     public Vector2 floor() {
-        return new Vector2((float) Math.floor(this.x), (float) Math.floor(this.y));
+        return new Vector2((double) Math.floor(this.x), (double) Math.floor(this.y));
     }
 
-    public Vector2 fromAngle(float angle) {
-        return new Vector2((float) Math.cos(angle), (float) Math.sin(angle));
+    public Vector2 fromAngle(double angle) {
+        return new Vector2((double) Math.cos(angle), (double) Math.sin(angle));
     }
 
     public boolean isEqualApprox(Vector2 to) {
@@ -110,7 +110,7 @@ public class Vector2 extends Variant implements Comparable<Vector2> {
     }
 
     public boolean isFinite() {
-        return Float.isFinite(this.x) && Float.isFinite(this.y);
+        return Double.isFinite(this.x) && Double.isFinite(this.y);
     }
 
     public boolean isNormalized() {
@@ -121,19 +121,19 @@ public class Vector2 extends Variant implements Comparable<Vector2> {
         return NumberUtils.isEqualApprox(this.x, 0) && NumberUtils.isEqualApprox(this.y, 0);
     }
 
-    public float length() {
-        return (float) Math.sqrt(this.lengthSquared());
+    public double length() {
+        return (double) Math.sqrt(this.lengthSquared());
     }
 
-    public float lengthSquared() {
+    public double lengthSquared() {
         return (this.x * this.x) + (this.y * this.y);
     }
 
-    public Vector2 lerp(Vector2 to, float weight) {
+    public Vector2 lerp(Vector2 to, double weight) {
         return new Vector2(NumberUtils.lerp(this.x, to.x, weight), NumberUtils.lerp(this.y, to.y, weight));
     }
 
-    public Vector2 limitLength(float length) {
+    public Vector2 limitLength(double length) {
         if (this.length() < length) {
             return this;
         } else {
@@ -145,7 +145,7 @@ public class Vector2 extends Variant implements Comparable<Vector2> {
         return new Vector2(Math.max(this.x, with.x), Math.max(this.y, with.y));
     }
 
-    public Vector2 max(float with) {
+    public Vector2 max(double with) {
         return new Vector2(Math.max(this.x, with), Math.max(this.y, with));
     }
 
@@ -161,7 +161,7 @@ public class Vector2 extends Variant implements Comparable<Vector2> {
         return new Vector2(Math.min(this.x, with.x), Math.min(this.y, with.y));
     }
 
-    public Vector2 min(float with) {
+    public Vector2 min(double with) {
         return new Vector2(Math.min(this.x, with), Math.min(this.y, with));
     }
 
@@ -173,9 +173,9 @@ public class Vector2 extends Variant implements Comparable<Vector2> {
         }
     }
 
-    public Vector2 moveToward(Vector2 to, float delta) {
+    public Vector2 moveToward(Vector2 to, double delta) {
         Vector2 difference = to.subtract(this);
-        float distance = difference.length();
+        double distance = difference.length();
 
         if (distance <= delta || distance == 0) {
             return new Vector2(to);
@@ -185,7 +185,7 @@ public class Vector2 extends Variant implements Comparable<Vector2> {
     }
 
     public Vector2 normalized() {
-        float length = this.length();
+        double length = this.length();
         return length == 0 ? Vector2.ZERO : this.divide(this.length());
     }
 
@@ -193,7 +193,7 @@ public class Vector2 extends Variant implements Comparable<Vector2> {
         return this.rotated(Math.PI / 2);
     }
 
-    public Vector2 posmod(float mod) {
+    public Vector2 posmod(double mod) {
         return new Vector2(NumberUtils.posmod(this.x, mod), NumberUtils.posmod(this.y, mod));
     }
 
@@ -218,30 +218,30 @@ public class Vector2 extends Variant implements Comparable<Vector2> {
         double cosTheta = Math.cos(angle);
 
         return new Vector2(
-                (float) ((this.x * cosTheta) - (this.y * sinTheta)),
-                (float) ((this.x * sinTheta) + (this.y * cosTheta))
+                (double) ((this.x * cosTheta) - (this.y * sinTheta)),
+                (double) ((this.x * sinTheta) + (this.y * cosTheta))
         );
     }
 
     public Vector2 round() {
-        return new Vector2((float) Math.round(this.x), (float) Math.round(this.y));
+        return new Vector2((double) Math.round(this.x), (double) Math.round(this.y));
     }
 
     public Vector2 sign() {
         return new Vector2(Math.signum(this.x), Math.signum(this.y));
     }
 
-    public Vector2 slerp(Vector2 to, float weight) {
-        float startLengthSquared = this.lengthSquared();
-        float endLengthSquared = to.lengthSquared();
+    public Vector2 slerp(Vector2 to, double weight) {
+        double startLengthSquared = this.lengthSquared();
+        double endLengthSquared = to.lengthSquared();
 
         if (startLengthSquared == 0 || endLengthSquared == 0) {
             return this.lerp(to, weight);
         }
 
-        float startLength = (float) Math.sqrt(startLengthSquared);
-        float resultLength = NumberUtils.lerp(startLength, (float) Math.sqrt(endLengthSquared), weight);
-        float angle = this.angleTo(to);
+        double startLength = (double) Math.sqrt(startLengthSquared);
+        double resultLength = NumberUtils.lerp(startLength, (double) Math.sqrt(endLengthSquared), weight);
+        double angle = this.angleTo(to);
 
         return this.rotated(angle * weight).multiply(resultLength / startLength);
     }
@@ -256,7 +256,7 @@ public class Vector2 extends Variant implements Comparable<Vector2> {
         return new Vector2(Math.round(this.x / step.x) * step.x, Math.round(this.y / step.y) * step.y);
     }
 
-    public Vector2 snapped(float step) {
+    public Vector2 snapped(double step) {
         return new Vector2(Math.round(this.x / step) * step, Math.round(this.y / step) * step);
     }
 
@@ -266,7 +266,7 @@ public class Vector2 extends Variant implements Comparable<Vector2> {
         return new Vector2(this.x * right.x, this.y * right.y);
     }
 
-    public Vector2 multiply(float right) {
+    public Vector2 multiply(double right) {
         return new Vector2(this.x * right, this.y * right);
     }
 
@@ -286,7 +286,7 @@ public class Vector2 extends Variant implements Comparable<Vector2> {
         return new Vector2(this.x / right.x, this.y / right.y);
     }
 
-    public Vector2 divide(float right) {
+    public Vector2 divide(double right) {
         return new Vector2(this.x / right, this.y / right);
     }
 
@@ -296,12 +296,12 @@ public class Vector2 extends Variant implements Comparable<Vector2> {
 
     @Override
     public int compareTo(Vector2 o) {
-        int comparisonX = Float.compare(this.x, o.x);
+        int comparisonX = Double.compare(this.x, o.x);
 
         if (comparisonX != 0) {
             return comparisonX;
         } else {
-            return Float.compare(this.y, o.y);
+            return Double.compare(this.y, o.y);
         }
     }
 

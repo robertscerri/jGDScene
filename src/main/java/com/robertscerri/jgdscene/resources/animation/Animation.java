@@ -7,7 +7,7 @@ import java.util.Collection;
 import java.util.List;
 
 public class Animation extends SubResource {
-    private float length;
+    private double length;
     private List<AnimationTrack<?>> tracks;
 
     public Animation() {
@@ -21,11 +21,11 @@ public class Animation extends SubResource {
         this.tracks = new ArrayList<>();
     }
 
-    public float getLength() {
+    public double getLength() {
         return length;
     }
 
-    public void setLength(float length) {
+    public void setLength(double length) {
         this.length = length;
     }
 

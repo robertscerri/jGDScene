@@ -8,7 +8,7 @@ public class Plane extends Variant {
     public static final Plane PLANE_XZ = new Plane(0, 1, 0, 0);
     public static final Plane PLANE_XY = new Plane(0, 0, 1, 0);
 
-    public float d;
+    public double d;
     public Vector3 normal;
 
     public Plane() {
@@ -21,7 +21,7 @@ public class Plane extends Variant {
         this.normal = new Vector3(from.normal);
     }
 
-    public Plane(float a, float b, float c, float d) {
+    public Plane(double a, double b, double c, double d) {
         this.d = d;
         this.normal = new Vector3(a, b, c);
     }
@@ -31,14 +31,14 @@ public class Plane extends Variant {
         this.normal = normal.normalized();
     }
 
-    public Plane(Vector3 normal, float d) {
+    public Plane(Vector3 normal, double d) {
         this.d = d;
         this.normal = normal.normalized();
     }
 
     //TODO: Add other plane constructors
 
-    public float distanceTo(Vector3 point) {
+    public double distanceTo(Vector3 point) {
         return this.normal.dot(point) - this.d;
     }
 
@@ -46,8 +46,8 @@ public class Plane extends Variant {
         return this.normal.multiply(this.d);
     }
 
-    public boolean hasPoint(Vector3 point, float tolerance) {
-        float dist = this.distanceTo(point);
+    public boolean hasPoint(Vector3 point, double tolerance) {
+        double dist = this.distanceTo(point);
         dist = Math.abs(dist);
 
         return dist < tolerance;
@@ -58,7 +58,7 @@ public class Plane extends Variant {
     }
 
     public boolean isFinite() {
-        return this.normal.isFinite() && Float.isFinite(this.d);
+        return this.normal.isFinite() && Double.isFinite(this.d);
     }
 
     public Plane normalized() {

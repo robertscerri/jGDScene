@@ -6,10 +6,10 @@ import com.robertscerri.jgdscene.variants.NodePath;
 import com.robertscerri.jgdscene.variants.vectors.Vector2;
 
 public class Control extends CanvasItem {
-    public Float anchorBottom = null;
-    public Float anchorLeft = null;
-    public Float anchorRight = null;
-    public Float anchorTop = null;
+    public Double anchorBottom = null;
+    public Double anchorLeft = null;
+    public Double anchorRight = null;
+    public Double anchorTop = null;
     public Boolean clipContents = null;
     public Vector2 customMinimumSize = null;
     public FocusMode focusMode = null;
@@ -26,16 +26,16 @@ public class Control extends CanvasItem {
     public CursorShape mouseDefaultCursorShape = null;
     public MouseFilter mouseFilter = null;
     public Boolean mouseForcePassScrollEvents = null;
-    public Float offsetBottom = null;
-    public Float offsetLeft = null;
-    public Float offsetRight = null;
-    public Float offsetTop = null;
+    public Double offsetBottom = null;
+    public Double offsetLeft = null;
+    public Double offsetRight = null;
+    public Double offsetTop = null;
     public Vector2 pivotOffset = null;
     public Vector2 position = null;
-    public Float rotation = null;
+    public Double rotation = null;
     public Vector2 scale = null;
     public Vector2 size = null;
-    public Float sizeFlagsStretchRatio = null;
+    public Double sizeFlagsStretchRatio = null;
     public String themeTypeVariation = null;
     public String tooltipText = null;
 

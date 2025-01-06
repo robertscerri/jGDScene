@@ -41,8 +41,8 @@ public class Vector2i extends Variant implements Comparable<Vector2i> {
         return new Vector2i(Math.abs(this.x), Math.abs(this.y));
     }
 
-    public float aspect() {
-        return this.x / (float) this.y;
+    public double aspect() {
+        return this.x / (double) this.y;
     }
 
     public Vector2i clamp(Vector2i min, Vector2i max) {
@@ -53,16 +53,16 @@ public class Vector2i extends Variant implements Comparable<Vector2i> {
         return new Vector2i(Math.max(min, Math.min(this.x, max)), Math.max(min, Math.min(this.y, max)));
     }
 
-    public float distanceTo(Vector2i to) {
-        return (float) Math.sqrt(this.distanceSquaredTo(to));
+    public double distanceTo(Vector2i to) {
+        return (double) Math.sqrt(this.distanceSquaredTo(to));
     }
 
     public int distanceSquaredTo(Vector2i to) {
         return to.subtract(this).lengthSquared();
     }
 
-    public float length() {
-        return (float) Math.sqrt(this.lengthSquared());
+    public double length() {
+        return (double) Math.sqrt(this.lengthSquared());
     }
 
     public int lengthSquared() {
@@ -106,11 +106,11 @@ public class Vector2i extends Variant implements Comparable<Vector2i> {
     }
 
     public Vector2i snapped(Vector2i step) {
-        return new Vector2i(Math.round(this.x / (float) step.x) * step.x, Math.round(this.y / (float) step.y) * step.y);
+        return new Vector2i((int) Math.round(this.x / (double) step.x) * step.x, (int) Math.round(this.y / (double) step.y) * step.y);
     }
 
     public Vector2i snapped(int step) {
-        return new Vector2i(Math.round(this.x / (float) step) * step, Math.round(this.y / (float) step) * step);
+        return new Vector2i((int) Math.round(this.x / (double) step) * step, (int) Math.round(this.y / (double) step) * step);
     }
 
     public Vector2i modulo(Vector2i right) {
@@ -125,7 +125,7 @@ public class Vector2i extends Variant implements Comparable<Vector2i> {
         return new Vector2i(this.x * right.x, this.y * right.y);
     }
 
-    public Vector2 multiply(float right) {
+    public Vector2 multiply(double right) {
         return new Vector2(this.x * right, this.y * right);
     }
 
@@ -145,7 +145,7 @@ public class Vector2i extends Variant implements Comparable<Vector2i> {
         return new Vector2i(this.x / right.x, this.y / right.y);
     }
 
-    public Vector2 divide(float right) {
+    public Vector2 divide(double right) {
         return new Vector2(this.x / right, this.y / right);
     }
 
