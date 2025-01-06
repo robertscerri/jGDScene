@@ -42,11 +42,11 @@ public class Vector2 extends Variant implements Comparable<Vector2> {
     }
 
     public double angle() {
-        return (double) Math.atan(this.y / this.x);
+        return Math.atan(this.y / this.x);
     }
 
     public double angleTo(Vector2 to) {
-        return (double) Math.acos(this.dot(to) / (this.length() * to.length()));
+        return Math.acos(this.dot(to) / (this.length() * to.length()));
     }
 
     public double angleToPoint(Vector2 to) {
@@ -64,7 +64,7 @@ public class Vector2 extends Variant implements Comparable<Vector2> {
     }
 
     public Vector2 ceil() {
-        return new Vector2((double) Math.ceil(this.x), (double) Math.ceil(this.y));
+        return new Vector2(Math.ceil(this.x), Math.ceil(this.y));
     }
 
     public Vector2 clamp(Vector2 min, Vector2 max) {
@@ -90,7 +90,7 @@ public class Vector2 extends Variant implements Comparable<Vector2> {
     }
 
     public double distanceTo(Vector2 to) {
-        return (double) Math.sqrt(Math.pow(to.x - this.x, 2) + Math.pow(to.y - this.y, 2));
+        return Math.sqrt(Math.pow(to.x - this.x, 2) + Math.pow(to.y - this.y, 2));
     }
 
     public double dot(Vector2 with) {
@@ -98,11 +98,11 @@ public class Vector2 extends Variant implements Comparable<Vector2> {
     }
 
     public Vector2 floor() {
-        return new Vector2((double) Math.floor(this.x), (double) Math.floor(this.y));
+        return new Vector2(Math.floor(this.x), Math.floor(this.y));
     }
 
     public Vector2 fromAngle(double angle) {
-        return new Vector2((double) Math.cos(angle), (double) Math.sin(angle));
+        return new Vector2(Math.cos(angle), Math.sin(angle));
     }
 
     public boolean isEqualApprox(Vector2 to) {
@@ -122,7 +122,7 @@ public class Vector2 extends Variant implements Comparable<Vector2> {
     }
 
     public double length() {
-        return (double) Math.sqrt(this.lengthSquared());
+        return Math.sqrt(this.lengthSquared());
     }
 
     public double lengthSquared() {
@@ -218,8 +218,8 @@ public class Vector2 extends Variant implements Comparable<Vector2> {
         double cosTheta = Math.cos(angle);
 
         return new Vector2(
-                (double) ((this.x * cosTheta) - (this.y * sinTheta)),
-                (double) ((this.x * sinTheta) + (this.y * cosTheta))
+                ((this.x * cosTheta) - (this.y * sinTheta)),
+                ((this.x * sinTheta) + (this.y * cosTheta))
         );
     }
 
@@ -239,8 +239,8 @@ public class Vector2 extends Variant implements Comparable<Vector2> {
             return this.lerp(to, weight);
         }
 
-        double startLength = (double) Math.sqrt(startLengthSquared);
-        double resultLength = NumberUtils.lerp(startLength, (double) Math.sqrt(endLengthSquared), weight);
+        double startLength = Math.sqrt(startLengthSquared);
+        double resultLength = NumberUtils.lerp(startLength, Math.sqrt(endLengthSquared), weight);
         double angle = this.angleTo(to);
 
         return this.rotated(angle * weight).multiply(resultLength / startLength);

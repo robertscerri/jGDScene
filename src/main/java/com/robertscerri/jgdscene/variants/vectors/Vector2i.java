@@ -54,7 +54,7 @@ public class Vector2i extends Variant implements Comparable<Vector2i> {
     }
 
     public double distanceTo(Vector2i to) {
-        return (double) Math.sqrt(this.distanceSquaredTo(to));
+        return Math.sqrt(this.distanceSquaredTo(to));
     }
 
     public int distanceSquaredTo(Vector2i to) {
@@ -62,7 +62,7 @@ public class Vector2i extends Variant implements Comparable<Vector2i> {
     }
 
     public double length() {
-        return (double) Math.sqrt(this.lengthSquared());
+        return Math.sqrt(this.lengthSquared());
     }
 
     public int lengthSquared() {

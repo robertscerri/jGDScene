@@ -50,7 +50,7 @@ public class Vector4 extends Variant implements Comparable<Vector4> {
     }
 
     public Vector4 ceil() {
-        return new Vector4((double) Math.ceil(this.x), (double) Math.ceil(this.y), (double) Math.ceil(this.z), (double) Math.ceil(this.w));
+        return new Vector4(Math.ceil(this.x), Math.ceil(this.y), Math.ceil(this.z), Math.ceil(this.w));
     }
 
     public Vector4 clamp(Vector4 min, Vector4 max) {
@@ -80,7 +80,7 @@ public class Vector4 extends Variant implements Comparable<Vector4> {
     }
 
     public Vector4 floor() {
-        return new Vector4((double) Math.floor(this.x), (double) Math.floor(this.y), (double) Math.floor(this.z), (double) Math.floor(this.w));
+        return new Vector4(Math.floor(this.x), Math.floor(this.y), Math.floor(this.z), Math.floor(this.w));
     }
 
     public Vector4 inverse() {
@@ -104,7 +104,7 @@ public class Vector4 extends Variant implements Comparable<Vector4> {
     }
 
     public double length() {
-        return (double) Math.sqrt(this.lengthSquared());
+        return Math.sqrt(this.lengthSquared());
     }
 
     public double lengthSquared() {

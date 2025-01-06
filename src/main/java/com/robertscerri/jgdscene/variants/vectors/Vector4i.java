@@ -67,7 +67,7 @@ public class Vector4i extends Variant implements Comparable<Vector4i> {
     }
 
     public double length() {
-        return (double) Math.sqrt(this.lengthSquared());
+        return Math.sqrt(this.lengthSquared());
     }
 
     public double lengthSquared() {

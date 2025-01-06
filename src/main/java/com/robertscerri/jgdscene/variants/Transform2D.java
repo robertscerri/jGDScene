@@ -44,7 +44,7 @@ public class Transform2D extends Variant {
 
     public double getSkew() {
         double determinant = this.determinant();
-        return Math.acos(this.x.normalized().dot(this.y.normalized().multiply(Math.signum(determinant)))) - ((double) Math.PI * 0.5f);
+        return Math.acos(this.x.normalized().dot(this.y.normalized().multiply(Math.signum(determinant)))) - (Math.PI * 0.5);
     }
 
     public Transform2D multiply(Transform2D right) {

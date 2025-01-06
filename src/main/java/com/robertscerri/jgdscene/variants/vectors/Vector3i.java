@@ -67,7 +67,7 @@ public class Vector3i extends Variant implements Comparable<Vector3i> {
     }
 
     public double length() {
-        return (double) Math.sqrt(this.lengthSquared());
+        return Math.sqrt(this.lengthSquared());
     }
 
     public int lengthSquared() {

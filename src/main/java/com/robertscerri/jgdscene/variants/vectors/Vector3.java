@@ -56,13 +56,13 @@ public class Vector3 extends Variant implements Comparable<Vector3> {
     }
 
     public double angleTo(Vector3 to) {
-        return (double) Math.atan2(this.cross(to).length(), this.dot(to));
+        return Math.atan2(this.cross(to).length(), this.dot(to));
     }
 
     public double signedAngleTo(Vector3 to, Vector3 axis) {
         Vector3 crossTo = this.cross(to);
 
-        double unsignedAngle = (double) Math.atan2(crossTo.length(), this.dot(to));
+        double unsignedAngle = Math.atan2(crossTo.length(), this.dot(to));
         double sign = crossTo.dot(axis);
 
         return (sign < 0) ? -unsignedAngle : unsignedAngle;
@@ -75,7 +75,7 @@ public class Vector3 extends Variant implements Comparable<Vector3> {
     }
 
     public Vector3 ceil() {
-        return new Vector3((double) Math.ceil(this.x), (double) Math.ceil(this.y), (double) Math.ceil(this.z));
+        return new Vector3(Math.ceil(this.x), Math.ceil(this.y), Math.ceil(this.z));
     }
 
     public Vector3 clamp(Vector3 min, Vector3 max) {
@@ -113,7 +113,7 @@ public class Vector3 extends Variant implements Comparable<Vector3> {
     }
 
     public Vector3 floor() {
-        return new Vector3((double) Math.floor(this.x), (double) Math.floor(this.y), (double) Math.floor(this.z));
+        return new Vector3(Math.floor(this.x), Math.floor(this.y), Math.floor(this.z));
     }
 
     public Vector3 inverse() {
@@ -137,7 +137,7 @@ public class Vector3 extends Variant implements Comparable<Vector3> {
     }
 
     public double length() {
-        return (double) Math.sqrt(this.lengthSquared());
+        return Math.sqrt(this.lengthSquared());
     }
 
     public double lengthSquared() {
@@ -265,9 +265,9 @@ public class Vector3 extends Variant implements Comparable<Vector3> {
             return this.lerp(to, weight);
         }
 
-        axis = axis.divide((double) Math.sqrt(axisLengthSquared));
-        double startLength = (double) Math.sqrt(startLengthSquared);
-        double resultLength = NumberUtils.lerp(startLength, (double) Math.sqrt(endLengthSquared), weight);
+        axis = axis.divide(Math.sqrt(axisLengthSquared));
+        double startLength = Math.sqrt(startLengthSquared);
+        double resultLength = NumberUtils.lerp(startLength, Math.sqrt(endLengthSquared), weight);
         double angle = this.angleTo(to);
 
         return new Vector3();
