@@ -1,6 +1,7 @@
 package com.robertscerri.jgdscene.nodes.canvas;
 
 import com.robertscerri.jgdscene.utils.NumberUtils;
+import com.robertscerri.jgdscene.variants.Transform2D;
 import com.robertscerri.jgdscene.variants.vectors.Vector2;
 
 public class Node2D extends CanvasItem {
@@ -19,6 +20,23 @@ public class Node2D extends CanvasItem {
         this.rotation = from.rotation;
         this.scale = from.scale == null ? null : new Vector2(from.scale);
         this.skew = from.skew;
+    }
+
+    public Transform2D getTransform() {
+        double xScale = this.scale == null ? 1 : this.scale.x;
+        double yScale = this.scale == null ? 1 : this.scale.y;
+
+        double rot = this.rotation == null ? 0 : this.rotation;
+
+        double rotateSkew0 = (xScale * Math.tan(rot));
+        double rotateSkew1 = (yScale * Math.cos(rot)) - (yScale * Math.sin(rot));
+
+        Vector2 x = new Vector2(xScale, rotateSkew0);
+        Vector2 y = new Vector2(rotateSkew1, yScale);
+
+        Vector2 origin = this.position == null ? Vector2.ZERO : new Vector2(this.position);
+
+        return new Transform2D(x, y, origin);
     }
 
     @Override
