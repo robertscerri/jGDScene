@@ -1,6 +1,7 @@
 package com.robertscerri.jgdscene.variants;
 
 import com.robertscerri.jgdscene.variants.vectors.Vector2;
+import com.robertscerri.jgdscene.variants.vectors.Vector3;
 
 public class Transform2D extends Variant {
     public static final Transform2D IDENTITY = new Transform2D(new Vector2(1, 0), new Vector2(0, 1), new Vector2(0, 0));
@@ -23,14 +24,24 @@ public class Transform2D extends Variant {
         this.y = new Vector2(from.y);
     }
 
-    public Transform2D(Vector2 x, Vector2 y, Vector2 origin) {
-        this.origin = origin;
-        this.x = x;
-        this.y = y;
+    public Transform2D(Matrix3 from) {
+        this.origin = new Vector2(from.cells[0][2], from.cells[1][2]);
+        this.x = new Vector2(from.cells[0][0], from.cells[1][0]);
+        this.y = new Vector2(from.cells[0][1], from.cells[1][1]);
     }
 
-    public double determinant() {
-        return this.x.x * this.y.y - this.x.y * this.y.x;
+    public Transform2D(Vector2 x, Vector2 y, Vector2 origin) {
+        this.origin = new Vector2(origin);
+        this.x = new Vector2(x);
+        this.y = new Vector2(y);
+    }
+
+    public Transform2D affineInverse() {
+        return new Transform2D(this.toMatrix3().affineInverse());
+    }
+
+    private Matrix3 toMatrix3() {
+        return new Matrix3(new Vector3(this.x.x, this.x.y, 0), new Vector3(this.y.x, this.y.y, 0), new Vector3(this.origin.x, this.origin.y, 1));
     }
 
     public double getRotation() {
@@ -38,22 +49,20 @@ public class Transform2D extends Variant {
     }
 
     public Vector2 getScale() {
-        double sign = Math.signum(this.determinant());
+        double sign = Math.signum(this.toMatrix3().determinant());
         return new Vector2(this.x.length(), sign * this.y.length());
     }
 
     public double getSkew() {
-        double determinant = this.determinant();
+        double determinant = this.toMatrix3().determinant();
         return Math.acos(this.x.normalized().dot(this.y.normalized().multiply(Math.signum(determinant)))) - (Math.PI * 0.5);
     }
 
     public Transform2D multiply(Transform2D right) {
-        Vector2 resOrigin = new Vector2((this.x.x * right.origin.x) + (this.x.y * right.origin.y), (this.y.x * right.origin.x) + (this.y.y * right.origin.y)).add(this.origin);
+        Matrix3 leftMatrix = this.toMatrix3();
+        Matrix3 rightMatrix = right.toMatrix3();
 
-        Vector2 resX = new Vector2((this.x.x * right.x.x) + (this.y.x * right.x.y), (this.x.y * right.x.x) + (this.y.y * right.x.y));
-        Vector2 resY = new Vector2((this.x.x * right.y.x) + (this.y.x * right.y.y), (this.x.y * right.y.x) + (this.y.y * right.y.y));
-
-        return new Transform2D(resX, resY, resOrigin);
+        return new Transform2D(leftMatrix.multiply(rightMatrix));
     }
 
     @Override
