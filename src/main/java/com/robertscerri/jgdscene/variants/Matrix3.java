@@ -57,16 +57,16 @@ public class Matrix3 {
 
         double c21 = -(this.cells[0][1] * this.cells[2][2] - this.cells[2][1] * this.cells[0][2]);
         double c22 = this.cells[0][0] * this.cells[2][2] - this.cells[2][0] * this.cells[0][2];
-        double c23 = -(this.cells[0][0] * this.cells[1][2] - this.cells[1][0] * this.cells[0][2]);
+        double c23 = -(this.cells[0][0] * this.cells[2][1] - this.cells[2][0] * this.cells[0][1]);
 
         double c31 = this.cells[0][1] * this.cells[1][2] - this.cells[1][1] * this.cells[0][2];
         double c32 = -(this.cells[0][0] * this.cells[1][2] - this.cells[1][0] * this.cells[0][2]);
         double c33 = this.cells[0][0] * this.cells[1][1] - this.cells[1][0] * this.cells[0][1];
 
         return new Matrix3(
-                c11 * invDet, c12 * invDet, c13 * invDet,
-                c21 * invDet, c22 * invDet, c23 * invDet,
-                c31 * invDet, c32 * invDet, c33 * invDet
+                c11 * invDet, c21 * invDet, c31 * invDet,
+                c12 * invDet, c22 * invDet, c32 * invDet,
+                c13 * invDet, c23 * invDet, c33 * invDet
         );
     }
 
@@ -84,6 +84,18 @@ public class Matrix3 {
                 for (int i = 0; i < 3; i++) {
                     result.cells[row][col] += this.cells[row][i] * right.cells[i][col];
                 }
+            }
+        }
+
+        return result;
+    }
+
+    public Matrix3 transpose() {
+        Matrix3 result = new Matrix3();
+
+        for (int row = 0; row < 3; row++) {
+            for (int col = 0; col < 3; col++) {
+                result.cells[col][row] = this.cells[row][col];
             }
         }
 
